@@ -7,7 +7,51 @@
     <title>Brandon's-Portfolio</title>
   </head>
   <body>
-    <h1>Hello, My name is Brandon</h1>
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">
+          <img src="logo" alt="Logo" class="logoImg" />
+        </div>
+        <div>
+          <a class="menuOpen" onclick="showNavbar()" href="#"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="30px"
+              viewBox="0 -960 960 960"
+              width="30px"
+              fill="#e8eaed"
+            >
+              <path
+                d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+              /></svg
+          ></a>
+        </div>
+
+        <ul class="navLinks">
+          <li class="menuClose" onclick="hideNavbar()">
+            <a href="#"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="30px"
+                viewBox="0 -960 960 960"
+                width="30px"
+                fill="#e8eaed"
+              >
+                <path
+                  d="M120-240v-80h520v80H120Zm664-40L584-480l200-200 56 56-144 144 144 144-56 56ZM120-440v-80h400v80H120Zm0-200v-80h520v80H120Z"
+                /></svg
+            ></a>
+          </li>
+          <li><a href="">Home</a></li>
+          <li><a href="">About Me</a></li>
+          <li><a href="">Portfolio</a></li>
+          <li><a href="">Skills</a></li>
+          <li><a href="">Resume/CV</a></li>
+          <li><a href="">Blog</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

@@ -14,7 +14,7 @@ const showSidebar = () => {
   iAm.style.fontSize = "15px";
   setTimeout(() => {
     displaySidebar.style.transform = "translateX(0px)";
-  }, 1000);
+  }, 1);
 };
 
 const hideSidebar = () => {

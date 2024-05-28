@@ -74,12 +74,13 @@ body{
     top: 0;
     right: 0;
     width: 200px;
-    background-color: #000000de;
+    background-color: #00001456;
     height: 100vh;
     list-style: none;
-    z-index: 1000;
+    z-index: 99;
     transform: translateX(300px);
     box-shadow: -10px 0 10px #000000;
+    backdrop-filter: brightness(.1);
     padding-top: 20px;
     transition: 2s;
     display: none;
@@ -115,7 +116,7 @@ body{
 
 
 .aboutMe{                             /* About me styling section */
-    z-index: 0;
+    z-index: -3;
     height: 100vh; 
     width: 100%;
     background-color: #00063a;
@@ -142,27 +143,33 @@ body{
 
 .aboutMe .left h2{
     color: white;
-
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 .aboutMe .left h2 span{
     color: #ffda0b;
     text-shadow: -10px -1px 10px rgb(0, 20, 14);
     position: relative;
-
+    
+    z-index: 0;
+    background: transparent;
 }
 .aboutMe .left h2 span::before{
-    content: 'Web Developer';
+    content: '';
     animation: words 20s infinite;
 }
 .aboutMe .left h2 span::after{
     content: '';
     position: absolute;
     width: calc(100% + 10px);
+    z-index: 0;
     height: 100%;
     background-color: #00063a;
     border-left: 3px solid #03ffea;
     right: -5px;
-    animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+    animation: cursor 0.6s infinite, typing 20s steps(20) infinite;
 }
 @keyframes cursor {
     to{
@@ -188,7 +195,7 @@ body{
     }
     81%,
     100%{
-        content: 'Full Stack Developer';
+        content: 'Fullstack Developer';
     }
 }
 @keyframes typing {
@@ -204,6 +211,7 @@ body{
     95%{
         width: 0;
     }
+    0%,
     5%,
     20%,
     25%,
@@ -251,14 +259,15 @@ body{
 
 .aboutMe .right{
     width: 30%;
+    position: relative;
+
     z-index: 1;
 }
 .aboutMe .right img{
     width: 300px;
     cursor:wait;
-    filter:blur(.5px);
+    filter:blur(1px);
     transition: 2s;
-    z-index: 0;
     border-radius: 50px;
     box-shadow: -10px 0px 30px rgb(0, 122, 122),
                 10px 0px 30px #009e9e,
@@ -277,6 +286,13 @@ body{
         overflow-x: hidden;
 
     }
+    .container .navbar{
+        position: sticky;
+        top: 0;
+        right: 0;
+        z-index: 0;
+        backdrop-filter:none;
+    }
     .navbar .navLinks li{
         display: none;
     }
@@ -285,12 +301,12 @@ body{
 }
 .navbar .sidebar{ 
     width: 150px;
-    backdrop-filter: blur(20px);
-
+    position: absolute;
+    backdrop-filter: blur(10px);
 }
 
 .aboutMe{                        /* About me styling section */
-    z-index: 0; 
+    z-index: -1; 
     width: 100%;
     background-color: #00063a;
     padding: 30px;
@@ -298,6 +314,7 @@ body{
     flex-direction:column-reverse;
     justify-content: center;
     justify-content: space-between;
+    height: auto;
 }
 .aboutMe .left{
     width: 100%;
@@ -320,14 +337,25 @@ body{
     width: 100%;
     text-align: center;
     padding-right: 10px;
+    z-index: 0;
+    background: transparent;
 }
 .aboutMe .right img{
-    width: 300px;
-    cursor:wait;
-    filter:blur(3px);
+    width: 200px;
+    cursor:auto;
+    filter:blur(0);
+    cursor:auto;
     border-radius: 30px;
-    margin-bottom: 40px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 0;
 } 
+.aboutMe .right img:hover{
+    width: 200px;
+    filter:blur(0px);
+    transition: 2s;
+}
 
 }
 @media (max-width: 325px) {

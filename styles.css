@@ -30,6 +30,7 @@ body{
     width: 100%;
     backdrop-filter: blur(10px);
     transition: 1s;
+    z-index: 999;
 }
 .logo{
     cursor: pointer;
@@ -73,15 +74,16 @@ body{
     top: 0;
     right: 0;
     width: 200px;
-    background-color: #0000007e;
+    background-color: #00001456;
     height: 100vh;
     list-style: none;
-    z-index: 1000;
+    z-index: 99;
     transform: translateX(300px);
     box-shadow: -10px 0 10px #000000;
+    backdrop-filter: brightness(.1);
     padding-top: 20px;
-    backdrop-filter: blur(20px);
     transition: 2s;
+    display: none;
 }
 .navbar .sidebar li{
     text-align:start;
@@ -114,7 +116,8 @@ body{
 
 
 .aboutMe{                             /* About me styling section */
-    z-index: 0; 
+    z-index: -3;
+    height: 100vh; 
     width: 100%;
     background-color: #00063a;
     padding: 30px;
@@ -137,14 +140,89 @@ body{
     font-weight: bolder;
     
 }
+
 .aboutMe .left h2{
     color: white;
-
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 .aboutMe .left h2 span{
     color: #ffda0b;
-    text-shadow: -10px 10px 10px black;
+    text-shadow: -10px -1px 10px rgb(0, 20, 14);
+    position: relative;
+    
+    z-index: 0;
+    background: transparent;
 }
+.aboutMe .left h2 span::before{
+    content: '';
+    animation: words 20s infinite;
+}
+.aboutMe .left h2 span::after{
+    content: '';
+    position: absolute;
+    width: calc(100% + 10px);
+    z-index: 0;
+    height: 100%;
+    background-color: #00063a;
+    border-left: 3px solid #03ffea;
+    right: -5px;
+    animation: cursor 0.6s infinite, typing 20s steps(20) infinite;
+}
+@keyframes cursor {
+    to{
+        border-left: solid 2px #00063a;
+    }
+}
+@keyframes words {
+    0%,
+    20%{
+        content: 'Frontend Developer';
+    }
+    21%,
+    40%{
+        content: 'Web Designer';
+    }
+    41%,
+    60%{
+        content: 'UI /UX disigner';
+    }
+    61%,
+    80%{
+        content: 'Backend Developer';
+    }
+    81%,
+    100%{
+        content: 'Fullstack Developer';
+    }
+}
+@keyframes typing {
+    10%,
+    15%,
+    30%,
+    35%,
+    50%,
+    55%,
+    70%,
+    75%,
+    90%,
+    95%{
+        width: 0;
+    }
+    0%,
+    5%,
+    20%,
+    25%,
+    40%,
+    45%,
+    60%,
+    65%{
+        width: calc(100% + 10px);
+    }
+}
+
 .aboutMe .left p{
     color: #ffffff;
     padding: 20px 0;
@@ -180,15 +258,40 @@ body{
 }
 
 .aboutMe .right{
-    border: 1px solid #eee;
     width: 30%;
-    
+    position: relative;
+
+    z-index: 1;
+}
+.aboutMe .right img{
+    width: 300px;
+    cursor:wait;
+    filter:blur(1px);
+    transition: 2s;
+    border-radius: 50px;
+    box-shadow: -10px 0px 30px rgb(0, 122, 122),
+                10px 0px 30px #009e9e,
+                -10px 10px 30px #006e6e,
+                -10px -10px 30px #005050,
+                10px 10px 30px #003030;
+}
+.aboutMe .right img:hover{
+    width: 300px;
+    filter:blur(0px);
+    transition: 2s;
 }
 
 @media (max-width: 968px){
     body{
         overflow-x: hidden;
 
+    }
+    .container .navbar{
+        position: sticky;
+        top: 0;
+        right: 0;
+        z-index: 0;
+        backdrop-filter:none;
     }
     .navbar .navLinks li{
         display: none;
@@ -198,10 +301,12 @@ body{
 }
 .navbar .sidebar{ 
     width: 150px;
+    position: absolute;
+    backdrop-filter: blur(10px);
 }
 
 .aboutMe{                        /* About me styling section */
-    z-index: 0; 
+    z-index: -1; 
     width: 100%;
     background-color: #00063a;
     padding: 30px;
@@ -209,6 +314,7 @@ body{
     flex-direction:column-reverse;
     justify-content: center;
     justify-content: space-between;
+    height: auto;
 }
 .aboutMe .left{
     width: 100%;
@@ -226,7 +332,30 @@ body{
     line-height: 25px;
     margin:10px 0 10px 2px;
     border-left: solid 1px aqua;
-}  
+} 
+.aboutMe .right{
+    width: 100%;
+    text-align: center;
+    padding-right: 10px;
+    z-index: 0;
+    background: transparent;
+}
+.aboutMe .right img{
+    width: 200px;
+    cursor:auto;
+    filter:blur(0);
+    cursor:auto;
+    border-radius: 30px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 0;
+} 
+.aboutMe .right img:hover{
+    width: 200px;
+    filter:blur(0px);
+    transition: 2s;
+}
 
 }
 @media (max-width: 325px) {

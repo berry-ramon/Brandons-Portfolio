@@ -20,5 +20,5 @@ const hideSidebar = () => {
   viewSidebar.style.display = "block";
   setTimeout(() => {
     displaySidebar.style.display = "none";
-  }, 2500);
+  }, 2000);
 };

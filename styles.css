@@ -335,7 +335,8 @@ body{
 } 
 .aboutMe .right{
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     padding-right: 10px;
     z-index: 0;
     background: transparent;

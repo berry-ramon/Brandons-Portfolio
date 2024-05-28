@@ -269,16 +269,35 @@ body{
     filter:blur(1px);
     transition: 2s;
     border-radius: 50px;
-    box-shadow: -10px 0px 30px rgb(0, 122, 122),
-                10px 0px 30px #009e9e,
-                -10px 10px 30px #006e6e,
-                -10px -10px 30px #005050,
-                10px 10px 30px #003030;
+    box-shadow: -10px 0px 30px rgb(0, 122, 122);
+    
 }
 .aboutMe .right img:hover{
     width: 300px;
     filter:blur(0px);
     transition: 2s;
+    box-shadow: -10px 0px 30px rgb(0, 122, 122),
+                10px 0px 30px #009e9e,
+                -10px 10px 30px #006e6e,
+                -10px -10px 30px #005050,
+                10px 10px 30px #003030;
+    animation: rotateHue 3s infinite linear;
+}
+@keyframes rotateHue {
+    
+    100%{
+        filter: hue-rotate(30deg);
+    }
+}
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #00e1ff;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track{
+    background-color: #001310;
 }
 
 @media (max-width: 968px){
@@ -287,11 +306,11 @@ body{
 
     }
     .container .navbar{
-        position: sticky;
+        position: relative;
         top: 0;
         right: 0;
         z-index: 0;
-        backdrop-filter:none;
+        backdrop-filter:brightness(.2.3);
     }
     .navbar .navLinks li{
         display: none;
@@ -306,7 +325,6 @@ body{
 }
 
 .aboutMe{                        /* About me styling section */
-    z-index: -1; 
     width: 100%;
     background-color: #00063a;
     padding: 30px;
@@ -329,15 +347,17 @@ body{
     color: #ffffff;
     padding: 20px 0;
 
-    line-height: 25px;
+    line-height: 22px;
     margin:10px 0 10px 2px;
     border-left: solid 1px aqua;
 } 
+.aboutMe .left h1 span{
+    text-shadow: 1px -1px 2px rgb(4, 215, 223);
+}
 .aboutMe .right{
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-right: 10px;
     z-index: 0;
     background: transparent;
 }
@@ -348,14 +368,20 @@ body{
     cursor:auto;
     border-radius: 30px;
     position: relative;
+    margin: 20px 0 50px 0;
     top: 0;
     left: 0;
     z-index: 0;
+    box-shadow: -10px 0px 30px #007a7a,
+                 10px 0px 30px #009e9e;
 } 
 .aboutMe .right img:hover{
     width: 200px;
     filter:blur(0px);
     transition: 2s;
+    animation: paused;
+    box-shadow: -10px 0px 30px #007a7a,
+                 10px 0px 30px #009e9e;
 }
 
 }
@@ -379,6 +405,7 @@ body{
     padding: 10px 0;
     font-size: 25px;
 }
+
 .aboutMe .left .hire button{
     border: none;
     padding: 10px 20px;

@@ -9,6 +9,7 @@ body{
     height: 100vh;
     width: 100vw;
     color: white;
+    overflow-x:hidden ;
 }
 .container{
     background-color: #01332f;
@@ -44,15 +45,7 @@ body{
     width: auto;
 
 }
-/* .navLinks li a.on{
-    color: aqua;
-    text-decoration: underline;
-    text-decoration-color: #2b44ff;
-    text-decoration-skip-ink:auto ;
-    text-decoration-thickness: 5px;
-    text-decoration-style:dotted ;
-    transition: 1s;
-} */
+
 
 .navbar .navLinks li{
     margin-right: 30px;
@@ -195,6 +188,7 @@ body{
 @media (max-width: 968px){
     body{
         overflow-x: hidden;
+
     }
     .navbar .navLinks li{
         display: none;

@@ -16,17 +16,3 @@ const hideSidebar = () => {
   navbar.style.padding = "20px";
   viewSidebar.style.display = "block";
 };
-
-// Select all the links
-const navLinks = document.querySelectorAll(".navLinks li a");
-
-// Function to remove 'active' class from all links and add to the clicked one
-function handleNavLinkClick(event) {
-  navLinks.forEach((link) => link.classList.remove("active"));
-  event.currentTarget.classList.add("active");
-}
-
-// Add event listeners to all links
-navLinks.forEach((link) => {
-  link.addEventListener("click", handleNavLinkClick);
-});

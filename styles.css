@@ -21,7 +21,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 20px;
+    padding: 10px;
     background-color: #0214491c;
     box-shadow: 3px 0 5px #000000;
     position: sticky;
@@ -34,7 +34,17 @@ body{
 }
 .logo{
     cursor: pointer;
-    color: rgb(185, 188, 221);
+    color: #b9bcdd;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.logoImg{
+    height: 50px;
+}
+.logo h3{
+    padding-left: 20px;
+
 }
 .logo span{
     color: #00bbc9;
@@ -75,14 +85,13 @@ body{
     right: 0;
     width: 200px;
     background-color: #00001456;
-    height: 100vh;
     list-style: none;
     z-index: 99;
     transform: translateX(300px);
     box-shadow: -10px 0 10px #000000;
-    backdrop-filter: brightness(.1);
+    backdrop-filter: brightness();
     padding-top: 20px;
-    transition: 2s;
+    transition: 1s;
     display: none;
 }
 .navbar .sidebar li{
@@ -306,12 +315,19 @@ body{
 
     }
     .container .navbar{
-        position: relative;
-        top: 0;
+        position: sticky;
+        top: 4px;
         right: 0;
-        z-index: 0;
-        backdrop-filter:brightness(.2.3);
+        z-index: 1;
+        backdrop-filter: none;
     }
+    .logoImg{
+    height: 30px;
+}
+.logo h3{
+    padding-left: 10px;
+
+}
     .navbar .navLinks li{
         display: none;
     }
@@ -319,9 +335,10 @@ body{
     display: block;
 }
 .navbar .sidebar{ 
-    width: 150px;
+    width: 200px;
+    height: 400px;
     position: absolute;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
 }
 
 .aboutMe{                        /* About me styling section */
@@ -393,13 +410,21 @@ body{
         padding: 20px 0;
     }
     .logo{
+    padding-left: 5px;
     color: #00bbc9;
     text-shadow: 1px 0 30px #04dada;
     }
+    .navbar .sidebar{ 
+    width: 150px;
+    height: 400px;
+    position: absolute;
+    backdrop-filter: blur(20px);
+}
     .aboutMe .left h2{
     color: white;
     font-size: 17px;
 }
+
 .aboutMe .left h1{
     color: white;
     padding: 10px 0;

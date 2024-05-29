@@ -65,20 +65,39 @@ body{
 
 }
 .navbar .navLinks li a{
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
 }
+
+
 .navbar .navLinks li a:hover{
     color: aqua;
     text-decoration: underline;
     text-decoration-color: #2b44ff;
     text-decoration-skip-ink:auto ;
-    text-decoration-thickness: 5px;
-    text-decoration-style:dotted ;
+    text-decoration-thickness: 2px;
+    text-decoration-style:solid ;
     transition: 1s;
 }
-
+.active{
+    transform: translateY(-5px);
+    text-decoration: underline;
+    text-decoration-color: #2b44ff;
+    text-decoration-skip-ink:auto ;
+    text-decoration-thickness: 3px;
+    text-decoration-style:dashed ;
+    transition: 1s;
+}
+.active2{
+    transform: translateX(-10px);
+    text-decoration: underline;
+    text-decoration-color: #2b44ff;
+    text-decoration-skip-ink:auto ;
+    text-decoration-thickness: 2px;
+    text-decoration-style:dashed ;
+    transition: 1s;
+}
 .navbar .sidebar{                       /* Sidebar */
     position: fixed;
     top: 0;
@@ -103,22 +122,19 @@ body{
 .navbar .sidebar li a:hover{
     color: aqua;
     text-decoration: underline;
-    text-decoration-color: rgb(0, 26, 255);
+    text-decoration-color: #001aff;
     text-decoration-style:solid ;
     text-decoration-thickness: 3px;
     transition: 1s;
-
+    transform: scaleX(1);
 }
 .navbar .sidebar li a{
     color: white;
     text-decoration: none;
     width: 100%;
     font-weight: bold;
-}.navbar .sidebar li:nth-child(1):hover{
-    background-color: transparent;
 }
-
-.navbar .navLinks li:nth-child(8){
+.navbar .navLinks li:nth-child(7){
     display: none;
 }
 
@@ -159,7 +175,7 @@ body{
 }
 .aboutMe .left h2 span{
     color: #ffda0b;
-    text-shadow: -10px -1px 10px rgb(0, 20, 14);
+    text-shadow: -10px -1px 10px #00140e;
     position: relative;
     
     z-index: 0;
@@ -178,7 +194,7 @@ body{
     background-color: #00063a;
     border-left: 3px solid #03ffea;
     right: -5px;
-    animation: cursor 0.6s infinite, typing 20s steps(20) infinite;
+    animation: cursor 0.6s infinite linear, typing 20s steps(20) infinite ;
 }
 @keyframes cursor {
     to{
@@ -253,15 +269,15 @@ body{
     background-color: aqua;
 }
 .aboutMe .left .hire .contract:hover{
-    box-shadow: -1px -1px 20px rgb(0, 141, 141);
+    box-shadow: -1px -1px 20px #008d8d;
 }
 .aboutMe .left .hire .hireBtn{
-    box-shadow: -1px -1px 20px rgb(0, 141, 141);
+    box-shadow: -1px -1px 20px #008d8d;
     background-color: #000808;
     color: white;
 }
 .aboutMe .left .hire .hireBtn:hover{
-    box-shadow: -1px -1px 20px rgb(0, 141, 141);
+    box-shadow: -1px -1px 20px #008d8d;
     background-color: aqua;
     color: black;
 }
@@ -275,29 +291,22 @@ body{
 .aboutMe .right img{
     width: 300px;
     cursor:wait;
-    filter:blur(1px);
     transition: 2s;
     border-radius: 50px;
-    box-shadow: -10px 0px 30px rgb(0, 122, 122);
+    box-shadow: -10px 0px 30px #007a7a;
     
 }
 .aboutMe .right img:hover{
     width: 300px;
-    filter:blur(0px);
     transition: 2s;
-    box-shadow: -10px 0px 30px rgb(0, 122, 122),
+    box-shadow: -10px 0px 30px #007a7a,
                 10px 0px 30px #009e9e,
                 -10px 10px 30px #006e6e,
                 -10px -10px 30px #005050,
                 10px 10px 30px #003030;
-    animation: rotateHue 3s infinite linear;
 }
-@keyframes rotateHue {
-    
-    100%{
-        filter: hue-rotate(30deg);
-    }
-}
+
+
 ::-webkit-scrollbar{
     width: 5px;
 }
@@ -314,14 +323,14 @@ body{
         overflow-x: hidden;
 
     }
-    .container .navbar{
+.container .navbar{
         position: sticky;
         top: 4px;
         right: 0;
         z-index: 1;
         backdrop-filter: none;
-    }
-    .logoImg{
+}
+.logoImg{
     height: 30px;
 }
 .logo h3{
@@ -331,20 +340,38 @@ body{
     .navbar .navLinks li{
         display: none;
     }
-   .navbar .navLinks li:nth-child(8){
+.navbar .sidebar li:nth-child(1){
+    background-color: blue;
+    width: 100%;
+    padding: 15px 0 10px 10px;
+    margin: 0 ;
+    margin-top: 2px;
+     background-color: #01332f;
+    box-shadow: 3px 0 5px #000000;
+}
+.navbar .sidebar li:nth-child(1) a{
+    padding: 20px;
+}
+
+
+.navbar .navLinks li:nth-child(7){
     display: block;
 }
 .navbar .sidebar{ 
     width: 200px;
+    padding-top: 0;
     height: 400px;
     position: absolute;
     backdrop-filter: blur(20px);
+}
+.navbar .sidebar ul{
+    padding-top: 40px;
 }
 
 .aboutMe{                        /* About me styling section */
     width: 100%;
     background-color: #00063a;
-    padding: 30px;
+    padding: 20px;
     display:flex;
     flex-direction:column-reverse;
     justify-content: center;
@@ -369,7 +396,7 @@ body{
     border-left: solid 1px aqua;
 } 
 .aboutMe .left h1 span{
-    text-shadow: 1px -1px 2px rgb(4, 215, 223);
+    text-shadow: 1px -1px 2px #04d7df;
 }
 .aboutMe .right{
     width: 100%;
@@ -401,6 +428,18 @@ body{
                  10px 0px 30px #009e9e;
 }
 
+::-webkit-scrollbar{
+    width: 2px;
+    
+
+}
+::-webkit-scrollbar-thumb{
+    background-color: #00e1ff;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-track{
+    background-color: #001310;
+}
 }
 @media (max-width: 325px) {
     .container .navbar{
@@ -420,9 +459,12 @@ body{
     position: absolute;
     backdrop-filter: blur(20px);
 }
-    .aboutMe .left h2{
+ .aboutMe .left h2{
     color: white;
     font-size: 17px;
+}
+.aboutMe .left h2 span{
+    font-size: 13px;
 }
 
 .aboutMe .left h1{
@@ -431,17 +473,73 @@ body{
     font-size: 25px;
 }
 
+.aboutMe .left .hire{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .aboutMe .left .hire button{
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
-    margin-left: 10px;
+    margin-left: 5px;
     background-color: aqua;
     margin-bottom: 10px;
 }
     .logo span{
     display: none;
+}
+
+@keyframes words {
+    0%,
+    20%{
+        content: 'Frontend Developer';
+    }
+    21%,
+    40%{
+        content: 'Web Designer';
+    }
+    41%,
+    60%{
+        content: 'UI /UX disigner';
+    }
+    61%,
+    80%{
+        content: 'Backend Developer';
+    }
+    81%,
+    100%{
+        content: 'Fullstack Developer';
+    }
+}
+@keyframes typing {
+    10%,
+    15%,
+    30%,
+    35%,
+    50%,
+    55%,
+    70%,
+    75%,
+    90%,
+    95%{
+        width: 0;
+        height: 25px;
+
+    }
+    0%,
+    5%,
+    20%,
+    25%,
+    40%,
+    45%,
+    60%,
+    65%{
+        width: calc(100% + 10px);
+        height: 25px;
+
+    }
 }
 }

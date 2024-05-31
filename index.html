@@ -26,6 +26,25 @@
   </head>
   <body>
     <div class="container">
+      <div class="hiderViewerContainer">
+        <div
+          id="hider"
+          class="tooltip navHider"
+          aria-label="Close sidebar"
+          onclick="navHider()"
+        >
+          <a href="#hider">&lt;</a>
+          <span class="tooltiptext">Hide Navbar</span>
+        </div>
+        <div
+          id="shows"
+          title="Show Navbar"
+          class="navViewer"
+          onclick="navViewer()"
+        >
+          <a href="#shows">&lt;</a>
+        </div>
+      </div>
       <div class="navbar">
         <!--Navigation bar html -->
         <div class="logo">
@@ -37,7 +56,7 @@
           <h3>BRANDON<span>KIMATHI</span></h3>
         </div>
 
-        <ul class="navLinks">
+        <ul id="open" class="navLinks">
           <li class="active"><a href="#aboutMe">About Me</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -45,7 +64,7 @@
           <li><a href="#blog">Blog</a></li>
           <li><a href="#contact">Contact</a></li>
           <li onclick="showSidebar()">
-            <a href="#"
+            <a href="#open"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="20px"
@@ -60,9 +79,9 @@
           </li>
         </ul>
       </div>
-      <ul class="sidebar">
-        <li onclick="hideSidebar()">
-          <a href="#"
+      <ul id="close" class="sidebar">
+        <li onclick="hideSidebarOn(mediaQuery)">
+          <a href="#close"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               height="24px"
@@ -88,7 +107,7 @@
       <!-- about me section -->
       <!-- about me section -->
       <!-- about me section -->
-      <div class="aboutMe" id="aboutMe" onclick="hideSidebar()">
+      <div class="aboutMe" id="aboutMe" onclick="hideSidebarOn(mediaQuery)">
         <div class="left">
           <h1>HI, I'M <span>BRANDON</span></h1>
           <h2>I am a <span></span></h2>
@@ -114,7 +133,7 @@
       <!-- Portfolio section -->
       <!-- Portfolio section -->
       <!-- Portfolio section -->
-      <div class="portfolio">
+      <div class="portfolio" onclick="hideSidebarOn(mediaQuery)" id="portfolio">
         <div class="intro">
           <div class="empty"></div>
           <div>
@@ -125,7 +144,7 @@
             </p>
           </div>
         </div>
-        <div class="portContainer" id="portfolio" onclick="hideSidebar()">
+        <div class="portContainer">
           <div class="item item-1"></div>
           <div class="item item-2"></div>
           <div class="item item-3"></div>
@@ -139,7 +158,7 @@
       <!-- Skills Section -->
       <!-- Skills Section -->
       <!-- Skills Section -->
-      <div class="skills" id="skills" onclick="hideSidebar()"></div>
+      <div class="skills" id="skills" onclick="hideSidebarOn(mediaQuery)"></div>
     </div>
     <script src="script.js"></script>
   </body>

@@ -3,10 +3,13 @@
     margin: 0;
     padding: 0;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    top: 0;
+    z-index: 0;
 }
 body{
-    background-color: #25335E;
-    height: 100vh;
+    background-color: #030b2400;
+    height: auto;
     width: 100vw;
     color: white;
     overflow-x:hidden ;
@@ -30,7 +33,7 @@ body{
     width: 100%;
     backdrop-filter: blur(10px);
     transition: 1s;
-    z-index: 999;
+    overflow-x: hidden;
 }
 .logo{
     cursor: pointer;
@@ -89,46 +92,31 @@ body{
     text-decoration-style:dashed ;
     transition: 1s;
 }
-.active2{
-    transform: translateX(-10px);
-    text-decoration: underline;
-    text-decoration-color: #2b44ff;
-    text-decoration-skip-ink:auto ;
-    text-decoration-thickness: 2px;
-    text-decoration-style:dashed ;
-    transition: 1s;
-}
-.navbar .sidebar{                       /* Sidebar */
-    position: fixed;
+
+.sidebar{                       /* Sidebar */
+    position: sticky;
     top: 0;
     right: 0;
     width: 200px;
     background-color: #00001456;
     list-style: none;
-    z-index: 99;
     transform: translateX(300px);
     box-shadow: -10px 0 10px #000000;
-    backdrop-filter: brightness();
-    padding-top: 20px;
+    padding-top: 20px 20px 40px 20px;
+    border-radius: 5px;
     transition: 1s;
     display: none;
+    overflow-x: hidden;
 }
-.navbar .sidebar li{
+.sidebar li{
     text-align:start;
     margin-left: 30px;    
     width: 100%;
     line-height: 40px;
+    transform: translateX(-10px);
+
 }
-.navbar .sidebar li a:hover{
-    color: aqua;
-    text-decoration: underline;
-    text-decoration-color: #001aff;
-    text-decoration-style:solid ;
-    text-decoration-thickness: 3px;
-    transition: 1s;
-    transform: scaleX(1);
-}
-.navbar .sidebar li a{
+.sidebar li a{
     color: white;
     text-decoration: none;
     width: 100%;
@@ -137,14 +125,14 @@ body{
 .navbar .navLinks li:nth-child(7){
     display: none;
 }
-
-
+.navbar .navLinks li a:nth-child(7){
+    padding-top: 5px;
+}
 
 .aboutMe{                             /* About me styling section */
-    z-index: -3;
     height: 100vh; 
     width: 100%;
-    background-color: #00063a;
+    background-color: #00063a00;
     padding: 30px;
     display: inline-flex;
     align-items: center;
@@ -168,17 +156,12 @@ body{
 
 .aboutMe .left h2{
     color: white;
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: 0;
+    
 }
 .aboutMe .left h2 span{
     color: #ffda0b;
-    text-shadow: -10px -1px 10px #00140e;
-    position: relative;
+    text-shadow: -10px -1px 10px #023022;
     
-    z-index: 0;
     background: transparent;
 }
 .aboutMe .left h2 span::before{
@@ -191,7 +174,7 @@ body{
     width: calc(100% + 10px);
     z-index: 0;
     height: 100%;
-    background-color: #00063a;
+    background-color: #01332f;
     border-left: 3px solid #03ffea;
     right: -5px;
     animation: cursor 0.6s infinite linear, typing 20s steps(20) infinite ;
@@ -284,9 +267,7 @@ body{
 
 .aboutMe .right{
     width: 30%;
-    position: relative;
 
-    z-index: 1;
 }
 .aboutMe .right img{
     width: 300px;
@@ -318,13 +299,123 @@ body{
     background-color: #001310;
 }
 
+/* Portfolio section styling */
+.portfolio{                                    /* Portfolio section styling */
+    background-color: #030b27;
+    padding: 40px 20px ;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.portfolio .intro{
+    width: 100%;
+    text-align: right;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.empty{
+    width: 30%;
+}
+.portfolio h1{
+    font-size: 30px;
+    font-weight: bolder;
+    text-shadow: -1px -1px 1px #1df364;
+    color: #a9b9ff;
+
+}
+.portfolio h1 span{
+    color: #1df364;
+}
+.portfolio p{
+    color: #03c4ff;
+    padding: 10px 0;
+}
+.portContainer{
+    border-radius: 30px;
+    background-color:  #01001a;
+    margin: 10px auto;
+    width: 100%;
+    height: 800px;
+    display: grid;
+    grid-template-columns: repeat(6, 3fr);
+    grid-template-rows: repeat(2, 3fr);
+    grid-template-areas: 
+    'header header header main main main'
+    'left middle middle middle middle right'
+    'left  center center thin thin right';
+    grid-gap: 30px 20px;
+}
+
+.portContainer .item{
+    top: 0;
+    border: solid;
+    border-radius: 30px;
+    background-color: #020731;
+    box-shadow: -1px 1px 10px #99ff00 inset,
+                -1px -1px 10px #080c02,
+                -1px 1px 10px #000000,
+                1px 1px 10px #000000,
+                1px 1px 10px #000000,
+                1px 1px 10px #f73100,
+                1px 1px 10px #080c02,
+                 1px 1px 12px #ff0550 inset,
+                 -1px -1px 12px #030649 inset,
+                 1px -1px 10px #88dd88,
+                 1px -1px 1px #b8f8b8,
+                 -1px -1px 1px #b8f8b8;
+    border: none;
+}
+.item-1{
+    grid-area: header;
+}
+.item-2{
+    grid-area: main;
+}
+.item-3{
+    grid-area: left;
+}
+.item-4{
+    grid-area: middle;
+}
+.item-5{
+    grid-area: right;
+}
+.item-6{
+    grid-area: center;
+}
+.item-7{
+    grid-area: thin;
+    grid-column: 2fr;
+}
+
+
+.skills{
+    height: 800px;
+    width: 100%;
+}
 @media (max-width: 968px){
     body{
         overflow-x: hidden;
 
     }
+    
 .container .navbar{
-        position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #00000054;
+    box-shadow: 3px 0 5px #000000;
+    position: sticky;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    transition: 1s;
         top: 4px;
         right: 0;
         z-index: 1;
@@ -340,7 +431,7 @@ body{
     .navbar .navLinks li{
         display: none;
     }
-.navbar .sidebar li:nth-child(1){
+.sidebar li:nth-child(1){
     background-color: blue;
     width: 100%;
     padding: 15px 0 10px 10px;
@@ -348,23 +439,29 @@ body{
     margin-top: 2px;
      background-color: #01332f;
     box-shadow: 3px 0 5px #000000;
+    transform: translateX(0px);
 }
-.navbar .sidebar li:nth-child(1) a{
+.sidebar li:nth-child(1) a{
     padding: 20px;
 }
 
 
 .navbar .navLinks li:nth-child(7){
+
     display: block;
 }
-.navbar .sidebar{ 
+
+.sidebar{ 
     width: 200px;
     padding-top: 0;
-    height: 400px;
     position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
     backdrop-filter: blur(20px);
+    z-index: 10;
 }
-.navbar .sidebar ul{
+.sidebar ul{
     padding-top: 40px;
 }
 
@@ -396,13 +493,15 @@ body{
     border-left: solid 1px aqua;
 } 
 .aboutMe .left h1 span{
-    text-shadow: 1px -1px 2px #04d7df;
+    text-shadow: 1px -1px 2px #00063a;
+}
+.aboutMe .left h2 span::after{
+    background-color: #00063a;
 }
 .aboutMe .right{
     width: 100%;
     display: flex;
     justify-content: center;
-    z-index: 0;
     background: transparent;
 }
 .aboutMe .right img{
@@ -411,11 +510,9 @@ body{
     filter:blur(0);
     cursor:auto;
     border-radius: 30px;
-    position: relative;
     margin: 20px 0 50px 0;
     top: 0;
     left: 0;
-    z-index: 0;
     box-shadow: -10px 0px 30px #007a7a,
                  10px 0px 30px #009e9e;
 } 
@@ -440,23 +537,99 @@ body{
 ::-webkit-scrollbar-track{
     background-color: #001310;
 }
+
+.portContainer{                           /* Portfolio section styling */
+    background-color:  #02062c;
+    margin: 10px auto;
+    width: 100%;
+    display: grid;
+    height: 200vh;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas: 
+    'header header header header header header'
+    'header header header header header header'
+    'header header header header header header'
+    'left left left left right right'
+    'left left left left right right'
+    'center center center center center center'
+    'center center center center center center'
+    '. main main main main .'
+    '. main main main main .'
+    ;
+    grid-gap: 9px 5px;
+    overflow-x: hidden;
+}
+.portfolio{
+    padding: 0;
+    background-color: #030b27;
+
+}
+.portContainer .item{
+    border: solid;
+    border-radius: 30px;
+    background-color: #030727;
+    box-shadow: -1px 1px 10px #99ff00 inset,
+                -1px -1px 2px #0e29a0,
+                -1px 1px 10px #000000,
+                1px 1px 10px #000000,
+                1px 1px 10px #000000,
+                1px 1px 10px #f73100,
+                1px 1px 10px #080c02,
+                 1px 1px 12px #ff0550 inset,
+                 -1px -1px 12px #030649 inset,
+                 1px -1px 10px #88dd88,
+                 1px -1px 1px #b8f8b8,
+                 -1px -1px 1px #1daa1d;
+    border: none;
+    margin: 1px 2px;
+    
+    
+}
+.portfolio .intro{
+    width: 100%;
+    text-align: right;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.empty{
+    display: none;
+}
+.portfolio h1{
+    font-size: 30px;
+    font-weight: bolder;
+    text-shadow: -1px -1px 1px #1df364;
+    color: #a9b9ff;
+
+}
+.portfolio h1 span{
+    color: #1df364;
+}
+.portfolio p{
+    color: #03c4ff;
+    padding: 10px 0;
+    max-width: 300px;
+    height: auto;
+}
 }
 @media (max-width: 325px) {
     .container .navbar{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 20px 0;
+        padding: 10px 0;
     }
     .logo{
     padding-left: 5px;
     color: #00bbc9;
     text-shadow: 1px 0 30px #04dada;
     }
-    .navbar .sidebar{ 
+    .sidebar{ 
     width: 150px;
     height: 400px;
-    position: absolute;
     backdrop-filter: blur(20px);
 }
  .aboutMe .left h2{

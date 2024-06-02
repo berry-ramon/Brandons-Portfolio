@@ -26,7 +26,6 @@ const showSidebar = () => {
 const hideSidebarOn = (e) => {
   if (e.matches) {
     // Define the media query
-    console.log("Device width is small. Executing specific functionality.");
     const hideSidebar = () => {
       displaySidebar.style.transform = "translateX(300px)";
       navbar.style.justifyContent = "space-around";
@@ -39,8 +38,6 @@ const hideSidebarOn = (e) => {
       }, 1000);
     };
     hideSidebar();
-  } else {
-    console.log("Device width is large. Removing specific functionality.");
   }
 };
 const navHider = () => {
@@ -78,3 +75,41 @@ function handleNavLinkClick(event) {
 navLinks.forEach((link) => {
   link.addEventListener("click", handleNavLinkClick);
 });
+
+const refresh = document.querySelector(".refresher");
+refresh.addEventListener("click", () => {
+  window.location.reload();
+});
+// Animating elements on scroll
+// const sections = document.querySelectorAll(".scrollEffect");
+// window.onscroll = () => {
+//   sections.forEach((section) => {
+//     let top = window.scrollY;
+//     let offset = section.offsetTop;
+//     let height = section.offsetHeight;
+
+//     if (top >= offset && top < offset + height) {
+//       section.classList.add("pageAnimation");
+//       section.classList.add("stay");
+//     } else {
+//       section.classList.remove("pageAnimation");
+//     }
+//   });
+// };
+
+// To be Deleted
+// document.addEventListener("DOMContentLoaded", () => {
+//   document.querySelector(".container").addEventListener("click", f);
+// });
+
+// const f = (e) => {
+//   console.log(e.target.tagName, "clicked");
+//   console.log("clientX", e.clientX);
+//   // console.log("clientY", e.clientY);
+//   console.log("pageX", e.pageX);
+//   // console.log("pageY", e.pageY);
+//   console.log("screenX", e.screenX);
+//   // console.log("screenY", e.screenY);
+//   console.log("offsetX", e.offsetY);
+//   // console.log("offsetY", e.offsetY);
+// };

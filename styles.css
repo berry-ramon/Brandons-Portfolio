@@ -270,7 +270,6 @@ body{
 }
 .aboutMe .right img{
     width: 300px;
-    cursor:wait;
     transition: 2s;
     border-radius: 50px;
     box-shadow: -10px 0px 30px #007a7a;
@@ -298,9 +297,9 @@ body{
     background-color: #001310;
 }
 
-/* Portfolio section styling */
-.portfolio{                                    /* Portfolio section styling */
-    background-color: #030b27;
+/* Portfolio section styling *//* Portfolio section styling *//* Portfolio section styling */
+.portfolio{     /* Portfolio section styling */                               /* Portfolio section styling */
+    background-color: #000f0f;
     padding: 40px 20px ;
     margin: 0 0 20px 0;
     display: flex;
@@ -315,28 +314,36 @@ body{
     color: white;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
-.empty{
-    width: 30%;
-}
+
 .portfolio h1{
     font-size: 30px;
     font-weight: bolder;
     text-shadow: -1px -1px 1px #1df364;
     color: #a9b9ff;
-
+    width: 100%;
+    text-align: center;
 }
 .portfolio h1 span{
     color: #1df364;
 }
 .portfolio p{
-    color: #03c4ff;
-    padding: 10px 0;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: left;
+    width: 900px;
+    font-weight: lighter;
+    font-size: 18px;
+    padding-bottom: 20px;
 }
+.portfolio p::before{
+    content: " Welcome to My Projects! Here, you’ll find a selection of the web development work Ive done, showcasing my skills in React, PHP,and JavaScript. Each project includes details on the tools and techniques used, demonstrating my ability to create effective and innovative solutions. Click on a project to learn more about my work. Feel free to reach out if you have any questions or want to collaborate.";
+}
+
 .portContainer{
     border-radius: 30px;
-    background-color:  #01001a;
+    background-color:  #07045c00;
     margin: 10px auto;
     width: 100%;
     height: 800px;
@@ -352,7 +359,6 @@ body{
 
 .portContainer .item{
     top: 0;
-    border: solid;
     border-radius: 30px;
     background-color: #020731;
     box-shadow: -1px 1px 10px #99ff00 inset,
@@ -368,6 +374,7 @@ body{
                  1px -1px 1px #b8f8b8,
                  -1px -1px 1px #b8f8b8;
     border: none;
+    cursor: pointer;
 }
 .item-1{
     grid-area: header;
@@ -391,13 +398,366 @@ body{
     grid-area: thin;
     grid-column: 2fr;
 }
+/* Skills Styling Section *//* Skills Styling Section */
+/* Skills Styling Section *//* Skills Styling Section */
+.skills{        /* Skills Styling Section *//* Skills Styling Section */      /* Skills Styling Section */
+    height: auto;
+    width: 100%;
+    background-color: #001a20;
+    color: #ffffff;
+}
+.refresher{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: -2px 2px 5px #533636 inset,
+                2px -2px 5px #4b3030 inset,
+                -2px -2px 5px #4b3030 inset,
+                2px -2px 15px #000000,
+                -2px 2px 15px #000000;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 150px;
+    right: 300px;
+    cursor: pointer;
+    z-index: 99;
+}
+.refresher:active{
+    background-color: #30c00cc7;
+    
+}
 
+.sections{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.skills .title{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bolder;
+    text-shadow: 1px 1px 2px grey;
+                
+}
+.skills .title span{
+    color: #eeff00;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgb(0, 92, 134);
+}
+.section1{
+    padding: 20px 0;
+    margin: 10px 0px ;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 
-.skills{
-    height: 800px;
+}
+.skills #skill-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+.skills #skill-section h2{
+    color: #62ffe8;
+    text-decoration: underline;
+    text-decoration-color: #9eff9e;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    text-shadow: 1px 1px 1px #021102;    
+}
+.skills #skill-section .TecnicalBars{
+    margin: 10px;
+    padding: 10px 0;
     width: 100%;
 }
-@media (max-width: 968px){
+.skills #skill-section .TecnicalBars .icon{
+    margin-top: 30px 0;
+}
+.skills #skill-section .TecnicalBars .icon:first-child{
+    margin-top: 0;
+}
+.skills #skill-section .TecnicalBars .icon:last-child{
+    margin-bottom: 0;
+}
+.skills #skill-section .TecnicalBars .info{
+    margin-top: 5px;
+}
+.skills #skill-section .TecnicalBars .info span{
+    font-size: 20px;
+    font-weight: bolder;
+    animation: showBar 0.5s linear forwards;
+    color: white;
+}
+.skills #skill-section .TecnicalBars .ProgressLine {
+    position: relative;
+    width: 100%;
+    background-color: #554c2727;
+    border-radius: 10px;
+    height: 5px;
+    animation: progressContainer 1.5s cubic-bezier(1,0,0.5,1) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+@keyframes progressContainer {
+    100%{
+        transform: scaleX(1);
+    }
+}
+.TecnicalBars .ProgressLine span{
+    height: 100%;
+    background-color: #02ffff;
+    position: absolute;
+    border-radius: 10px;
+    animation: progressContainer 1s 2s cubic-bezier(1,0,0.5,1) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+.TecnicalBars .ProgressLine.html span{
+ width: 90%;
+}
+.TecnicalBars .ProgressLine.css span{
+ width: 75%;
+}
+.TecnicalBars .ProgressLine.javascript span{
+ width: 60%;
+}
+.TecnicalBars .ProgressLine.php span{
+ width: 45%;
+}
+.TecnicalBars .ProgressLine.sql span{
+ width: 30%;
+}
+.TecnicalBars .ProgressLine.python span{
+ width: 40%;
+}
+.TecnicalBars .ProgressLine.react span{
+ width: 55%;
+}
+
+.TecnicalBars .ProgressLine span::after{
+    position: absolute;
+    padding: 1px 8px;
+    background-color: #fffb00;
+    color: #072c21;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 4px;
+    top: -30px;
+    right: -20px;
+    opacity: 0;
+    animation: showText 1s 2s linear forwards;
+}
+.TecnicalBars .ProgressLine.html span::after{
+ content: '90%';
+}
+.TecnicalBars .ProgressLine.css span::after{
+ content: '75%';
+}
+.TecnicalBars .ProgressLine.javascript span::after{
+ content: '60%';
+}
+.TecnicalBars .ProgressLine.php span::after{
+ content: '45%';
+}
+.TecnicalBars .ProgressLine.sql span::after{
+ content: '30%';
+}
+.TecnicalBars .ProgressLine.python span::after{
+ content: '40%';
+}
+.TecnicalBars .ProgressLine.react span::after{
+ content: '55%';
+}
+
+.TecnicalBars .ProgressLine span::before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent ;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    border-top-color: rgb(255, 251, 0);
+    top: -11px;
+    right: 0;
+    opacity: 0;
+    
+    animation: showText .5s 1s linear forwards;
+}
+@keyframes showText {
+    100%{
+        opacity: 1;
+    }
+}
+
+/* Circle Progress Styling*//* Circle Progress Styling*/
+.sectionTwo{ /* Circle Progress Styling*//* Circle Progress Styling*/
+    margin: 10px 5px ;
+    margin-top: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #81707000;
+    height: auto;
+}
+#skill-section2{
+    width: 100%;
+}
+#skill-section2 .heading{
+    width: 100%;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #3ddf2f;
+    color: #00ffff;
+}
+.ProfessionalBars{
+    background-color:#81707000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 40px;
+
+}
+.ProfessionalBars .circle{
+    height: 200px;
+    width: 50vh;
+    position: relative;
+    margin-bottom:10px ;
+}
+.ProfessionalBars .circle svg{ 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(-90deg);
+    width: 180px;
+    height: 180px;
+}
+.ProfessionalBars .circle .progress-bar{ 
+    stroke-width: 10;
+    stroke: #7c7c4127;
+    fill: transparent;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    stroke-linecap:round;
+    animation: animateProgress 2s linear forwards;
+}
+@keyframes animateProgress {
+    100%{
+        stroke-dashoffset: -1;
+    }
+}
+.path{
+    stroke-width: 10;
+    stroke: #00ffff;
+    fill: transparent;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    stroke-linecap: round;
+}
+.path-1{
+    animation: AnimatePath1 1.3s 1.5s linear forwards;
+
+}
+.path-2{
+    animation: AnimatePath2 1.3s 1.5s linear forwards;
+
+}
+.path-3{
+    animation: AnimatePath3 1.3s 1.5s linear forwards;
+
+}
+.path-4{
+    animation: AnimatePath4 1.3s 1.5s linear forwards;
+
+}
+@keyframes AnimatePath1 {
+    100%{
+        stroke-dashoffset: 80;
+    }
+}
+@keyframes AnimatePath2 {
+    100%{
+        stroke-dashoffset: 98;
+    }
+}
+@keyframes AnimatePath3 {
+    100%{
+        stroke-dashoffset: 130;
+    }
+}
+@keyframes AnimatePath4 {
+    100%{
+        stroke-dashoffset: 180;
+    }
+}
+.ProfessionalBars .circle .percentage{ 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    animation: showText 1s 1.5s linear forwards;
+    transform-origin: center;
+    color: yellow;
+    text-shadow: 2px 2px 2px #080000;
+}
+.ProfessionalBars .circle .text{ 
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    font-size: 20px;
+    transform: translateX(-50%);
+    font-weight: bold;
+    margin-top: -10px;
+    opacity: 0;
+    animation: showText 1s 1.5s linear forwards;
+    transform-style: preserve-3d;
+    color: #ff5100;
+    text-shadow: 1px 2px 2px #362e2e;
+
+}
+
+
+/* On scroll effects styling  *//* On scroll effects styling  */
+/* On scroll effects styling  *//* On scroll effects styling  */
+.scrollEffect{
+    transition: 1s;
+}
+/* .aboutMe .left{
+    transform: translateX(-400px);
+}
+.aboutMe .left.pageAnimation{
+    transform: translateY(0px);
+} */
+
+
+
+/* Resume / CV Styling section *//* Resume / CV Styling section */
+/* Resume / CV Styling section */
+/* Resume / CV Styling section */
+/* Resume / CV Styling section */
+.resumecontainer{
+    height: 100vh;
+}
+
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+@media (max-width: 968px){ /* Small Devices To Allow Perfect Fit */
     body{
         overflow-x: hidden;
 
@@ -443,7 +803,9 @@ body{
     position: fixed;
     top: -9px;
 }
-
+.container{
+    background-color: rgb(0, 0, 22);
+}
 .container .navbar{
     display: flex;
     align-items: center;
@@ -477,12 +839,12 @@ body{
     padding: 15px 0px;
     margin: 0 ;
     margin-top: 2px;
-     background-color: #01332f;
     box-shadow: 3px 0 5px #000000;
     transform: translateX(0px);
 }
 .sidebar li:nth-child(1) a{
-    padding: 20px;
+    padding-top: 30px;
+    padding-left: 20px;
 }
 
 
@@ -648,16 +1010,23 @@ body{
     font-weight: bolder;
     text-shadow: -1px -1px 1px #1df364;
     color: #a9b9ff;
-
+    padding-top: 20px;
 }
 .portfolio h1 span{
     color: #1df364;
 }
 .portfolio p{
-    color: #03c4ff;
-    padding: 10px 0;
+    color: #ffffff;
+    padding: 20px 0;
     max-width: 300px;
     height: auto;
+    text-align: center;
+    line-height: 22px;
+    text-shadow: none;
+    font-size: 17px;
+}
+.portfolio p::before{
+    content: 'Check out My Projects! Explore my work with React, PHP, and JavaScript. Click on a project to see details. Contact me for questions or collaboration.';
 }
 
 
@@ -707,8 +1076,97 @@ body{
     visibility: visible;
     opacity: 1;
 }
+
+/* Skills Styles */ /* Skills Styles *//* Skills Styles */
+.skills{
+    background-color: rgb(2, 5, 20);
 }
-@media (max-width: 325px) {
+.sections{  /* Skills Styles *//* Skills Styles */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.skills .section1{
+    padding: 20px 0;
+    margin: 10px 0px ;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.sectionTwo{
+     padding: 20px 0;
+    margin: 10px 5px ;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.skills #skill-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.skills #skill-section .TecnicalBars{
+    margin: 10px;
+    padding: 10px 0;
+    width: 90%;
+}
+
+.ProfessionalBars{
+    background-color:#ffffff00;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+.ProfessionalBars .circle{
+    height: 200px;
+    width: 25vh;
+    position: relative;
+    margin-bottom: 10px;
+    
+}
+.ProfessionalBars .circle .text{ 
+    font-size: 18px;
+}
+.refresher{
+    position: absolute;
+    top: -32px;
+    right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+}
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+@media (min-width: 460px) and (max-width: 967px) { /* Device width between 460px and 967px */
+    .ProfessionalBars{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+}
+.ProfessionalBars .circle{
+    height: 200px;
+    width: 50vh;
+    position: relative;
+    margin-bottom: 10px;
+    
+}
+}
+
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
+@media (max-width: 325px) { /* MediaQuery for width of 325px and below */
     .container .navbar{
         display: flex;
         align-items: center;

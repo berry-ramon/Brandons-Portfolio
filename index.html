@@ -22,6 +22,11 @@
       href="./images/favicon-16x16.png"
     />
     <link rel="icon" type="image/png" href="./images/favicon.ico" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
     <title>Brandon's-Portfolio</title>
   </head>
   <body>
@@ -58,7 +63,7 @@
 
         <ul id="open" class="navLinks">
           <li class="active"><a href="#aboutMe">About Me</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#portfolio">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#resume">Resume/CV</a></li>
           <li><a href="#blog">Blog</a></li>
@@ -95,7 +100,7 @@
           ></a>
         </li>
         <li><a href="#aboutMe">About Me</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#portfolio">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#resume">Resume/CV</a></li>
         <li><a href="#blog">Blog</a></li>
@@ -128,20 +133,16 @@
           <img id="image1" src="./images/me1.jpg" alt="A photo of me" />
         </div>
       </div>
-      <!-- Portfolio section
-      <!-- Portfolio section -->
-      <!-- Portfolio section -->
-      <!-- Portfolio section -->
-      <!-- Portfolio section -->
+      <!-- Projects section
+      <!-- Projects section -->
+      <!-- Projects section -->
+      <!-- Projects section -->
+      <!-- Projects section -->
       <div class="portfolio" onclick="hideSidebarOn(mediaQuery)" id="portfolio">
         <div class="intro">
-          <div class="empty"></div>
           <div>
-            <h1>MY <span>PORTFOLIO</span></h1>
-            <p>
-              Here are some of the projects I've worked on. Click on the image
-              to view the project.
-            </p>
+            <h1>MY <span>PROJECTS</span></h1>
+            <p></p>
           </div>
         </div>
         <div class="portContainer">
@@ -158,8 +159,266 @@
       <!-- Skills Section -->
       <!-- Skills Section -->
       <!-- Skills Section -->
-      <div class="skills" id="skills" onclick="hideSidebarOn(mediaQuery)"></div>
+      <div class="skills" id="skills" onclick="hideSidebarOn(mediaQuery)">
+        <div class="title">
+          <h1>MY <span>SKILLS</span></h1>
+          <button class="refresher">CLICK ME</button>
+        </div>
+        <div class="sections reload">
+          <section class="section1">
+            <div id="skill-section">
+              <h2 class="heading">Tecnnical Skills</h2>
+
+              <!-- HTML -->
+              <div class="TecnicalBars">
+                <div class="icon">
+                  <div class="info">
+                    <span>HTML</span>
+                  </div>
+                  <i
+                    class="bx bxl-html5 bx-flip-vertical bx-tada"
+                    style="
+                      color: #ffffff;
+                      width: 50px;
+                      font-size: 50px;
+                      text-align: left;
+                      color: #e70101;
+                      padding: 0;
+                    "
+                  ></i>
+                </div>
+                <div class="ProgressLine html">
+                  <span></span>
+                </div>
+              </div>
+              <!-- CSS -->
+              <div class="TecnicalBars">
+                <div class="icon">
+                  <div class="info">
+                    <span>CSS</span>
+                  </div>
+                  <i
+                    class="bx bxl-css3 bx-flip-vertical bx-tada"
+                    style="
+                      color: #ffffff;
+                      width: 50px;
+                      font-size: 50px;
+                      text-align: left;
+                      color: #0077ff;
+                      padding: 0;
+                    "
+                  ></i>
+                </div>
+                <div class="ProgressLine css">
+                  <span></span>
+                </div>
+              </div>
+              <!-- JavaScript -->
+              <div class="TecnicalBars">
+                <div class="icon">
+                  <div class="info">
+                    <span>JAVASCRIPT</span>
+                  </div>
+                  <i
+                    class="bx bxl-javascript bx-flip-vertical bx-tada"
+                    style="
+                      color: #ffffff;
+                      width: 50px;
+                      font-size: 50px;
+                      text-align: left;
+                      color: #fffb00;
+                      padding: 0;
+                    "
+                  ></i>
+                </div>
+                <div class="ProgressLine javascript">
+                  <span></span>
+                </div>
+              </div>
+              <!-- REACT -->
+              <div class="TecnicalBars">
+                <div class="icon">
+                  <div class="info">
+                    <span>REACT</span>
+                  </div>
+                  <i
+                    class="bx bxl-react bx-flip-vertical bx-tada"
+                    style="
+                      color: #ffffff;
+                      width: 50px;
+                      font-size: 50px;
+                      text-align: left;
+                      color: #00ffff;
+                      padding: 0;
+                    "
+                  ></i>
+                </div>
+                <div class="ProgressLine react">
+                  <span></span>
+                </div>
+              </div>
+              <!-- PHP -->
+              <div class="TecnicalBars">
+                <div class="icon">
+                  <div class="info">
+                    <span>PHP</span>
+                  </div>
+                  <i
+                    class="bx bxl-php bx-flip-vertical bx-tada"
+                    style="
+                      color: #ffffff;
+                      width: 50px;
+                      font-size: 50px;
+                      text-align: left;
+                      color: #000000;
+                      padding: 0;
+                    "
+                  ></i>
+                </div>
+                <div class="ProgressLine php">
+                  <span></span>
+                </div>
+              </div>
+              <!-- PYTHON -->
+              <div class="TecnicalBars">
+                <div class="icon">
+                  <div class="info">
+                    <span>PYTHON</span>
+                  </div>
+                  <i
+                    class="bx bxl-python bx-flip-vertical bx-tada"
+                    style="
+                      color: #ffffff;
+                      width: 50px;
+                      font-size: 50px;
+                      text-align: left;
+                      color: #ffd000;
+                      padding: 0;
+                    "
+                  ></i>
+                </div>
+                <div class="ProgressLine python">
+                  <span></span>
+                </div>
+              </div>
+              <!-- SQL -->
+              <div class="TecnicalBars">
+                <div class="icon">
+                  <div class="info">
+                    <span>SQL</span>
+                  </div>
+                  <i
+                    class="bx bxs-data bx-flip-vertical bx-tada"
+                    style="
+                      color: #ffffff;
+                      width: 50px;
+                      font-size: 50px;
+                      text-align: left;
+                      color: #e100ff;
+                      padding: 0;
+                    "
+                  ></i>
+                </div>
+                <div class="ProgressLine sql">
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Section 2 -->
+          <section class="sectionTwo">
+            <div id="skill-section2">
+              <h2 class="heading">Professional Skills</h2>
+              <div class="ProfessionalBars">
+                <div class="circle">
+                  <svg x="0px" y="0px" viewBox="0 0 200 200">
+                    <circle
+                      class="progress-bar"
+                      cx="100"
+                      cy="100"
+                      r="80"
+                    ></circle>
+                    <circle
+                      class="path path-1"
+                      cx="100"
+                      cy="100"
+                      r="80"
+                    ></circle>
+                  </svg>
+                  <div class="percentage">89%</div>
+                  <div class="text">Creativity</div>
+                </div>
+                <!-- Circle 2 -->
+                <div class="circle">
+                  <svg x="0px" y="0px" viewBox="0 0 200 200">
+                    <circle
+                      class="progress-bar"
+                      cx="100"
+                      cy="100"
+                      r="80"
+                    ></circle>
+                    <circle
+                      class="path path-2"
+                      cx="100"
+                      cy="100"
+                      r="80"
+                    ></circle>
+                  </svg>
+                  <div class="percentage">70%</div>
+                  <div class="text">Team Work</div>
+                </div>
+                <!-- Circle 3 -->
+                <div class="circle">
+                  <svg x="0px" y="0px" viewBox="0 0 200 200">
+                    <circle
+                      class="progress-bar"
+                      cx="100"
+                      cy="100"
+                      r="80"
+                    ></circle>
+                    <circle
+                      class="path path-3"
+                      cx="100"
+                      cy="100"
+                      r="80"
+                    ></circle>
+                  </svg>
+                  <div class="percentage">65%</div>
+                  <div class="text">Problem Solving</div>
+                </div>
+                <!-- Circle 4 -->
+                <div class="circle">
+                  <svg x="0px" y="0px" viewBox="0 0 200 200">
+                    <circle
+                      class="progress-bar"
+                      cx="100"
+                      cy="100"
+                      r="80"
+                    ></circle>
+                    <circle
+                      class="path path-4"
+                      cx="100"
+                      cy="100"
+                      r="80"
+                    ></circle>
+                  </svg>
+                  <div class="percentage">59%</div>
+                  <div class="text">Communication</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Resume / CV Section -->
+        <!-- Resume / CV Section -->
+        <!-- Resume / CV Section -->
+        <!-- Resume / CV Section -->
+        <!-- Resume / CV Section -->
+        <div class="resumecontainer">
+          <div class="resume"></div>
+        </div>
+      </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>

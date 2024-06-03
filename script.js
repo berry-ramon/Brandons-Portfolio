@@ -40,6 +40,7 @@ const hideSidebarOn = (e) => {
     hideSidebar();
   }
 };
+
 const navHider = () => {
   navbar.style.transform = "translateY(-100px)";
   hiderBtm.style.transform = "translateX(-100px)";
@@ -76,10 +77,69 @@ navLinks.forEach((link) => {
   link.addEventListener("click", handleNavLinkClick);
 });
 
-const refresh = document.querySelector(".refresher");
-refresh.addEventListener("click", () => {
-  window.location.reload();
+// refresh.addEventListener("click", () => {
+//   window.location.reload();
+// });
+
+// let isIntervalOn;
+// const refresh = document.querySelector(".refresher");
+
+// refresh.addEventListener("click", () => {
+//   if (!isIntervalOn) {
+//     setInterval(() => {
+//       let contentDiv = document.querySelector(".skills");
+//       let currentContent = contentDiv.innerHTML;
+//       contentDiv.innerHTML = currentContent;
+//     }, 6000);
+//   } // Refresh the content
+// });
+
+const download = document.querySelector(".button");
+const i = document.querySelector(".content i");
+const cv = document.querySelector("#cvDownloadBtn");
+const content = document.querySelector(".button .content");
+
+download.addEventListener("click", () => {
+  download.classList.add("downloaded");
+  // downloading the cv
+  download.dataset.download;
+  const image = "./documents/BrandonKimathiResume.pdf";
+  const a = document.createElement("a");
+  a.href = image;
+  a.download = "";
+  a.style.display = "none";
+
+  setTimeout(() => {
+    download.classList.remove("downloaded");
+    i.classList.replace("bx-cloud-download", "bx-check-circle");
+    cv.innerText = "Completed";
+    i.style.color = "black";
+    cv.style.color = "black";
+    download.style.background = "aqua";
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    const IsWidthSmall = (e) => {
+      if (e.matches) {
+        download.style.background = "#001725";
+      } else {
+        download.style.background =
+          "linear-gradient(90deg, transparent 40%, #001725 50%)";
+      }
+    };
+    setTimeout(() => {
+      i.classList.replace("bx-check-circle", "bx-cloud-download");
+      cv.innerText = "Download";
+      cv.style.color = "aqua";
+      i.style.color = "aqua";
+
+      IsWidthSmall(mediaQuery);
+    }, 2300);
+  }, 4000);
 });
+
 // Animating elements on scroll
 // const sections = document.querySelectorAll(".scrollEffect");
 // window.onscroll = () => {

@@ -113,17 +113,41 @@
       <!-- about me section -->
       <!-- about me section -->
       <!-- about me section -->
-      <div class="aboutMe" id="aboutMe" onclick="hideSidebarOn(mediaQuery)">
+      <div
+        class="aboutMe same"
+        id="aboutMe"
+        onclick="hideSidebarOn(mediaQuery)"
+      >
         <div class="left">
           <h1>HI, I'M <span>BRANDON</span></h1>
           <h2>I am a <span></span></h2>
           <p>
-            Hi! I'm Brandon, a recent graduate in Software Development from the
-            Institute of Software Technologies. I have a solid foundation in
-            React, PHP, SQL, JavaScript, CSS, and HTML. My passion lies in
-            crafting innovative web applications and enhancing user experiences.
-            I am excited to bring my skills and enthusiasm to a dynamic team in
-            the tech industry.
+            <span style="margin-left: 5px">
+              <span
+                style="
+                  font-size: 20px;
+                  font-family: Courier New;
+                  font-weight: bold;
+                "
+                >I</span
+              >
+              am a recent graduate in
+              <strong><em>Software Development</em></strong>
+              from the
+              <strong> <em>Institute of Software Technologies</em> </strong>.
+            </span>
+            <span>
+              I have a solid foundation in <strong>React</strong>,
+              <strong>PHP</strong>, <strong>SQL</strong>,
+              <strong>JavaScript</strong>, <strong>CSS</strong>, and
+              <strong>HTML</strong>.
+            </span>
+            <br />
+            <span
+              >My passion lies in crafting innovative web applications and
+              enhancing user experiences. I am excited to bring my skills and
+              enthusiasm to a dynamic team in the tech industry.
+            </span>
           </p>
           <div class="hire">
             <button class="hireBtn">Hire Me</button>
@@ -139,7 +163,11 @@
       <!-- Projects section -->
       <!-- Projects section -->
       <!-- Projects section -->
-      <div class="portfolio" onclick="hideSidebarOn(mediaQuery)" id="portfolio">
+      <div
+        class="portfolio same"
+        onclick="hideSidebarOn(mediaQuery)"
+        id="portfolio"
+      >
         <div class="intro">
           <div>
             <h1>MY <span>PROJECTS</span></h1>
@@ -166,7 +194,7 @@
           <button class="refresher">CLICK ME</button>
         </div>
         <div class="sections reload">
-          <section class="section1">
+          <section class="section1 same">
             <div id="skill-section">
               <h2 class="heading">Tecnnical Skills</h2>
 
@@ -327,7 +355,7 @@
             </div>
           </section>
           <!-- Section 2 -->
-          <section class="sectionTwo">
+          <section class="sectionTwo same">
             <div id="skill-section2">
               <h2 class="heading">Professional Skills</h2>
               <div class="ProfessionalBars">
@@ -415,8 +443,28 @@
         <!-- Resume / CV Section -->
         <!-- Resume / CV Section -->
         <!-- Resume / CV Section -->
-        <div class="resumecontainer">
-          <div class="resume"></div>
+        <div
+          class="resumecontainer same"
+          id="resume"
+          onclick="hideSidebarOn(mediaQuery)"
+        >
+          <div class="resume">
+            <div class="left">
+              <h2>
+                Download <span>My Resume<em>/CV</em></span>
+              </h2>
+              <p></p>
+            </div>
+            <div class="right">
+              <img src="./images/resumeImage.png" alt="Resume Image" />
+              <div class="button">
+                <div class="content">
+                  <i class="bx bx-cloud-download"></i>
+                  <span id="cvDownloadBtn">Download CV</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -392,9 +392,45 @@ body{
 }
 .item-3{
     grid-area: left;
+    overflow-x: hidden;
+    overflow-y:hidden;
+    background-image: url(./images/android-chrome-512x512.png);
+    background-size:auto ;
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-origin:border-box ;
+    background-clip: content-box ;
+
+}
+.item-3 .bottom{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 1px;
+     top: 88%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 5px 5px 5px;
+    background-color: #00000077;
+    backdrop-filter: blur(1px);
+}
+.item-3 .bottom i{
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: #ffffff;
+}
+.item-3 .bottom svg:nth-child(1){
+    rotate: 90deg;
 }
 .item-4{
     grid-area: middle;
+    background:url(./images/lipstickEcommerce.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-origin:border-box ;
 }
 .item-5{
     grid-area: right;
@@ -1096,14 +1132,14 @@ body{
     'header header header header header header'
     'header header header header header header'
     'header header header header header header'
-    'left left left left right right'
-    'left left left left right right'
+    'main main main main right right'
+    'main main main main right right'
     'center center center center center center'
     'center center center center center center'
-    '. main main main main .'
-    '. main main main main .'
-    '. main main main main .'
-    '. main main main main .'
+    '. left left left left .'
+    '. left left left left .'
+    '. left left left left .'
+    '. left left left left .'
     ;
     grid-gap: 9px 5px;
     overflow-x: hidden;
@@ -1169,6 +1205,28 @@ body{
 .portfolio p::before{
     content: 'Check out My Projects! Explore my work with React, PHP, and JavaScript. Click on a project to see details. Contact me for questions or collaboration.';
 }
+.item-1{
+    background-image: none;
+}
+.item-2{
+    background-image: none;
+}
+.item-3{
+    background-image: none;
+}
+.item-4{
+    background-image: none;
+}
+.item-5{
+    background-image: none;
+}
+.item-6{
+    background-image: none;
+}
+.item-7{
+    background-image: none;
+}
+
 
 
 /* Container for the tooltip */
@@ -1354,7 +1412,7 @@ body{
     height: 250px;
     width: 250px;
     position:static;
-    filter: blur(1px);
+    filter: blur(2px);
     margin-top: 40px;
     box-shadow:
      -1px 1px 10px #181313,

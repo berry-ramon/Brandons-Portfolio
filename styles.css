@@ -7,20 +7,25 @@
     top: 0;
     z-index: 0;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     background-color: #030b2400;
     height: auto;
     width: 100vw;
     color: white;
     overflow-x:hidden ;
+    scroll-behavior: smooth;
 }
 .hiderViewerContainer{
     display: none;
 }
 .container{
     background-color: #011b19;
-    height: 100%;
+    height: auto;
     width: 100%;
+    scroll-snap-type: Y proximity;
 }
 
 .container .navbar{                   /* Navbar styling section */
@@ -38,6 +43,9 @@ body{
     transition: 1s;
     overflow-x: hidden;
     z-index: 10;
+}
+.container .same{
+    scroll-snap-align: center;
 }
 .logo{
     cursor: pointer;
@@ -605,7 +613,7 @@ body{
     width: 50%;
     display: flex;
     justify-content: space-around;
-    background-color: #81707000;
+    background-color: #01122900;
     height: auto;
 }
 #skill-section2{
@@ -751,9 +759,142 @@ body{
 /* Resume / CV Styling section */
 /* Resume / CV Styling section */
 .resumecontainer{
-    height: 100vh;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #001725;
+}
+.resume{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #00172518;
+}
+.resume .right{
+    width: 40%;
+    text-align: center;
+    padding: 40px 10px;
+}
+.resume .left{
+    padding: 40px 10px;
+    width: 40%;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px black,
+                -1px -1px 10px black;
+}
+.resume .left h2{
+    color: #f8d2d2;
+    padding: 0px 0 30px 30px;
+    text-shadow: 1px 1px 10px black;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.resume .left h2 span{ 
+ color: aqua;
+}
+.resume .left p{
+    padding-left: 10px;
+    line-height: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.resume .left p::before{
+    content: ' Discover my professional journey and technical expertise. My resume offers detailed insights into my skills, experience, and education. It provides an overview of my career and showcases key projects. \A Gain a comprehensive understanding of my qualifications and accomplishments. Download my resume to see how my background aligns with your needs. Click the link to access a full view of my professional path and achievements.';
+    white-space: pre-line;
+}
+.resume .right img{
+    height: 350px;
+    width: 350px;
+    position: absolute;
+    top: -25px;
+    right: 50px;
+    filter: blur(2px);
+}
+.resume .right .button{
+    position: absolute;
+    z-index: 5;
+    top: 40%;
+    left: 28%;
+    height: 80px;
+    width: 300px;
+    background: linear-gradient(90deg, transparent 40%, #001725 50%);
+    border-radius: 50px;
+    box-shadow: -5px 5px 5px black,
+                1px -1px 5px #00a4aa inset,
+                -1px 1px 5px #00a4aa inset;
+    cursor: pointer;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+
+}
+.resume .right .button.downloaded{
+    height: 20px;
+    width: 400px;
+    
+}
+.resume .right .button.downloaded::before{
+    animation: mover 1.5s ease-in-out forwards;
+}
+@keyframes mover {
+    100%{
+        left: 0;
+    }
 }
 
+
+.resume .right .button .content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1.5s ease;
+    transition-delay: .5s;
+}
+.resume .right .button.downloaded .content{
+    transform: translateY(60px);
+}
+
+
+.content :is(i, span) {
+    color: aqua;
+    font-size: 20px;
+    font-weight: bold;
+}
+.resume .right .button .content i{
+    font-size: 30px;
+    color: #00fff2;
+}
+.resume .button::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #0059ff 50%, #0059ff 40%);
+    border-radius: 50px;
+    box-shadow: -5px 5px 5px black,
+                1px -1px 5px #00a4aa inset,
+                -1px 1px 5px #00a4aa inset;
+}
+
+
+
+
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
+/* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
 /* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
 /* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
 /* Small Devices To Allow Perfect Fit *//* Small Devices To Allow Perfect Fit */
@@ -1098,12 +1239,14 @@ body{
 }
 .sectionTwo{
      padding: 20px 0;
-    margin: 10px 5px ;
+    margin: 0px 5px ;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    background-color: #01161f;
+
 }
 .skills #skill-section{
     display: flex;
@@ -1144,7 +1287,167 @@ body{
     padding: 5px;
     border-radius: 5px;
 }
+
+/* Resume Styling section for small device screens *//* Resume Styling section for small device screens */
+/* Resume Styling section for small device screens *//* Resume Styling section for small device screens */
+/* Resume Styling section for small device screens *//* Resume Styling section for small device screens */
+/* Resume Styling section for small device screens *//* Resume Styling section for small device screens */
+
+.resumecontainer{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    align-items:baseline;
+    background-color: #001725;
+    margin-bottom: 30px;
 }
+.resume{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #00172518;
+}
+
+.resume .left{
+    padding: 40px 10px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px black,
+                -1px -1px 10px black;
+}
+.resume .left em{
+    display: none;
+}
+.resume .left h2{
+    width: 100%;
+    color: #f8d2d2;
+    padding: 0px 0 10px 10px;
+    text-shadow: 1px 1px 10px black;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.resume .left h2 span{ 
+ color: aqua;
+}
+.resume .left p{
+    padding-left: 10px;
+    line-height: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.resume .left p::before{
+    content: 'Explore my professional journey and technical expertise. My resume provides detailed insights into my skills, experience, and key projects. Download it to see how my background aligns with your needs.';
+}
+.resume .right{
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.resume .right img{
+    height: 250px;
+    width: 250px;
+    position:static;
+    filter: blur(1px);
+    margin-top: 40px;
+    box-shadow:
+     -1px 1px 10px #181313,
+     1px -1px 10px black,
+      1px 1px 8px black;
+}
+
+.resume .right .button.downloaded{
+    height: 5px;
+    width: 200px;
+}
+.resume .right .button.downloaded::before{
+    animation: mover 1.5s ease-in-out forwards;
+}
+@keyframes mover {
+    100%{
+        left: 0;
+    }
+}
+
+
+.resume .right .button .content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1.5s ease;
+    transition-delay: .5s;
+}
+.resume .right .button.downloaded .content{
+    transform: translateY(30px);
+}
+
+
+.content :is(i, span) {
+    color: aqua;
+    font-size: 15px;
+    font-weight: bold;
+}
+.resume .right .button .content i{
+    font-size: 25px;
+    color: #00fff2;
+}
+
+.resume .right .button{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    z-index: 5;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    background: #001725;
+    border-radius: 10px;
+    box-shadow: -1px 1px 2px #0235ff,
+                -2px 1px 9px #0084ff,
+                1px -1px 2px #06d6dd inset,
+                -1px 1px 1px #00a4aa inset;
+    cursor: pointer;
+    overflow: hidden;
+}
+.resume .right .button.downloaded{
+    height: 30px;
+    width: 300px;
+    
+}
+.resume .button::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #0059ff;
+    border-radius: 10px;
+    
+}
+
+}
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
+/* Device width between 460px and 967px *//* Device width between 460px and 967px */
 /* Device width between 460px and 967px *//* Device width between 460px and 967px */
 /* Device width between 460px and 967px *//* Device width between 460px and 967px */
 @media (min-width: 460px) and (max-width: 967px) { /* Device width between 460px and 967px */
@@ -1164,6 +1467,14 @@ body{
 }
 }
 
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
+/* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
 /* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
 /* MediaQuery for width of 325px and below *//* MediaQuery for width of 325px and below */
 @media (max-width: 325px) { /* MediaQuery for width of 325px and below */

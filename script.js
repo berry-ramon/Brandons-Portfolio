@@ -81,21 +81,14 @@ navLinks.forEach((link) => {
 //   window.location.reload();
 // });
 
-let isIntervalOn = false;
 const refresh = document.querySelector(".refresher");
 
 refresh.addEventListener("click", () => {
-  if (!isIntervalOn) {
-    isIntervalOn = true;
-    setInterval(() => {
-      let contentDiv = document.querySelector(".skills");
-      let currentContent = contentDiv.innerHTML;
-      contentDiv.innerHTML = currentContent;
-    }, 9000);
-  } else if (isIntervalOn) {
-    isIntervalOn = false;
-    clearInterval();
-  } // Refresh the content
+  isIntervalOn = true;
+  let contentDiv = document.querySelector(".skills");
+  let currentContent = contentDiv.innerHTML;
+  contentDiv.innerHTML = currentContent;
+  // Refresh the content
 });
 
 const download = document.querySelector(".button");

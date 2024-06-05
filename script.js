@@ -81,15 +81,15 @@ navLinks.forEach((link) => {
 //   window.location.reload();
 // });
 
-const refresh = document.querySelector(".refresher");
+// const refresh = document.querySelector(".refresher");
 
-refresh.addEventListener("click", () => {
-  isIntervalOn = true;
-  let contentDiv = document.querySelector(".skills");
-  let currentContent = contentDiv.innerHTML;
-  contentDiv.innerHTML = currentContent;
-  // Refresh the content
-});
+// refresh.addEventListener("click", () => {
+//   isIntervalOn = true;
+//   let contentDiv = document.querySelector(".skills");
+//   let currentContent = contentDiv.innerHTML;
+//   contentDiv.innerHTML = currentContent;
+//   // Refresh the content
+// });
 
 const download = document.querySelector(".button");
 const i = document.querySelector(".content i");
@@ -100,7 +100,9 @@ download.addEventListener("click", () => {
   download.classList.add("downloaded");
   // downloading the cv
   download.dataset.download;
-  const image = "./documents/BrandonKimathiResume.pdf";
+  // const image = "./documents/BrandonKimathiResume.pdf";
+  const image = "./images/android-chrome-512x512.png";
+
   const a = document.createElement("a");
   a.href = image;
   a.download = "";

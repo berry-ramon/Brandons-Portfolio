@@ -272,7 +272,8 @@ body{
 }
 .aboutMe .right div{
     border-radius: 63% 37% 40% 60% / 50% 47% 53% 50% ;
-    animation: blobify 20s  infinite ease-in-out;
+    animation: blobify 60s infinite forwards;
+    will-change: border-radius;
     background-color: #0ac574;
     width: 90%;
     height: 90%;
@@ -281,25 +282,20 @@ body{
     align-items: center;
     justify-content: center;
     box-shadow: 10px 0px 30px #038d8d,
-                10px 0px 30px #010f0f,
-                10px 10px 30px #006e6e,
-                10px -10px 30px #001111,
-                10px 10px 30px #030f0f;
+                10px 0px 30px #010f0f;
 }
 .aboutMe .right{
-    width: 37%;
+    min-width: 37%;
     height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #78a808;
     border-radius: 63% 37% 40% 60% / 50% 47% 53% 50% ;
-    animation: blobify 25s  infinite ease-in-out;
+    animation: blobify 70s  infinite forwards;
+    will-change: border-radius;
     box-shadow: -10px 0px 30px #27230e,
-                10px 0px 30px #010f0f,
-                -10px 10px 30px #57f0f0,
-                -10px -10px 30px #4b551d,
-                10px 10px 30px #030f0f;
+                10px 0px 30px #010f0f;
 }
 @keyframes blobify {
     10%{
@@ -333,9 +329,7 @@ body{
     100%{
         border-radius: 48% 52% 23% 77% / 62% 45% 55% 38% ;
     }
-    to{
-        border-radius: 85% 15% 50% 50% / 31% 53% 47% 69%  ;
-    }
+    
 }
 
 .aboutMe .right:hover{
@@ -1145,7 +1139,7 @@ body{
     background-color: #010314;
 }
 .aboutMe .right{
-    width: 100%;
+    min-width: 300px;
     display: flex;
     height: 400px;
     justify-content: center;
@@ -1153,25 +1147,38 @@ body{
     align-items: center;
     justify-content: center;
     border-radius: 63% 37% 40% 60% / 50% 47% 53% 50% ;
+
+    
+    background-color: #212b0900;
+    border-radius: 63% 37% 40% 60% / 50% 47% 53% 50% ;
+    animation: blobify 70s  infinite forwards;
+    box-shadow: -10px 0px 30px #27230e;
 }
 .aboutMe .right img{
     width: 200px;
-    cursor:auto;
-    filter:blur(0);
-    cursor:auto;
     border-radius: 20px;
-    margin: 20px 0 50px 0;
-    top: 0;
-    left: 0;
-    
-
+    z-index: 0;
+    clip-path: circle(70%);
+    background-color: transparent;
+    transform: rotateY(0deg);
 } 
+.aboutMe .right div{
+    border-radius: 63% 37% 40% 60% / 50% 47% 53% 50% ;
+    animation: blobify 60s  infinite forwards;
+    background-color: #0ac57400;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    perspective: 700px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 0px 30px #085757,
+                10px 0px 30px #010f0f;
+}
 /* .aboutMe .right:hover{
 
 } */
 .aboutMe .right img:hover{
-    width: 200px;
-    transition: 2s;
     border-radius: 20px;
 }
 
@@ -1196,7 +1203,7 @@ body{
 .portContainer{                           /* Portfolio section styling */
     background-color:  #02062c;
     margin: 10px auto;
-    width: 100%;
+    min-width: 300px;
     display: grid;
     height: 200vh;
     grid-template-columns: repeat(6, 1fr);

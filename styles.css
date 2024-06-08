@@ -121,6 +121,7 @@ body{
     line-height: 40px;
     transform: translateX(-10px);
 
+
 }
 .sidebar li a{
     color: white;
@@ -858,6 +859,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #001725;
+    height: 100vh;
 }
 .resume{
     width: 100%;
@@ -973,6 +975,175 @@ body{
                 1px -1px 5px #00a4aa inset,
                 -1px 1px 5px #00a4aa inset;
 }
+/* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
+/* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
+/* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
+/* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
+/* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
+/* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
+/* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
+/* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
+/* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
+.contactMeContainerMain{
+    height: 100vh;
+    background: linear-gradient(-150deg, #2390d4  50%, #0c0c4e 51%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100dvw;
+    background-clip:padding-box;
+}
+.contactMeContainerMain h1{
+    padding: 40px 0;
+    margin-top: 10px;
+    text-align: center;
+    position: absolute;
+    top: -90px;
+    left: 100px;
+    text-shadow: 1px 1px 1px black;
+}
+.contactMeContainerMain h1 span{
+    color: rgb(0, 7, 0);
+}
+.contactMeContainer{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-clip:padding-box;
+    width: 100%;
+}
+.leftContainer{
+    width: 45%;
+    margin-left: -100px;
+    margin-right: 50px;
+}
+.leftContainer img{
+    margin-top: 50px;
+    height: 300px;
+    filter: blur(1px);
+    border-radius: 20px;
+}
+.leftContainer h2{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.leftContainer ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    padding-bottom: 20px;
+}
+.leftContainer ul li i{
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.leftContainer ul li{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.rightForm{
+    width: 30%;
+    height: 80%;
+}
+.rightForm form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    background-color: #00ffff69;
+    box-shadow: 1px -3px 10px 2px black;
+    margin-left: 50px;
+}
+.rightForm form p{
+    
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #136100;
+    text-shadow: 1px 1px 2px #ffffff;
+    font-weight: bold;
+}
+.rightForm form input{
+    width: 50%;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgb(0, 0, 2);
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: black;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: text ;
+}
+.rightForm form input:focus{
+    border: 1px solid #00ff00;
+    outline: 1px;
+    caret-color: #ffffff;
+}
+.submitBtns{
+    display: flex;
+
+    gap: 20px;
+}
+.rightForm form input.submit{
+    border: none;
+    width: auto;
+    background-color: #00c200;
+    color: black;
+    cursor: pointer;
+    box-shadow: 1px 2px 8px #000000;
+    font-weight: bold;
+    
+}
+.rightForm form input.submit:active{
+    background-color: black;
+    color: white;
+}
+#submitBtn{
+    padding: 10px 40px;
+    background-color: blue;
+    color: white;
+}
+#submitBtn:active{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+::placeholder{
+    color: white;
+}
+.rightForm form textarea{
+    background-color: rgba(0, 0, 0, 0.548);
+    color: #ffffff;
+    font-size: 20px;
+    padding: 5px;
+    border: solid 1px rgb(0, 253, 198);
+    border-radius: 10px ;
+    font-weight: lighter;
+    margin-bottom: 20px;
+    backdrop-filter: blur(3px);
+
+
+}
+.rightForm form textarea:focus{
+    border: 1px solid #00ff00;
+    outline: 1px;
+    caret-color: #ffffff;
+}
+.rightForm form textarea::placeholder{
+    padding-top: 20px;
+}
+
+
 
 
 

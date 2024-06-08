@@ -139,6 +139,39 @@ download.addEventListener("click", () => {
   }, 4000);
 });
 
+const submitForm = (e) => {
+  e.preventDefault(); // Prevent the default button behavior
+
+  const userName = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+  const phoneNumber = document.getElementById("phoneNumber").value;
+
+  console.log(userName); // Log the userName to check value
+
+  if (userName === "" || email === "" || phoneNumber === "") {
+    alert("All fields are required");
+    return;
+  }
+
+  let url =
+    "http://wa.me/+254758170917?text=" +
+    "*Name :* " +
+    encodeURIComponent(userName) +
+    "%0a" +
+    "*Phone :* " +
+    encodeURIComponent(phoneNumber) +
+    "%0a" +
+    "*Email :* " +
+    encodeURIComponent(email) +
+    "%0a" +
+    "*Message :* " +
+    encodeURIComponent(message) +
+    "%0a%0a";
+
+  window.open(url, "_blank").focus();
+};
+
 // Animating elements on scroll
 // const sections = document.querySelectorAll(".scrollEffect");
 // window.onscroll = () => {

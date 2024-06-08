@@ -172,6 +172,12 @@ const submitForm = (e) => {
   window.open(url, "_blank").focus();
 };
 
+const updateYear = () => {
+  const currentYear = new Date().getFullYear();
+  let copyRightYear = document.getElementById("copyRightYear");
+  copyRightYear.innerText = currentYear;
+};
+document.addEventListener("DOMContentLoaded", updateYear);
 // Animating elements on scroll
 // const sections = document.querySelectorAll(".scrollEffect");
 // window.onscroll = () => {

@@ -1143,7 +1143,22 @@ body{
     padding-top: 20px;
 }
 
+/* Footer styling section *//* Footer styling section *//* Footer styling section */
+/* Footer styling section *//* Footer styling section *//* Footer styling section */
+/* Footer styling section *//* Footer styling section *//* Footer styling section */
+/* Footer styling section *//* Footer styling section *//* Footer styling section */
+/* Footer styling section *//* Footer styling section *//* Footer styling section */
+/* Footer styling section *//* Footer styling section *//* Footer styling section */
 
+.footer {
+    border-top: solid 1px white ;
+    background-color: #022e21;
+    padding: 0px 0 5px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 
 
 

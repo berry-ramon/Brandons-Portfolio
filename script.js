@@ -2,26 +2,6 @@ console.log("Just for testing");
 // Define the media query
 const mediaQuery = window.matchMedia("(max-width: 968px)");
 
-const displaySidebar = document.querySelector(".sidebar");
-const navbar = document.querySelector(".navbar");
-const iAm = document.querySelector(".left h2");
-const viewSidebar = document.querySelector(".navbar li:nth-child(7)");
-
-const hiderBtm = document.querySelector(".navHider a");
-const viewerBtn = document.querySelector(".navViewer a");
-
-const showSidebar = () => {
-  navbar.style.justifyContent = "space-between";
-  navbar.style.padding = "20px 0";
-  viewSidebar.style.display = "none";
-  hiderBtm.style.transform = "translateX(19px)";
-  displaySidebar.style.transition = "2s";
-  displaySidebar.style.display = "block";
-  iAm.style.fontSize = "15px";
-  setTimeout(() => {
-    displaySidebar.style.transform = "translateX(0px)";
-  }, 1);
-};
 
 const hideSidebarOn = (e) => {
   if (e.matches) {
@@ -40,6 +20,31 @@ const hideSidebarOn = (e) => {
     hideSidebar();
   }
 };
+
+mediaQuery.addEventListener("change", hideSidebarOn);
+
+const displaySidebar = document.querySelector(".sidebar");
+const navbar = document.querySelector(".navbar");
+const iAm = document.querySelector(".left h2");
+const viewSidebar = document.querySelector(".navbar li:nth-child(7)");
+
+const hiderBtm = document.querySelector(".navHider a");
+const viewerBtn = document.querySelector(".navViewer a");
+
+const showSidebar = () => {
+  navbar.style.justifyContent = "space-between";
+  navbar.style.padding = "20px 0";
+  viewSidebar.style.display = "none";
+  hiderBtm.style.transform = "translateX(19px)";
+  displaySidebar.style.transition = "2s";
+  displaySidebar.style.display = "block";
+  iAm.style.fontSize = "15px";
+  setTimeout(() => {
+    displaySidebar.style.transform = "translateX(0px)";
+  }, 1000);
+};
+
+
 
 const navHider = () => {
   navbar.style.transform = "translateY(-100px)";
@@ -138,13 +143,14 @@ download.addEventListener("click", () => {
     }, 2300);
   }, 4000);
 });
-
-const submitForm = (e) => {
+const submitBtn = document.getElementById("submitBtn2");
+submitBtn.addEventListener("click", function (e) {
   e.preventDefault(); // Prevent the default button behavior
 
   const userName = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
+  // const message = document.getElementById("");
   const phoneNumber = document.getElementById("phoneNumber").value;
 
   console.log(userName); // Log the userName to check value
@@ -170,14 +176,14 @@ const submitForm = (e) => {
     "%0a%0a";
 
   window.open(url, "_blank").focus();
-};
+});
 
-const updateYear = () => {
-  const currentYear = new Date().getFullYear();
-  let copyRightYear = document.getElementById("copyRightYear");
-  copyRightYear.innerText = currentYear;
-};
-document.addEventListener("DOMContentLoaded", updateYear);
+// const updateYear = () => {
+//   const currentYear = new Date().getFullYear();
+//   let copyRightYear = document.getElementById("copyRightYear");
+//   copyRightYear.innerText = currentYear;
+// };
+// document.addEventListener("DOMContentLoaded", updateYear);
 // Animating elements on scroll
 // const sections = document.querySelectorAll(".scrollEffect");
 // window.onscroll = () => {

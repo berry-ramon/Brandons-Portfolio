@@ -28,6 +28,10 @@
       rel="stylesheet"
       defer
     />
+    <script
+      src="https://kit.fontawesome.com/6a745880a9.js"
+      crossorigin="anonymous"
+    defer></script>
     <!-- Google font configuration -->
     <link
       rel="stylesheet"
@@ -42,6 +46,7 @@
           document.getElementById("includeFooter").innerHTML = data;
         })
         .catch((error) => console.error("Error loading footer:", error));
+
     </script>
 
     <title>Brandon's-Portfolio</title>
@@ -80,52 +85,37 @@
 
         <ul id="open" class="navLinks">
           <li class="active"><a href="#aboutMe">About Me</a></li>
-          <li><a href="#portfolio">Projects</a></li>
+          <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#resume">Resume/CV</a></li>
           <li><a href="#website">My Website</a></li>
           <li><a href="#contact">Contact</a></li>
           <li onclick="showSidebar()">
-            <a href="#open"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="20px"
-                viewBox="0 -960 960 960"
-                width="20px"
-                fill="#e8eaed"
-              >
-                <path
-                  d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
-                /></svg
-            ></a>
+            <a href="#open">
+              <i
+                class="fa-solid fa-bars"
+                style="color: #e8eaed; font-size: 20px"
+              ></i>
+            </a>
           </li>
         </ul>
       </div>
       <ul id="close" class="sidebar">
         <li onclick="hideSidebarOn(mediaQuery)">
-          <a href="#close"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24px"
-              viewBox="0 -960 960 960"
-              width="24px"
-              fill="#e8eaed"
-            >
-              <path
-                d="M120-240v-80h520v80H120Zm664-40L584-480l200-200 56 56-144 144 144 144-56 56ZM120-440v-80h400v80H120Zm0-200v-80h520v80H120Z"
-              /></svg
-          ></a>
+          <a href="#close">
+            <i
+              class="fa-solid fa-chevron-left"
+              style="color: #e8eaed; font-size: 24px"
+            ></i>
+          </a>
         </li>
         <li><a href="#aboutMe">About Me</a></li>
-        <li><a href="#portfolio">Projects</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#resume">Resume/CV</a></li>
         <li><a href="#website">My Website</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <!-- about me section -->
-      <!-- about me section -->
-      <!-- about me section -->
       <!-- about me section -->
       <!-- about me section -->
       <!-- about me section -->
@@ -166,8 +156,12 @@
             </span>
           </p>
           <div class="hire">
-            <button class="hireBtn">Hire Me</button>
-            <button class="contract">Contract</button>
+            <button class="hireBtn">
+              <a href="#contact" class="hire-link">Hire Me</a>
+            </button>
+            <button class="contract">
+              <a href="#contact" class="hire-link">Contract</a>
+            </button>
           </div>
         </div>
         <div class="right">
@@ -176,321 +170,206 @@
           </div>
         </div>
       </div>
-      <!-- Projects section
+
       <!-- Projects section -->
       <!-- Projects section -->
       <!-- Projects section -->
-      <!-- Projects section -->
-      <div
-        class="portfolio same"
-        onclick="hideSidebarOn(mediaQuery)"
-        id="portfolio"
-      >
-        <div class="intro">
-          <div>
-            <h1>MY <span>PROJECTS</span></h1>
-            <p></p>
+      <section id="projects" class="projects">
+        <div class="container">
+          <h2>Projects</h2>
+          <div class="main-display">
+            <video
+              id="main-display-img"
+              src="./videos/phoneswebsite.webm"
+              alt="Main project display"
+              controls
+              muted
+              autoplay
+              playsinline
+              poster="./images/thumbnail.jpg"
+              loop
+            />
+            <h3 id="main-display-title">Event Management Platform</h3>
+            <p id="main-display-description">
+              A platform to manage and organize accessories.
+            </p>
           </div>
-        </div>
-        <div class="portContainer">
-          <div class="item item-1"></div>
-          <div class="item item-2"></div>
-          <div class="item item-3">
-            <div class="top"></div>
-            <div class="bottom">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#e8eaed"
-              >
-                <path
-                  d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+          <div class="cards">
+            <div
+              class="card"
+              onclick="updateMainDisplay('./videos/phoneswebsite.webm', 'Event Management Platform', 'A platform to manage and organize events seamlessly.')"
+            >
+              <div class="projImage">
+                <img
+                  src="./images/phones-management.png"
+                  alt="Accessories Management Platform"
                 />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#e8eaed"
-              >
-                <path
-                  d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z"
+              </div>
+              <h3>Accessories Management Platform</h3>
+              <p>A platform to manage and organize accessories.</p>
+            </div>
+            <div
+              class="card"
+              onclick="updateMainDisplay('./videos/lipstick.webm', 'Lipstick E-Commerce', 'An e-commerce website for selling lipstick products.')"
+            >
+              <div class="projImage">
+                <img
+                  src="./images/lipstick-e-commerce.png"
+                  alt="Lipstick E-Commerce"
                 />
-              </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#e8eaed"
-              >
-                <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-              </svg>
+              </div>
+              <h3>Lipstick E-Commerce</h3>
+              <p>An e-commerce website for selling lipstick products.</p>
+            </div>
+            <div
+              class="card"
+              onclick="updateMainDisplay('./videos/shoes-website.webm', 'Shoe Selling Website', 'A website dedicated to selling shoes.')"
+            >
+              <div class="projImage">
+                <img
+                  src="./images/shoes-website.png"
+                  alt="Shoe Selling Website"
+                />
+              </div>
+              <h3>Shoe Selling Website</h3>
+              <p>A website dedicated to selling shoes.</p>
             </div>
           </div>
-          <div class="item item-4"></div>
-          <div class="item item-5"></div>
-          <div class="item item-6"></div>
-          <div class="item item-7"></div>
         </div>
-      </div>
+      </section>
       <!-- Skills Section -->
       <!-- Skills Section -->
       <!-- Skills Section -->
       <!-- Skills Section -->
+      <!-- Skills section -->
       <div class="skills" id="skills" onclick="hideSidebarOn(mediaQuery)">
         <div class="title">
           <h1>MY <span>SKILLS</span></h1>
           <!-- <button class="refresher">CLICK ME</button> -->
         </div>
-        <div class="sections reload">
-          <section class="section1 same">
-            <div id="skill-section">
-              <h2 class="heading">Technical Skills</h2>
-
-              <!-- HTML -->
-              <div class="TecnicalBars">
-                <div class="icon">
-                  <div class="info">
-                    <span>HTML</span>
-                  </div>
-                  <i
-                    class="bx bxl-html5 bx-flip-vertical bx-tada"
-                    style="
-                      color: #ffffff;
-                      width: 50px;
-                      font-size: 50px;
-                      text-align: left;
-                      color: #e70101;
-                      padding: 0;
-                    "
-                  ></i>
-                </div>
-                <div class="ProgressLine html">
-                  <span></span>
-                </div>
-              </div>
-              <!-- CSS -->
-              <div class="TecnicalBars">
-                <div class="icon">
-                  <div class="info">
-                    <span>CSS</span>
-                  </div>
-                  <i
-                    class="bx bxl-css3 bx-flip-vertical bx-tada"
-                    style="
-                      color: #ffffff;
-                      width: 50px;
-                      font-size: 50px;
-                      text-align: left;
-                      color: #0077ff;
-                      padding: 0;
-                    "
-                  ></i>
-                </div>
-                <div class="ProgressLine css">
-                  <span></span>
-                </div>
-              </div>
-              <!-- JavaScript -->
-              <div class="TecnicalBars">
-                <div class="icon">
-                  <div class="info">
-                    <span>JAVASCRIPT</span>
-                  </div>
-                  <i
-                    class="bx bxl-javascript bx-flip-vertical bx-tada"
-                    style="
-                      color: #ffffff;
-                      width: 50px;
-                      font-size: 50px;
-                      text-align: left;
-                      color: #fffb00;
-                      padding: 0;
-                    "
-                  ></i>
-                </div>
-                <div class="ProgressLine javascript">
-                  <span></span>
-                </div>
-              </div>
-              <!-- REACT -->
-              <div class="TecnicalBars">
-                <div class="icon">
-                  <div class="info">
-                    <span>REACT</span>
-                  </div>
-                  <i
-                    class="bx bxl-react bx-flip-vertical bx-tada"
-                    style="
-                      color: #ffffff;
-                      width: 50px;
-                      font-size: 50px;
-                      text-align: left;
-                      color: #00ffff;
-                      padding: 0;
-                    "
-                  ></i>
-                </div>
-                <div class="ProgressLine react">
-                  <span></span>
-                </div>
-              </div>
-              <!-- PHP -->
-              <div class="TecnicalBars">
-                <div class="icon">
-                  <div class="info">
-                    <span>PHP</span>
-                  </div>
-                  <i
-                    class="bx bxl-php bx-flip-vertical bx-tada"
-                    style="
-                      color: #ffffff;
-                      width: 50px;
-                      font-size: 50px;
-                      text-align: left;
-                      color: #8277ec;
-                      padding: 0;
-                    "
-                  ></i>
-                </div>
-                <div class="ProgressLine php">
-                  <span></span>
-                </div>
-              </div>
-              <!-- PYTHON -->
-              <div class="TecnicalBars">
-                <div class="icon">
-                  <div class="info">
-                    <span>PYTHON</span>
-                  </div>
-                  <i
-                    class="bx bxl-python bx-flip-vertical bx-tada"
-                    style="
-                      color: #ffffff;
-                      width: 50px;
-                      font-size: 50px;
-                      text-align: left;
-                      color: #ffd000;
-                      padding: 0;
-                    "
-                  ></i>
-                </div>
-                <div class="ProgressLine python">
-                  <span></span>
-                </div>
-              </div>
-              <!-- SQL -->
-              <div class="TecnicalBars">
-                <div class="icon">
-                  <div class="info">
-                    <span>SQL</span>
-                  </div>
-                  <i
-                    class="bx bxs-data bx-flip-vertical bx-tada"
-                    style="
-                      color: #ffffff;
-                      width: 50px;
-                      font-size: 50px;
-                      text-align: left;
-                      color: #e100ff;
-                      padding: 0;
-                    "
-                  ></i>
-                </div>
-                <div class="ProgressLine sql">
-                  <span></span>
-                </div>
-              </div>
+        <div class="content">
+          <div class="column">
+            <div class="col-title">
+              <h2>Frontend</h2>
             </div>
-          </section>
-          <!-- Section 2 -->
-          <section class="sectionTwo same">
-            <div id="skill-section2">
-              <h2 class="heading">Professional Skills</h2>
-              <div class="ProfessionalBars">
-                <div class="circle">
-                  <svg x="0px" y="0px" viewBox="0 0 200 200">
-                    <circle
-                      class="progress-bar"
-                      cx="100"
-                      cy="100"
-                      r="80"
-                    ></circle>
-                    <circle
-                      class="path path-1"
-                      cx="100"
-                      cy="100"
-                      r="80"
-                    ></circle>
-                  </svg>
-                  <div class="percentage">89%</div>
-                  <div class="text">Creativity</div>
-                </div>
-                <!-- Circle 2 -->
-                <div class="circle">
-                  <svg x="0px" y="0px" viewBox="0 0 200 200">
-                    <circle
-                      class="progress-bar"
-                      cx="100"
-                      cy="100"
-                      r="80"
-                    ></circle>
-                    <circle
-                      class="path path-2"
-                      cx="100"
-                      cy="100"
-                      r="80"
-                    ></circle>
-                  </svg>
-                  <div class="percentage">70%</div>
-                  <div class="text">Team Work</div>
-                </div>
-                <!-- Circle 3 -->
-                <div class="circle">
-                  <svg x="0px" y="0px" viewBox="0 0 200 200">
-                    <circle
-                      class="progress-bar"
-                      cx="100"
-                      cy="100"
-                      r="80"
-                    ></circle>
-                    <circle
-                      class="path path-3"
-                      cx="100"
-                      cy="100"
-                      r="80"
-                    ></circle>
-                  </svg>
-                  <div class="percentage">65%</div>
-                  <div class="text">Problem Solving</div>
-                </div>
-                <!-- Circle 4 -->
-                <div class="circle">
-                  <svg x="0px" y="0px" viewBox="0 0 200 200">
-                    <circle
-                      class="progress-bar"
-                      cx="100"
-                      cy="100"
-                      r="80"
-                    ></circle>
-                    <circle
-                      class="path path-4"
-                      cx="100"
-                      cy="100"
-                      r="80"
-                    ></circle>
-                  </svg>
-                  <div class="percentage">59%</div>
-                  <div class="text">Communication</div>
-                </div>
-              </div>
+            <ul>
+              <li>
+                <i class="fa-brands fa-html5" style="color: #e34f26"></i> HTML
+              </li>
+              <li>
+                <i class="fa-brands fa-css3-alt" style="color: #1572b6"></i> CSS
+              </li>
+              <li>
+                <i class="fa-brands fa-js" style="color: #f7df1e"></i>
+                JavaScript
+              </li>
+              <li>
+                <i class="fa-brands fa-react" style="color: #61dafb"></i> React
+              </li>
+              <li>
+                <i class="fa-brands fa-bootstrap" style="color: #7952b3"></i>
+                Bootstrap
+              </li>
+              <li>
+                <i class="fa-brands fa-sass" style="color: #cc6699"></i> SASS
+              </li>
+            </ul>
+          </div>
+          <div class="column">
+            <div class="col-title">
+              <h2>Backend</h2>
             </div>
-          </section>
+            <ul>
+              <li>
+                <i class="fa-brands fa-node-js" style="color: #339933"></i>
+                Node.js
+              </li>
+              <li>
+                <i class="fa-solid fa-server" style="color: #000000"></i>
+                Express.js
+              </li>
+              <li>
+                <i class="fa-brands fa-envira" style="color: #47a248"></i>
+                MongoDB
+              </li>
+              <li>
+                <i class="fa-solid fa-database" style="color: #336791"></i> SQL
+              </li>
+              <li>
+                <i class="fa-brands fa-php" style="color: #777bb4"></i> PHP
+              </li>
+              <li>
+                <i class="fa-solid fa-link" style="color: #000000"></i> RESTful
+                APIs
+              </li>
+            </ul>
+          </div>
+          <div class="column">
+            <div class="col-title">
+              <h2>Tools & Technologies</h2>
+            </div>
+            <ul>
+              <li>
+                <i class="fa-brands fa-git-alt" style="color: #f05032"></i> Git
+                & GitHub
+              </li>
+              <li>
+                <i class="fa-solid fa-code" style="color: #007acc"></i> VSCode
+              </li>
+              <li>
+                <i class="fa-brands fa-linux" style="color: #fcc624"></i> Linux
+                (Ubuntu)
+              </li>
+              <li>
+                <i class="fa-brands fa-windows" style="color: #0078d6"></i>
+                Windows 10/11
+              </li>
+              <li>
+                <i class="fa-brands fa-npm" style="color: #cb3837"></i> npm &
+                yarn
+              </li>
+              <li>
+                <i class="fa-brands fa-docker" style="color: #2496ed"></i>
+                Docker
+              </li>
+            </ul>
+          </div>
+          <div class="column">
+            <div class="col-title">
+              <h2>Additional Skills</h2>
+            </div>
+            <ul>
+              <li>
+                <i class="fa-solid fa-lightbulb" style="color: #ffd700"></i>
+                Creativity
+              </li>
+              <li>
+                <i class="fa-solid fa-comments" style="color: #6a5acd"></i>
+                Brainstorming
+              </li>
+              <li>
+                <i class="fa-solid fa-people-arrows" style="color: #ff6347"></i>
+                Teamwork
+              </li>
+              <li>
+                <i class="fa-solid fa-chart-line" style="color: #32cd32"></i>
+                Problem Solving
+              </li>
+              <li>
+                <i class="fa-solid fa-user-cog" style="color: #20b2aa"></i>
+                Leadership
+              </li>
+              <li>
+                <i
+                  class="fa-solid fa-calendar-check"
+                  style="color: #ff8c00"
+                ></i>
+                Time Management
+              </li>
+            </ul>
+          </div>
         </div>
+
         <!-- Resume / CV Section -->
         <!-- Resume / CV Section -->
         <!-- Resume / CV Section -->
@@ -520,16 +399,165 @@
           </div>
         </div>
       </div>
-      <!-- MY WEbsite section --><!-- MY WEbsite section --><!-- MY WEbsite section -->
-      <!-- MY WEbsite section --><!-- MY WEbsite section --><!-- MY WEbsite section -->
-      <!-- MY WEbsite section --><!-- MY WEbsite section --><!-- MY WEbsite section -->
-      <!-- MY WEbsite section --><!-- MY WEbsite section --><!-- MY WEbsite section -->
-      <!-- MY WEbsite section --><!-- MY WEbsite section --><!-- MY WEbsite section -->
-      <div class="website" id="website"></div>
-      <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
-      <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
-      <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
-      <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
+      <!-- Testimonials --><!-- Testimonials --><!-- Testimonials --><!-- Testimonials -->
+      <!-- Testimonials --><!-- Testimonials --><!-- Testimonials --><!-- Testimonials -->
+      <!-- Testimonials --><!-- Testimonials --><!-- Testimonials --><!-- Testimonials -->
+      <section id="testimonials" class="testimonials">
+        <div class="container">
+          <h2>Testimonials</h2>
+          <div class="carousel">
+            <button class="carousel-control prev" id="prev">&#10094;</button>
+            <button class="carousel-control next" id="next">&#10095;</button>
+            <div class="testimonial-cards">
+              <div class="testimonial-card">
+                <div class="testimonial-header">
+                  <img
+                    src="./images/Author.jpg"
+                    alt="John Doe"
+                    class="testimonial-img"
+                  />
+                  <div class="testimonial-info">
+                    <h3>John Doe</h3>
+                    <p class="position">Tech Lead at ABC Corp</p>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Brandon's work ethic and dedication are unparalleled. His
+                  skills in software development are top-notch."
+                </p>
+                <div class="testimonial-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+              </div>
+              <div class="testimonial-card">
+                <div class="testimonial-header">
+                  <img
+                    src="./images/me3.webp"
+                    alt="Jane Smith"
+                    class="testimonial-img"
+                  />
+                  <div class="testimonial-info">
+                    <h3>Jane Smith</h3>
+                    <p class="position">Project Manager at XYZ Inc</p>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Working with Brandon has been an absolute pleasure. He is
+                  creative, self-managing, and a great team player."
+                </p>
+                <div class="testimonial-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+              </div>
+              <div class="testimonial-card">
+                <div class="testimonial-header">
+                  <img
+                    src="./images/me1.jpg"
+                    alt="Michael Brown"
+                    class="testimonial-img"
+                  />
+                  <div class="testimonial-info">
+                    <h3>Michael Brown</h3>
+                    <p class="position">CEO at Innovate Tech</p>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Brandon is a highly skilled developer with an eye for detail.
+                  His ability to deliver high-quality code is commendable."
+                </p>
+                <div class="testimonial-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </div>
+              </div>
+              <div class="testimonial-card">
+                <div class="testimonial-header">
+                  <img
+                    src="./images/me5.webp"
+                    alt="Emily Davis"
+                    class="testimonial-img"
+                  />
+                  <div class="testimonial-info">
+                    <h3>Emily Davis</h3>
+                    <p class="position">CTO at Web Solutions</p>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Brandon's creativity and problem-solving skills are
+                  exceptional. He consistently delivers beyond expectations."
+                </p>
+                <div class="testimonial-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+              </div>
+              <div class="testimonial-card">
+                <div class="testimonial-header">
+                  <img
+                    src="./images/me4.jpg"
+                    alt="Samuel Green"
+                    class="testimonial-img"
+                  />
+                  <div class="testimonial-info">
+                    <h3>Samuel Green</h3>
+                    <p class="position">Developer at CodeWorks</p>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Brandon's ability to tackle complex problems with ease is
+                  impressive. He is a valuable asset to any team."
+                </p>
+                <div class="testimonial-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+              </div>
+              <div class="testimonial-card">
+                <div class="testimonial-header">
+                  <img
+                    src="./images/me6.webp"
+                    alt="Olivia White"
+                    class="testimonial-img"
+                  />
+                  <div class="testimonial-info">
+                    <h3>Olivia White</h3>
+                    <p class="position">Designer at Creatives Inc</p>
+                  </div>
+                </div>
+                <p class="testimonial-text">
+                  "Brandon's creativity shines in every project he works on. He
+                  brings fresh ideas and executes them flawlessly."
+                </p>
+                <div class="testimonial-rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
       <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
       <div class="contactMeContainerMain" id="contact">
@@ -542,31 +570,37 @@
               <li>
                 <a
                   href="http://www.linkedin.com/in/brandon-kimathi-9542a8301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                  ><i
-                    class="bx bxl-linkedin-square bx-flip-horizontal"
-                    style="color: #0030ff"
-                  ></i
+                  ><i class="fa-brands fa-linkedin" style="color: #0e76a8"></i
                 ></a>
               </li>
               <li id="whatsapp">
                 <a href="https://wa.me/0758170917"
-                  ><i
-                    class="bx bxl-whatsapp bx-flip-horizontal"
-                    style="color: #2aff00"
-                  ></i
+                  ><i class="fa-brands fa-whatsapp" style="color: #25d366"></i
                 ></a>
               </li>
               <li>
                 <a href="http://github.com/berry-ramon"
-                  ><i class="bx bxl-github bx-flip-horizontal" undefined></i
+                  ><i class="fa-brands fa-github" style="color: #333"></i
                 ></a>
               </li>
               <li>
                 <a href="http://t.me/brandonkimathi"
-                  ><i
-                    class="bx bxl-telegram bx-flip-horizontal"
-                    style="color: #0088f3"
-                  ></i
+                  ><i class="fa-brands fa-telegram" style="color: #0088cc"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://twitter.com/brandonkimathi"
+                  ><i class="fa-brands fa-twitter" style="color: #1da1f2"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://facebook.com/brandonkimathi"
+                  ><i class="fa-brands fa-facebook" style="color: #1877f2"></i
+                ></a>
+              </li>
+              <li>
+                <a href="https://instagram.com/brandonkimathi"
+                  ><i class="fa-brands fa-instagram" style="color: #c13584"></i
                 ></a>
               </li>
             </ul>
@@ -635,19 +669,6 @@
           </div>
         </div>
       </div>
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
-      <!-- Footer Section -->
       <!-- Footer Section -->
       <!-- Footer Section -->
       <div id="includeFooter"></div>

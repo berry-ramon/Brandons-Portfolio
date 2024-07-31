@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -21,17 +22,19 @@
       sizes="16x16"
       href="./images/favicon-16x16.png"
     />
-    <link rel="icon" type="image/png" href="./images/favicon.ico" />
-    <!-- Boxicon configuration -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-      defer
-    />
+
+    <!-- Include Ionicons -->
     <script
-      src="https://kit.fontawesome.com/a1a563c8e9.js"
-      crossorigin="anonymous"
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
     ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <link rel="icon" type="image/png" href="./images/favicon.ico" />
+
     <!-- Google font configuration -->
     <link
       rel="stylesheet"
@@ -86,15 +89,15 @@
           <li class="active"><a href="#aboutMe">About Me</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">My Projects</a></li>
           <li><a href="#resume">Resume/CV</a></li>
-          <li><a href="#website">My Website</a></li>
           <li><a href="#contact">Contact</a></li>
           <li onclick="showSidebar()">
             <a href="#open">
-              <i
-                class="fa-solid fa-bars"
+              <ion-icon
+                name="menu"
                 style="color: #e8eaed; font-size: 20px"
-              ></i>
+              ></ion-icon>
             </a>
           </li>
         </ul>
@@ -102,17 +105,17 @@
       <ul id="close" class="sidebar">
         <li onclick="hideSidebarOn(mediaQuery)">
           <a href="#close">
-            <i
-              class="fa-solid fa-chevron-left"
+            <ion-icon
+              name="chevron-back"
               style="color: #e8eaed; font-size: 24px"
-            ></i>
+            ></ion-icon>
           </a>
         </li>
         <li><a href="#aboutMe">About Me</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#resume">Resume/CV</a></li>
         <li><a href="#website">My Website</a></li>
+        <li><a href="#resume">Resume/CV</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <!-- about me section -->
@@ -185,9 +188,8 @@
               muted
               autoplay
               playsinline
-              poster="./images/thumbnail.jpg"
               loop
-            />
+            ></video>
             <h3 id="main-display-title">Event Management Platform</h3>
             <p id="main-display-description">
               A platform to manage and organize accessories.
@@ -236,6 +238,7 @@
           </div>
         </div>
       </section>
+
       <!-- Skills Section -->
       <!-- Skills Section -->
       <!-- Skills Section -->
@@ -244,7 +247,6 @@
       <div class="skills" id="skills" onclick="hideSidebarOn(mediaQuery)">
         <div class="title">
           <h1>MY <span>SKILLS</span></h1>
-          <!-- <button class="refresher">CLICK ME</button> -->
         </div>
         <div class="content">
           <div class="column">
@@ -252,23 +254,35 @@
               <h2>Frontend</h2>
             </div>
             <ul>
-              <li><i class="fab fa-html5" style="color: #e34f26"></i> HTML</li>
               <li>
-                <i class="fa-brands fa-css3-alt" style="color: #1572b6"></i> CSS
+                <ion-icon name="logo-html5" style="color: #e34f26"></ion-icon>
+                HTML
               </li>
               <li>
-                <i class="fa-brands fa-js" style="color: #f7df1e"></i>
+                <ion-icon name="logo-css3" style="color: #1572b6"></ion-icon>
+                CSS
+              </li>
+              <li>
+                <ion-icon
+                  name="logo-javascript"
+                  style="color: #f7df1e"
+                ></ion-icon>
                 JavaScript
               </li>
               <li>
-                <i class="fa-brands fa-react" style="color: #61dafb"></i> React
+                <ion-icon name="logo-react" style="color: #61dafb"></ion-icon>
+                React
               </li>
               <li>
-                <i class="fa-brands fa-bootstrap" style="color: #7952b3"></i>
+                <ion-icon
+                  name="logo-bootstrap"
+                  style="color: #7952b3"
+                ></ion-icon>
                 Bootstrap
               </li>
               <li>
-                <i class="fa-brands fa-sass" style="color: #cc6699"></i> SASS
+                <ion-icon name="logo-sass" style="color: #cc6699"></ion-icon>
+                SASS
               </li>
             </ul>
           </div>
@@ -278,26 +292,35 @@
             </div>
             <ul>
               <li>
-                <i class="fa-brands fa-node-js" style="color: #339933"></i>
+                <ion-icon name="logo-nodejs" style="color: #339933"></ion-icon>
                 Node.js
               </li>
               <li>
-                <i class="fa-solid fa-server" style="color: #000000"></i>
+                <ion-icon
+                  name="server-outline"
+                  style="color: #000000"
+                ></ion-icon>
                 Express.js
               </li>
               <li>
-                <i class="fa-brands fa-envira" style="color: #47a248"></i>
+                <ion-icon name="leaf-outline" style="color: #47a248"></ion-icon>
                 MongoDB
               </li>
               <li>
-                <i class="fa-solid fa-database" style="color: #336791"></i> SQL
+                <ion-icon
+                  name="server-outline"
+                  style="color: #336791"
+                ></ion-icon>
+                SQL
               </li>
               <li>
-                <i class="fa-brands fa-php" style="color: #777bb4"></i> PHP
+                <ion-icon name="code-outline" style="color: #777bb4"></ion-icon>
+                PHP
               </li>
+              <!-- Alternative -->
               <li>
-                <i class="fa-solid fa-link" style="color: #000000"></i> RESTful
-                APIs
+                <ion-icon name="link-outline" style="color: #000000"></ion-icon>
+                RESTful APIs
               </li>
             </ul>
           </div>
@@ -307,26 +330,29 @@
             </div>
             <ul>
               <li>
-                <i class="fa-brands fa-git-alt" style="color: #f05032"></i> Git
-                & GitHub
+                <ion-icon name="logo-git" style="color: #f05032"></ion-icon> Git
               </li>
               <li>
-                <i class="fa-solid fa-code" style="color: #007acc"></i> VSCode
+                <ion-icon
+                  name="code-slash-outline"
+                  style="color: #007acc"
+                ></ion-icon>
+                VSCode
               </li>
               <li>
-                <i class="fa-brands fa-linux" style="color: #fcc624"></i> Linux
-                (Ubuntu)
+                <ion-icon name="logo-linux" style="color: #fcc624"></ion-icon>
+                Linux (Ubuntu)
               </li>
               <li>
-                <i class="fa-brands fa-windows" style="color: #0078d6"></i>
+                <ion-icon name="logo-windows" style="color: #0078d6"></ion-icon>
                 Windows 10/11
               </li>
               <li>
-                <i class="fa-brands fa-npm" style="color: #cb3837"></i> npm &
-                yarn
+                <ion-icon name="logo-npm" style="color: #cb3837"></ion-icon> npm
+                & yarn
               </li>
               <li>
-                <i class="fa-brands fa-docker" style="color: #2496ed"></i>
+                <ion-icon name="logo-docker" style="color: #2496ed"></ion-icon>
                 Docker
               </li>
             </ul>
@@ -337,36 +363,211 @@
             </div>
             <ul>
               <li>
-                <i class="fa-solid fa-lightbulb" style="color: #ffd700"></i>
+                <ion-icon name="bulb-outline" style="color: #ffd700"></ion-icon>
                 Creativity
               </li>
               <li>
-                <i class="fa-solid fa-comments" style="color: #6a5acd"></i>
+                <ion-icon
+                  name="chatbubbles-outline"
+                  style="color: #6a5acd"
+                ></ion-icon>
                 Brainstorming
               </li>
               <li>
-                <i class="fa-solid fa-people-arrows" style="color: #ff6347"></i>
+                <ion-icon
+                  name="people-outline"
+                  style="color: #ff6347"
+                ></ion-icon>
                 Teamwork
               </li>
               <li>
-                <i class="fa-solid fa-chart-line" style="color: #32cd32"></i>
+                <ion-icon
+                  name="trending-up-outline"
+                  style="color: #32cd32"
+                ></ion-icon>
                 Problem Solving
               </li>
               <li>
-                <i class="fa-solid fa-user-cog" style="color: #20b2aa"></i>
+                <ion-icon
+                  name="construct-outline"
+                  style="color: #20b2aa"
+                ></ion-icon>
                 Leadership
               </li>
               <li>
-                <i
-                  class="fa-solid fa-calendar-check"
+                <ion-icon
+                  name="calendar-outline"
                   style="color: #ff8c00"
-                ></i>
+                ></ion-icon>
                 Time Management
               </li>
             </ul>
           </div>
         </div>
 
+        <!-- Testimonials --><!-- Testimonials --><!-- Testimonials --><!-- Testimonials -->
+        <!-- Testimonials --><!-- Testimonials --><!-- Testimonials --><!-- Testimonials -->
+        <!-- Testimonials --><!-- Testimonials --><!-- Testimonials --><!-- Testimonials -->
+        <section id="testimonials" class="testimonials">
+          <div class="container">
+            <h2>Testimonials</h2>
+            <div class="carousel">
+              <button class="carousel-control prev" id="prev">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </button>
+              <button class="carousel-control next" id="next">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </button>
+              <div class="testimonial-cards">
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <img
+                      src="./images/Author.jpg"
+                      alt="John Doe"
+                      class="testimonial-img"
+                    />
+                    <div class="testimonial-info">
+                      <h3>John Doe</h3>
+                      <p class="position">Tech Lead at ABC Corp</p>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    "Brandon's work ethic and dedication are unparalleled. His
+                    skills in software development are top-notch."
+                  </p>
+                  <div class="testimonial-rating">
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <img
+                      src="./images/me3.webp"
+                      alt="Jane Smith"
+                      class="testimonial-img"
+                    />
+                    <div class="testimonial-info">
+                      <h3>Jane Smith</h3>
+                      <p class="position">Project Manager at XYZ Inc</p>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    "Working with Brandon has been an absolute pleasure. He is
+                    creative, self-managing, and a great team player."
+                  </p>
+                  <div class="testimonial-rating">
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <img
+                      src="./images/me1.jpg"
+                      alt="Michael Brown"
+                      class="testimonial-img"
+                    />
+                    <div class="testimonial-info">
+                      <h3>Michael Brown</h3>
+                      <p class="position">CEO at Innovate Tech</p>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    "Brandon is a highly skilled developer with an eye for
+                    detail. His ability to deliver high-quality code is
+                    commendable."
+                  </p>
+                  <div class="testimonial-rating">
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <img
+                      src="./images/me5.webp"
+                      alt="Emily Davis"
+                      class="testimonial-img"
+                    />
+                    <div class="testimonial-info">
+                      <h3>Emily Davis</h3>
+                      <p class="position">CTO at Web Solutions</p>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    "Brandon's creativity and problem-solving skills are
+                    exceptional. He consistently delivers beyond expectations."
+                  </p>
+                  <div class="testimonial-rating">
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <img
+                      src="./images/me4.jpg"
+                      alt="Samuel Green"
+                      class="testimonial-img"
+                    />
+                    <div class="testimonial-info">
+                      <h3>Samuel Green</h3>
+                      <p class="position">Developer at CodeWorks</p>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    "Brandon's ability to tackle problems with ease is
+                    impressive. He is a valuable asset to any team."
+                  </p>
+                  <div class="testimonial-rating">
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <img
+                      src="./images/me6.webp"
+                      alt="Olivia White"
+                      class="testimonial-img"
+                    />
+                    <div class="testimonial-info">
+                      <h3>Olivia White</h3>
+                      <p class="position">Designer at Creatives Inc</p>
+                    </div>
+                  </div>
+                  <p class="testimonial-text">
+                    "Brandon's creativity shines in every project he works on.
+                    He brings fresh ideas and executes them flawlessly."
+                  </p>
+                  <div class="testimonial-rating">
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star" class="checked"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <!-- Resume / CV Section -->
         <!-- Resume / CV Section -->
         <!-- Resume / CV Section -->
@@ -395,274 +596,129 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- Testimonials --><!-- Testimonials --><!-- Testimonials --><!-- Testimonials -->
-      <!-- Testimonials --><!-- Testimonials --><!-- Testimonials --><!-- Testimonials -->
-      <!-- Testimonials --><!-- Testimonials --><!-- Testimonials --><!-- Testimonials -->
-      <section id="testimonials" class="testimonials">
-        <div class="container">
-          <h2>Testimonials</h2>
-          <div class="carousel">
-            <button class="carousel-control prev" id="prev">&#10094;</button>
-            <button class="carousel-control next" id="next">&#10095;</button>
-            <div class="testimonial-cards">
-              <div class="testimonial-card">
-                <div class="testimonial-header">
-                  <img
-                    src="./images/Author.jpg"
-                    alt="John Doe"
-                    class="testimonial-img"
-                  />
-                  <div class="testimonial-info">
-                    <h3>John Doe</h3>
-                    <p class="position">Tech Lead at ABC Corp</p>
-                  </div>
-                </div>
-                <p class="testimonial-text">
-                  "Brandon's work ethic and dedication are unparalleled. His
-                  skills in software development are top-notch."
-                </p>
-                <div class="testimonial-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-              </div>
-              <div class="testimonial-card">
-                <div class="testimonial-header">
-                  <img
-                    src="./images/me3.webp"
-                    alt="Jane Smith"
-                    class="testimonial-img"
-                  />
-                  <div class="testimonial-info">
-                    <h3>Jane Smith</h3>
-                    <p class="position">Project Manager at XYZ Inc</p>
-                  </div>
-                </div>
-                <p class="testimonial-text">
-                  "Working with Brandon has been an absolute pleasure. He is
-                  creative, self-managing, and a great team player."
-                </p>
-                <div class="testimonial-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                </div>
-              </div>
-              <div class="testimonial-card">
-                <div class="testimonial-header">
-                  <img
-                    src="./images/me1.jpg"
-                    alt="Michael Brown"
-                    class="testimonial-img"
-                  />
-                  <div class="testimonial-info">
-                    <h3>Michael Brown</h3>
-                    <p class="position">CEO at Innovate Tech</p>
-                  </div>
-                </div>
-                <p class="testimonial-text">
-                  "Brandon is a highly skilled developer with an eye for detail.
-                  His ability to deliver high-quality code is commendable."
-                </p>
-                <div class="testimonial-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                </div>
-              </div>
-              <div class="testimonial-card">
-                <div class="testimonial-header">
-                  <img
-                    src="./images/me5.webp"
-                    alt="Emily Davis"
-                    class="testimonial-img"
-                  />
-                  <div class="testimonial-info">
-                    <h3>Emily Davis</h3>
-                    <p class="position">CTO at Web Solutions</p>
-                  </div>
-                </div>
-                <p class="testimonial-text">
-                  "Brandon's creativity and problem-solving skills are
-                  exceptional. He consistently delivers beyond expectations."
-                </p>
-                <div class="testimonial-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-              </div>
-              <div class="testimonial-card">
-                <div class="testimonial-header">
-                  <img
-                    src="./images/me4.jpg"
-                    alt="Samuel Green"
-                    class="testimonial-img"
-                  />
-                  <div class="testimonial-info">
-                    <h3>Samuel Green</h3>
-                    <p class="position">Developer at CodeWorks</p>
-                  </div>
-                </div>
-                <p class="testimonial-text">
-                  "Brandon's ability to tackle complex problems with ease is
-                  impressive. He is a valuable asset to any team."
-                </p>
-                <div class="testimonial-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-              </div>
-              <div class="testimonial-card">
-                <div class="testimonial-header">
-                  <img
-                    src="./images/me6.webp"
-                    alt="Olivia White"
-                    class="testimonial-img"
-                  />
-                  <div class="testimonial-info">
-                    <h3>Olivia White</h3>
-                    <p class="position">Designer at Creatives Inc</p>
-                  </div>
-                </div>
-                <p class="testimonial-text">
-                  "Brandon's creativity shines in every project he works on. He
-                  brings fresh ideas and executes them flawlessly."
-                </p>
-                <div class="testimonial-rating">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                </div>
-              </div>
+        <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
+        <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
+        <div class="contactMeContainerMain" id="contact">
+          <div class="contactMeContainer">
+            <div class="leftContainer">
+              <h1>Reach Out <span>&</span> Connect</h1>
+              <img src="./images/contact-me.png" alt="Webpage layout" />
+              <h2>Social Handles</h2>
+              <ul>
+                <li>
+                  <a
+                    href="http://www.linkedin.com/in/brandon-kimathi-9542a8301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  >
+                    <ion-icon
+                      name="logo-linkedin"
+                      style="color: #0e76a8; font-size: 24px"
+                    ></ion-icon>
+                  </a>
+                </li>
+                <li id="whatsapp">
+                  <a href="https://wa.me/0758170917">
+                    <ion-icon
+                      name="logo-whatsapp"
+                      style="color: #25d366; font-size: 24px"
+                    ></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://github.com/berry-ramon">
+                    <ion-icon
+                      name="logo-github"
+                      style="color: #333; font-size: 24px"
+                    ></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/brandonkimathi">
+                    <ion-icon
+                      name="logo-twitter"
+                      style="color: #1da1f2; font-size: 24px"
+                    ></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://facebook.com/brandonkimathi">
+                    <ion-icon
+                      name="logo-facebook"
+                      style="color: #1877f2; font-size: 24px"
+                    ></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://instagram.com/brandonkimathi">
+                    <ion-icon
+                      name="logo-instagram"
+                      style="color: #c13584; font-size: 24px"
+                    ></ion-icon>
+                  </a>
+                </li>
+              </ul>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
-      <!-- Contact Me Section --><!-- Contact Me Section --><!-- Contact Me Section -->
-      <div class="contactMeContainerMain" id="contact">
-        <div class="contactMeContainer">
-          <div class="leftContainer">
-            <h1>Reach Out <span>&</span> Connect</h1>
-            <img src="./images/contact-me.png" alt="Webpage layout" />
-            <h2>Social Handles</h2>
-            <ul>
-              <li>
-                <a
-                  href="http://www.linkedin.com/in/brandon-kimathi-9542a8301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                  ><i class="fa-brands fa-linkedin" style="color: #0e76a8"></i
-                ></a>
-              </li>
-              <li id="whatsapp">
-                <a href="https://wa.me/0758170917"
-                  ><i class="fa-brands fa-whatsapp" style="color: #25d366"></i
-                ></a>
-              </li>
-              <li>
-                <a href="http://github.com/berry-ramon"
-                  ><i class="fa-brands fa-github" style="color: #333"></i
-                ></a>
-              </li>
-              <li>
-                <a href="http://t.me/brandonkimathi"
-                  ><i class="fa-brands fa-telegram" style="color: #0088cc"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://twitter.com/brandonkimathi"
-                  ><i class="fa-brands fa-twitter" style="color: #1da1f2"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://facebook.com/brandonkimathi"
-                  ><i class="fa-brands fa-facebook" style="color: #1877f2"></i
-                ></a>
-              </li>
-              <li>
-                <a href="https://instagram.com/brandonkimathi"
-                  ><i class="fa-brands fa-instagram" style="color: #c13584"></i
-                ></a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- The Form To Submit Details -->
-          <!-- The Form To Submit Details -->
-          <!-- The Form To Submit Details -->
-          <!-- The Form To Submit Details -->
-          <!-- The Form To Submit Details -->
-          <!-- The Form To Submit Details -->
-          <!-- The Form To Submit Details -->
-          <div class="rightForm">
-            <form action="https://api.web3forms.com/submit" method="POST">
-              <p>Send a Message</p>
-              <input
-                type="hidden"
-                name="access_key"
-                value="f0833d67-73c5-427c-96da-a1d33930d2ee"
-              />
-              <input
-                type="text"
-                placeholder="John Doe"
-                id="name"
-                name="Name"
-                required
-              />
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                id="phoneNumber"
-                name="PhoneNumber"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                id="email"
-                name="Email"
-                required
-              />
-              <textarea
-                name="Message"
-                id="message"
-                cols="30"
-                rows="3"
-                placeholder="Message"
-                required
-              ></textarea>
-
-              <div class="submitBtns">
+            <!-- The Form To Submit Details -->
+            <!-- The Form To Submit Details -->
+            <!-- The Form To Submit Details -->
+            <!-- The Form To Submit Details -->
+            <!-- The Form To Submit Details -->
+            <!-- The Form To Submit Details -->
+            <!-- The Form To Submit Details -->
+            <div class="rightForm">
+              <form action="https://api.web3forms.com/submit" method="POST">
+                <p>Send a Message</p>
                 <input
-                  type="submit"
-                  value="Email"
-                  class="submit"
-                  id="submitBtn"
+                  type="hidden"
+                  name="access_key"
+                  value="f0833d67-73c5-427c-96da-a1d33930d2ee"
                 />
                 <input
-                  type="button"
-                  value="WhatsApp"
-                  class="submit"
-                  id="submitBtn2"
+                  type="text"
+                  placeholder="John Doe"
+                  id="name"
+                  name="Name"
+                  required
                 />
-              </div>
-            </form>
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  id="phoneNumber"
+                  name="PhoneNumber"
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  id="email"
+                  name="Email"
+                  required
+                />
+                <textarea
+                  name="Message"
+                  id="message"
+                  cols="30"
+                  rows="3"
+                  placeholder="Message"
+                  required
+                ></textarea>
+
+                <div class="submitBtns">
+                  <input
+                    type="submit"
+                    value="Email"
+                    class="submit"
+                    id="submitBtn"
+                  />
+                  <input
+                    type="button"
+                    value="WhatsApp"
+                    class="submit"
+                    id="submitBtn2"
+                  />
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -670,7 +726,7 @@
       <!-- Footer Section -->
       <div id="includeFooter"></div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
 
     <!-- <script src="https://web3forms.com/client/script.js" defer></script> -->
   </body>

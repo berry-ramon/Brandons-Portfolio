@@ -528,6 +528,7 @@ body{
   border-radius: 10px;
   box-shadow: 2px 4px 10px #030303;
   margin-bottom: 5em;
+  border: solid black 1px;
 
 }
 
@@ -695,7 +696,7 @@ body{
 /* Testimonials styling section  *//* Testimonials styling section  *//* Testimonials styling section  */
 
 .testimonials {
-  background-color: #030324;
+  background-color: #001725;
   padding: 50px 0;
   display: flex;
   flex-direction: column;
@@ -705,12 +706,13 @@ body{
 
 .testimonials .container {
   border-radius: 20px;
-  background-color: #002d3800;
+  background-color: #002d380e;
   padding-bottom: 20px;
   position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
+  backdrop-filter: blur(20px);
 }
 
 .testimonials h2 {
@@ -756,7 +758,7 @@ body{
 }
 
 .testimonial-card {
-  background-color: #0446fc;
+    background-color: #002549;
   border-radius: 10px;
   box-shadow: 0 4px 8px #0000001a;
   padding: 20px;
@@ -808,17 +810,17 @@ body{
   justify-content: center;
 }
 
-.testimonial-rating .fa {
+.testimonial-rating  {
   font-size: 18px;
   color: #ffc107;
 }
 
-.testimonial-rating .fa.checked {
-  color: #ffc107;
+.testimonial-rating .checked {
+  color: #fcbd00;
 }
 
-.testimonial-rating .fa:not(.checked) {
-  color: #e4e4e4;
+.testimonial-rating:not(.checked) {
+  color: #ffffff;
 }
 
 /* Mobile responsiveness */
@@ -832,11 +834,10 @@ body{
 /* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
 /* Contact me styling section *//* Contact me styling section *//* Contact me styling section */
 .contactMeContainerMain{
-    background: linear-gradient(-150deg, #2390d4  50%, #0c0c4e 51%);
+    background:  #001827;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    background-clip:padding-box;
     height: auto;
 }
 .contactMeContainerMain h1{
@@ -881,32 +882,59 @@ body{
     margin-bottom: 20px;
     margin-top: 20px;
 }
-.leftContainer ul{
-    width: 100%;
-    height: auto;
+.leftContainer ul  {
+    width: 80%;
+
     list-style-type: none;
     display: flex;
     justify-content: space-around;
-    align-items: center;
     margin-top: 40px;
+    align-items: center;
     padding-bottom: 20px;
+    align-items: center;
+    padding-left: 0;
 }
-.leftContainer ul li a{
-    font-size: 30px;
-    font-weight: bold;
-    flex: 1;
-    cursor: pointer;
-    margin-left: 1em;
 
-}
-.leftContainer ul li{
+.leftContainer ul li ion-icon {
     font-size: 20px;
     font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    border: solid 1px;
+    padding: 5px;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    flex: 1;
+}
+.leftContainer ul li ion-icon:hover {
+    border: solid 1px aqua;
+    border-radius: 5px;
+}
+
+.leftContainer ul li {
+    margin: 0;
+    gap: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 40px;
+    padding: 5px;
+    object-fit: cover;
+}
+.leftContainer ul li a {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 10px;
 }
 
 .rightForm{
     width: 30%;
     height: 80%;
+    object-fit: cover;
+}
+.rightForm .inputs{
+    width: 100%;
 }
 .rightForm form{
     display: flex;
@@ -978,7 +1006,7 @@ body{
 
 
 ::placeholder{
-    color: white;
+    color: rgb(184, 169, 169);
 }
 .rightForm form textarea{
     background-color: rgba(0, 0, 0, 0.548);
@@ -1009,11 +1037,19 @@ body{
 .footer {
     border-top: solid 1px white ;
     background-color: #022e21;
-    padding: 0px 0 5px 0;
+    padding: 0px 0 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+}
+.footer a{
+    color: #acacad;
+
+}
+.footer a:visited{
+    color: #7b00b4;
+    
 }
 
 
@@ -1229,7 +1265,9 @@ body{
 /* Portfolio Styling Section *//* Portfolio Styling Section *//* Portfolio Styling Section */
 /* Portfolio Styling Section *//* Portfolio Styling Section *//* Portfolio Styling Section */
 
-
+.projects .cards .card{
+    max-width: 300px;
+}
 
 
 
@@ -1283,9 +1321,22 @@ body{
 }
 
 /* Skills Styles */ /* Skills Styles *//* Skills Styles */
+
 .skills .column{
     margin-bottom: 2em;
+    border: solid black 1px;
+    max-width: 300px;
+    min-width: 200px;
+    font-size: 18px;
+    font-weight: bold;
 }
+/* Testimonials styles *//* Testimonials styles *//* Testimonials styles *//* Testimonials styles */
+/* Testimonials styles *//* Testimonials styles *//* Testimonials styles *//* Testimonials styles */
+.testimonial-cards .testimonial-card{
+    margin-right: 2px;
+    max-width: 100px;
+}
+
 
 /* Resume Styling section for small device screens *//* Resume Styling section for small device screens */
 
@@ -1437,11 +1488,10 @@ body{
 .contactMeContainerMain {
     padding-bottom: 50px;
     height: auto;
-    background: linear-gradient(70deg, #0c0c4e 50%, #2390d4 55%);
+    background:  #001827;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100dvw;
-    background-clip: padding-box;
+    padding-top: 0;
 }
 
 .contactMeContainerMain h1 {
@@ -1450,11 +1500,11 @@ body{
     margin-top: 10px;
     text-align: center;
     position: absolute;
-    top: -590px;
+    top: -550px;
     left: 0px;
     text-shadow: 1px 1px 1px black;
     width: 100%;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .contactMeContainerMain h1 span {
@@ -1473,9 +1523,10 @@ body{
 }
 
 .leftContainer {
-    width: 100%;
+    width: 90%;
     margin-left: 0px;
     margin-right: 10px;
+    max-width: 300px;
 }
 
 .leftContainer img {
@@ -1497,7 +1548,7 @@ body{
     top: -10px;
 }
 
-.leftContainer ul {
+.leftContainer ul  {
     width: 100%;
 
     list-style-type: none;
@@ -1505,23 +1556,40 @@ body{
     justify-content: space-around;
     margin-top: 40px;
     padding-bottom: 20px;
+    align-items: center;
+    padding-left: 0;
 }
 
-.leftContainer ul li i {
-    font-size: 30px;
+.leftContainer ul li ion-icon {
+    font-size: 20px;
     font-weight: bold;
-    width: 50%;
+    width: 100%;
     cursor: pointer;
+    border: solid 1px;
+    padding: 2px;
+    flex: 1;
 }
 
 .leftContainer ul li {
+    margin: 0;
+    gap: 2px;
     font-size: 20px;
     font-weight: bold;
+    width: 40px;
+    padding: 5px;
+    object-fit: cover;
+}
+.leftContainer ul li a {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 10px;
 }
 
 .rightForm {
     width: 90%;
     height: 80dvh;
+    max-width: 400px;
 }
 
 .rightForm form {
@@ -1548,18 +1616,22 @@ body{
     text-align: center;
     width: 100%;
 }
-
-.rightForm form input {
-    width: 80%;
-    padding: 10px 20px;
+form .inputs{
+    background-color: rgba(0, 0, 0, 0.089);
+    width: 100%;
+}
+.rightForm form .inputs input  {
+    width: 100%;
+    padding: 10px;
     margin-bottom: 30px;
-    border: 1px solid rgb(0, 0, 2);
+    border: 1px solid #ffffffc0;
     border-radius: 5px;
     font-size: 16px;
     background-color: black;
     color: #ffffff;
     font-weight: bold;
     cursor: text;
+
 }
 
 .rightForm form input:focus {
@@ -1570,8 +1642,7 @@ body{
 
 .submitBtns {
     display: flex;
-
-    gap: 20px;
+    gap: 10px;
 }
 
 .rightForm form input.submit {
@@ -1591,7 +1662,7 @@ body{
 }
 
 #submitBtn {
-    padding: 10px 40px;
+    padding: 10px 20px;
     background-color: blue;
     color: white;
 }
@@ -1603,7 +1674,11 @@ body{
 
 
 ::placeholder {
-    color: white;
+    color: #474747;
+    font-size: 13px;
+}
+.rightForm form textarea::placeholder {
+    color: black;
 }
 
 .rightForm form textarea {
@@ -1650,10 +1725,10 @@ body{
     width: 100%;
   }
 
-  .testimonial-card {
+  /* .testimonial-card {
     min-width: calc(100% - 40px);
     margin-right: 0;
-  }
+  } */
   .card {
     flex: 1 1 calc(45% - 20px);
     max-width: calc(45% - 10px);

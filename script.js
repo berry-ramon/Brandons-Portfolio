@@ -1,4 +1,3 @@
-window.addEventListener("DOMContentLoaded", () => {
   console.log("Just for testing");
 
   // Define the media query for devices with a max-width of 968px
@@ -74,75 +73,71 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   };
 
-  
-
   // Testimonials slider function
-  const carousel = document.querySelector(".testimonial-cards");
-  const cards = document.querySelectorAll(".testimonial-card");
-  const cardWidth = cards[0].offsetWidth + 20; // Width of each card plus margin
-  const totalCards = cards.length;
-  let intervalId;
+const carousel = document.querySelector(".testimonial-cards");
+const cards = document.querySelectorAll(".testimonial-card");
+const cardWidth = cards[0].offsetWidth + 20; // Width of each card plus margin
+const totalCards = cards.length;
+let intervalId;
 
-  // Function to start the automatic carousel sliding
-  const startCarousel = () => {
-    intervalId = setInterval(() => {
-      carousel.append(carousel.firstElementChild);
-      carousel.style.transition = "none";
-      carousel.style.transform = `translateX(${cardWidth}px)`;
+// Function to start the automatic carousel sliding
+const startCarousel = () => {
+  intervalId = setInterval(() => {
+    moveNext();
+  }, 3000);
+};
 
-      // Use requestAnimationFrame for smooth transition
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          carousel.style.transition = "transform 1s ease";
-          carousel.style.transform = "translateX(0)";
-        });
-      });
-    }, 2000);
-  };
+// Function to stop the automatic carousel sliding
+const stopCarousel = () => {
+  clearInterval(intervalId);
+};
 
-  // Function to stop the automatic carousel sliding
-  const stopCarousel = () => {
-    clearInterval(intervalId);
-  };
-
-  // Event listener for the previous button to manually slide the carousel
-  document.getElementById("prev").addEventListener("click", () => {
-    stopCarousel();
-    carousel.prepend(carousel.lastElementChild);
-    carousel.style.transition = "none";
-    carousel.style.transform = `translateX(-${cardWidth}px)`;
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        carousel.style.transition = "transform 1s ease";
-        carousel.style.transform = "translateX(0)";
-      });
-    });
-    startCarousel();
-  });
-
-  // Event listener for the next button to manually slide the carousel
-  document.getElementById("next").addEventListener("click", () => {
-    stopCarousel();
+// Function to move to the next card
+const moveNext = () => {
+  carousel.style.transition = "transform 1s ease";
+  carousel.style.transform = `translateX(-${cardWidth}px)`;
+  
+  carousel.addEventListener('transitionend', () => {
     carousel.append(carousel.firstElementChild);
     carousel.style.transition = "none";
-    carousel.style.transform = `translateX(${cardWidth}px)`;
+    carousel.style.transform = "translateX(0)";
+  }, { once: true });
+};
 
+// Function to move to the previous card
+const movePrev = () => {
+  carousel.style.transition = "none";
+  carousel.prepend(carousel.lastElementChild);
+  carousel.style.transform = `translateX(-${cardWidth}px)`;
+
+  requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        carousel.style.transition = "transform 1s ease";
-        carousel.style.transform = "translateX(0)";
-      });
+      carousel.style.transition = "transform 1s ease";
+      carousel.style.transform = "translateX(0)";
     });
-    startCarousel();
   });
+};
 
-  // Add event listeners to pause and resume the carousel on mouseover and mouseout
-  carousel.addEventListener("mouseover", stopCarousel);
-  carousel.addEventListener("mouseout", startCarousel);
-
-  // Start the carousel on page load
+// Event listener for the previous button to manually slide the carousel
+document.getElementById("prev").addEventListener("click", () => {
+  stopCarousel();
+  movePrev();
   startCarousel();
+});
+
+// Event listener for the next button to manually slide the carousel
+document.getElementById("next").addEventListener("click", () => {
+  stopCarousel();
+  moveNext();
+  startCarousel();
+});
+
+// Add event listeners to pause and resume the carousel on mouseover and mouseout
+carousel.addEventListener("mouseover", stopCarousel);
+carousel.addEventListener("mouseout", startCarousel);
+
+// Start the carousel on page load
+startCarousel();
 
   // Select all the navigation links
   const navLinks = document.querySelectorAll(".navbar .navLinks li");
@@ -178,7 +173,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       download.classList.remove("downloaded");
-      i.classList.replace("fa-cloud-download-alt", "fa-check-circle");
+      i.classList.replace("ion-checkmark-circle", "ion-cloud-download");
       cv.innerText = "Completed";
       i.style.color = "black";
       cv.style.color = "black";
@@ -200,7 +195,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       // Reset the download button after 2.3 seconds
       setTimeout(() => {
-        i.classList.replace("fa-check-circle", "fa-cloud-download-alt");
+        i.classList.replace("ion-cloud-download", "ion-checkmark-circle");
         cv.innerText = "Download";
         cv.style.color = "aqua";
         i.style.color = "aqua";
@@ -211,50 +206,47 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // Event listener for the form submit button click
-  document.addEventListener("DOMContentLoaded", function () {
-    const submitBtn = document.getElementById("submitBtn2");
-    submitBtn.addEventListener("click", (e) => {
-      e.preventDefault(); // Prevent the default button behavior
 
-      // Get form input values
-      const userName = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-      const phoneNumber = document.getElementById("phoneNumber").value;
+  const submitBtn = document.getElementById("submitBtn2");
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault(); // Prevent the default button behavior
 
-      console.log(userName); // Log the userName to check value
+    // Get form input values
+    const userName = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
 
-      // Validate form inputs
-      if (userName === "" || email === "" || phoneNumber === "") {
-        alert("All fields are required");
-        return;
-      }
+    console.log(userName); // Log the userName to check value
 
-      // Create the WhatsApp URL with encoded form input values
-      let url =
-        "https://wa.me/+254758170917?text=" +
-        "*Name :* " +
-        encodeURIComponent(userName) +
-        "%0a" +
-        "*Phone :* " +
-        encodeURIComponent(phoneNumber) +
-        "%0a" +
-        "*Email :* " +
-        encodeURIComponent(email) +
-        "%0a" +
-        "*Message :* " +
-        encodeURIComponent(message) +
-        "%0a%0a";
+    // Validate form inputs
+    if (userName === "" || email === "" || phoneNumber === "") {
+      alert("All fields are required");
+      return;
+    }
 
-      // Open the WhatsApp URL in a new tab
-      window.open(url, "_blank");
-    });
+    // Create the WhatsApp URL with encoded form input values
+    let url =
+      "https://wa.me/+254758170917?text=" +
+      "*Name :* " +
+      encodeURIComponent(userName) +
+      "%0a" +
+      "*Phone :* " +
+      encodeURIComponent(phoneNumber) +
+      "%0a" +
+      "*Email :* " +
+      encodeURIComponent(email) +
+      "%0a" +
+      "*Message :* " +
+      encodeURIComponent(message) +
+      "%0a%0a";
+
+    // Open the WhatsApp URL in a new tab
+    window.open(url, "_blank");
   });
-});
 // Function to update the main display content with a video, title, and description
-  function updateMainDisplay(video, title, description) {
-    document.getElementById("main-display-img").src = video;
-    document.getElementById("main-display-title").textContent = title;
-    document.getElementById("main-display-description").textContent =
-      description;
-  }
+function updateMainDisplay(video, title, description) {
+  document.getElementById("main-display-img").src = video;
+  document.getElementById("main-display-title").textContent = title;
+  document.getElementById("main-display-description").textContent = description;
+}

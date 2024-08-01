@@ -168,7 +168,11 @@
         </div>
         <div class="right">
           <div>
-            <img src="./images/profileone.jpg" alt="A photo of me" id="image1" />
+            <img
+              src="./images/profileone.jpg"
+              alt="A photo of me"
+              id="image1"
+            />
           </div>
         </div>
       </div>
@@ -464,7 +468,7 @@
                     <ion-icon name="star" class="checked"></ion-icon>
                     <ion-icon name="star" class="checked"></ion-icon>
                     <ion-icon name="star" class="checked"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
                   </div>
                 </div>
                 <div class="testimonial-card">
@@ -489,7 +493,7 @@
                     <ion-icon name="star" class="checked"></ion-icon>
                     <ion-icon name="star" class="checked"></ion-icon>
                     <ion-icon name="star" class="checked"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
                   </div>
                 </div>
                 <div class="testimonial-card">
@@ -589,7 +593,7 @@
               <img src="./images/resumeimage.png" alt="Resume Image" />
               <div class="button">
                 <div class="content">
-                  <i class="bx bx-cloud-download"></i>
+                  <i class="icon ion-cloud-download" id="icon"></i>
                   <span id="cvDownloadBtn">Download CV</span>
                 </div>
               </div>
@@ -668,40 +672,42 @@
             <div class="rightForm">
               <form action="https://api.web3forms.com/submit" method="POST">
                 <p>Send a Message</p>
-                <input
-                  type="hidden"
-                  name="access_key"
-                  value="f0833d67-73c5-427c-96da-a1d33930d2ee"
-                />
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  id="name"
-                  name="Name"
-                  required
-                />
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  id="phoneNumber"
-                  name="PhoneNumber"
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  id="email"
-                  name="Email"
-                  required
-                />
-                <textarea
-                  name="Message"
-                  id="message"
-                  cols="30"
-                  rows="3"
-                  placeholder="Message"
-                  required
-                ></textarea>
+                <div class="inputs">
+                  <input
+                    type="hidden"
+                    name="access_key"
+                    value="f0833d67-73c5-427c-96da-a1d33930d2ee"
+                  />
+                  <input
+                    type="text"
+                    placeholder="John Doe"
+                    id="name"
+                    name="Name"
+                    required
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Phone Number"
+                    id="phoneNumber"
+                    name="PhoneNumber"
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    id="email"
+                    name="Email"
+                    required
+                  />
+                  <textarea
+                    name="Message"
+                    id="message"
+                    cols="30"
+                    rows="3"
+                    placeholder="Message"
+                    required
+                  ></textarea>
+                </div>
 
                 <div class="submitBtns">
                   <input

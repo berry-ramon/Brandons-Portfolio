@@ -1165,7 +1165,7 @@ body{
     right: 0;
     height: 100%;
     backdrop-filter: blur(20px);
-    z-index: 10;
+    z-index: 1000;
     height: 400px;
 }
 .sidebar ul{

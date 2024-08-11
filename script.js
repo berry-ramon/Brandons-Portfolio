@@ -1,4 +1,4 @@
-  console.log("Just for testing");
+  // console.log("Just for testing");
 
   // Define the media query for devices with a max-width of 968px
   const mediaQuery = window.matchMedia("(max-width: 968px)");
@@ -217,7 +217,7 @@ startCarousel();
     const message = document.getElementById("message").value;
     const phoneNumber = document.getElementById("phoneNumber").value;
 
-    console.log(userName); // Log the userName to check value
+    // console.log(userName); // Log the userName to check value
 
     // Validate form inputs
     if (userName === "" || email === "" || phoneNumber === "") {

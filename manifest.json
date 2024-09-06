@@ -1,7 +1,7 @@
 {
   "name": "Brandon's",
   "short_name": "Brandon",
-  "start_url": "/index.html",
+  "start_url": "/Brandons-Portfolio/index.html",
   "scope": "/",
   "display": "fullscreen",
   "orientation": "portrait",

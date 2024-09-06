@@ -256,13 +256,19 @@ function updateMainDisplay(video, title, description) {
 }
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("/dist/sw.js")
-    .then((registration) => {
-      console.log("Service Worker registered with scope:", registration.scope);
-    })
-    .catch((error) => {
-      console.error("Service Worker registration failed:", error);
-    });
+  window.addEventListener("load", function () {
+    navigator.serviceWorker
+      .register("/dist/sw.js")
+      .then(function (registration) {
+        console.log(
+          "Service Worker registered with scope:",
+          registration.scope
+        );
+      })
+      .catch(function (error) {
+        console.error("Service Worker registration failed:", error);
+      });
+  });
 }
+
 

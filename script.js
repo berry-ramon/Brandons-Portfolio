@@ -255,20 +255,4 @@ function updateMainDisplay(video, title, description) {
   document.getElementById("main-display-description").textContent = description;
 }
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker
-      .register("/Brandons-Portfolio/dist/sw.js", {
-        scope: "/Brandons-Portfolio/",
-      })
-      .then(function (registration) {
-        console.log(
-          "Service Worker registered with scope:",
-          registration.scope
-        );
-      })
-      .catch(function (error) {
-        console.error("Service Worker registration failed:", error);
-      });
-  });
-}
+

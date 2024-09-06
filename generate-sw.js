@@ -5,7 +5,7 @@ generateSW({
   globPatterns: [
     "**/*.{html,js,css,png,jpg,mp4}", // Files to cache
   ],
-  swDest: "dist/sw.js", // Output service worker file
+  swDest: "sw.js", // Output service worker file
   skipWaiting: true, // This makes the new SW take control immediately
   clientsClaim: true, // This ensures the SW controls all pages
   runtimeCaching: [

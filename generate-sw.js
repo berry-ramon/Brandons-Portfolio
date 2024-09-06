@@ -6,7 +6,8 @@ generateSW({
     "**/*.{html,js,css,png,jpg,mp4}", // Files to cache
   ],
   swDest: "dist/sw.js", // Output service worker file
-
+  skipWaiting: true, // This makes the new SW take control immediately
+  clientsClaim: true, // This ensures the SW controls all pages
   runtimeCaching: [
     {
       urlPattern: /\.(?:png|jpg|jpeg|svg|mp4)$/, // Cache media files

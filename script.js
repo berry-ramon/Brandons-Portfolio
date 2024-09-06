@@ -258,7 +258,9 @@ function updateMainDisplay(video, title, description) {
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
     navigator.serviceWorker
-      .register("/dist/sw.js")
+      .register("/Brandons-Portfolio/dist/sw.js", {
+        scope: "/Brandons-Portfolio/",
+      })
       .then(function (registration) {
         console.log(
           "Service Worker registered with scope:",
@@ -270,5 +272,3 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
-
-

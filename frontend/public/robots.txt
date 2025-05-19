@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kodees.co.ke/sitemap.xml

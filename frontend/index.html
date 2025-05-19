@@ -2,21 +2,340 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
 
-    <title>Vite + React</title>
+    <!-- Primary Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta
+      name="description"
+      content="Brandon Kimathi - Senior Full-Stack Engineer with 5+ years experience in React, Node.js, and Cloud Architecture. Building cutting-edge web applications and digital experiences."
+    />
+    <meta
+      name="keywords"
+      content="Brandon Kimathi, Brandon,kimathi, Mern stack, mern, developer,software,  Full-Stack Developer, React Specialist, JavaScript Expert, Node.js Developer, Cloud Architect, Web Developer Kenya, Tech Portfolio, Software Engineer, UI/UX Designer, AI Enthusiast, Senior Full-Stack Engineer Kenya, 
+  React Expert Nairobi, 
+  Node.js Specialist Africa, 
+  JavaScript Developer Kenya, 
+  Cloud Architect Nairobi, 
+  Web Developer Portfolio, 
+  Software Engineer Kenya, 
+  UI/UX Designer Nairobi, 
+  AI Developer Africa, 
+  Frontend Developer Expert, 
+  Backend Engineer Kenya, 
+  MERN Stack Developer, 
+  Next.js Specialist, 
+  TypeScript Engineer, 
+  AWS Certified Developer, 
+  GraphQL API Developer, 
+  Microservices Architect, 
+  Web3 Developer Kenya, 
+  Blockchain Engineer Nairobi, 
+  Technical Lead Developer, 
+  Scalable Web Applications, 
+  High-Performance Websites, 
+  Responsive Web Design, 
+  Mobile App Development, 
+  Progressive Web Apps, 
+  Cybersecurity Specialist, 
+  DevOps Engineer Kenya, 
+  CI/CD Pipeline Expert, 
+  Docker Kubernetes Specialist, 
+  Machine Learning Integration, 
+  Natural Language Processing, 
+  Chatbot Development, 
+  E-commerce Solutions, 
+  SaaS Development Expert, 
+  Startup Tech Consultant, 
+  Code Optimization Specialist, 
+  Technical Mentor Kenya, 
+  Agile Development Expert, 
+  Scrum Master Certified, 
+  Clean Code Practitioner, 
+  Test-Driven Development, 
+  Performance Optimization, 
+  Web Accessibility Specialist, 
+  Internationalization Expert, 
+  Localization Developer, 
+  Tech Speaker Nairobi, 
+  Open Source Contributor,
+  GitHub Portfolio,
+  LinkedIn Tech Profile,
+  Remote Developer Kenya,
+  Freelance Software Engineer,
+  Tech Solutions Architect,
+  Digital Transformation Expert"
+    />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="geolocation=(), microphone=(), camera=()"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- Google Verification -->
+    <meta
+      name="google-site-verification"
+      content="YOUR_GOOGLE_VERIFICATION_CODE_HERE"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://brandonkimathi.tech/" />
+    <meta property="og:site_name" content="Brandon Kimathi | Portfolio" />
+    <meta
+      property="og:title"
+      content="Brandon Kimathi | Senior Full-Stack Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Showcasing innovative web solutions and technical expertise in modern web technologies."
+    />
+    <meta
+      property="og:image"
+      content="https://brandonkimathi.tech/images/social-preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Brandon Kimathi's Portfolio Showcase"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@yourtwitterhandle" />
+    <meta name="twitter:creator" content="@yourtwitterhandle" />
+    <meta
+      name="twitter:title"
+      content="Brandon Kimathi | Full-Stack Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfolio showcasing professional web development projects and technical capabilities"
+    />
+    <meta
+      name="twitter:image"
+      content="https://brandonkimathi.tech/images/social-preview.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Brandon Kimathi's developer portfolio"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://brandonkimathi.tech/" />
+
+    <!-- Favicon Configuration -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      rel="manifest"
+      href="/site.webmanifest"
+      crossorigin="use-credentials"
+    />
+    <link rel="mask-icon" href="/logo.svg" color="#0af" />
+    <meta name="msapplication-TileColor" content="#0a0e17" />
+    <meta name="theme-color" content="#0a0e17" />
+
+    <!-- PWA Configuration -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Brandon Kimathi" />
+    <meta name="application-name" content="Brandon Kimathi" />
+
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://brandonkimathi.tech/" />
+    <link rel="preload" href="/src/main.jsx" as="script" />
+    <link rel="modulepreload" href="/src/main.jsx" />
+
+    <!-- Enhanced Analytics Configuration -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ANALYTICS_ID"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-YOUR_ANALYTICS_ID", {
+        anonymize_ip: true,
+        cookie_domain: "auto",
+        cookie_flags: "SameSite=None;Secure",
+        send_page_view: true,
+        transport_type: "beacon",
+        link_attribution: true,
+        allow_google_signals: false,
+        cookie_expires: 604800, // 1 week
+        user_properties: {
+          visitor_type: "portfolio_viewer",
+          interaction_level: "new",
+        },
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        try {
+          if (typeof gtag === "function") {
+            gtag("event", "page_view", {
+              page_title: document.title,
+              page_location: window.location.href,
+              page_path: window.location.pathname,
+            });
+          }
+        } catch (e) {
+          console.debug("Analytics event error:", e);
+        }
+      });
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Brandon Kimathi",
+        "jobTitle": "Senior Full-Stack Engineer",
+        "url": "https://brandonkimathi.tech",
+        "image": "https://brandonkimathi.tech/images/profilePicMe.jpeg",
+        "description": "Professional full-stack developer specializing in React, Node.js, and cloud-native applications with 5+ years of industry experience.",
+        "email": "contact@brandonkimathi.tech",
+        "telephone": "+254758170917",
+        "sameAs": [
+          "https://github.com/yourusername",
+          "https://linkedin.com/in/yourprofile",
+          "https://twitter.com/yourhandle",
+          "https://instagram.com/yourprofile"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nairobi",
+          "addressRegion": "Nairobi",
+          "addressCountry": "Kenya"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Your University"
+        },
+        "knowsAbout": [
+          "React",
+          "Node.js",
+          "TypeScript",
+          "Cloud Architecture",
+          "Web Development",
+          "UI/UX Design",
+          "Artificial Intelligence"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Software Engineer",
+          "skills": "JavaScript, React, Node.js, GraphQL, AWS"
+        }
+      }
+    </script>
+
+    <!-- Project Showcase Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Featured Projects",
+        "description": "Showcase of Brandon Kimathi's professional work",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "E-Commerce Platform",
+              "description": "Full-stack e-commerce solution with React and Node.js",
+              "url": "https://brandonkimathi.tech/projects/ecommerce"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "AI Dashboard",
+              "description": "Machine learning visualization dashboard",
+              "url": "https://brandonkimathi.tech/projects/ai-dashboard"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <title>Brandon Kimathi | Senior Full-Stack Engineer</title>
+
+    <!-- Critical CSS -->
+    <style>
+      /* Cyberpunk-inspired base styles */
+      :root {
+        --primary-color: #06ffff;
+        --secondary-color: #ff6106;
+        --accent-color: #f0f;
+        --bg-color: #0a0e17;
+        --text-color: #e0e0e0;
+        --surface-color: #121a2a;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        overflow-x: hidden;
+      }
+
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
   </head>
+
   <body>
+    <noscript>
+      <strong
+        >My portfolio requires JavaScript to display properly. Please enable it
+        to view the full experience.</strong
+      >
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+
+    <!-- Preload critical CSS -->
+    <link
+      rel="preload"
+      href="/assets/css/critical.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link rel="stylesheet" href="/assets/css/critical.css"
+    /></noscript>
   </body>
 </html>

@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "public": true,
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)\\.(ico|png|jpg|jpeg|svg|gif|webmanifest|xml|txt)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/images/(.*)",
+      "destination": "/images/$1"
+    },
+    {
+      "source": "/(android-chrome-.*|apple-touch-icon.*|favicon.*|logo.*|site.webmanifest|robots.txt|sitemap.xml)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

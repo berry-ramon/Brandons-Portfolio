@@ -1,20 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <meta http-equiv="refresh" content="5; url=https://brandonkimathi.vercel.app">
-    <title>Redirecting to Brandon Kimathi's Portfolio</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta
+      name="description"
+      content="Brandon Kimathi - Senior Full-Stack Engineer with 5+ years experience in React, Node.js, and Cloud Architecture. Building cutting-edge web applications and digital experiences."
+    />
+    <meta
+      name="keywords"
+      content="Brandon Kimathi, Full-Stack Developer, React Specialist, JavaScript Expert, Node.js Developer, Cloud Architect"
+    />
+
+    <!-- Security Headers -->
+    <meta
+      http-equiv="Permissions-Policy"
+      content="geolocation=(), microphone=(), camera=()"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://brandonkimathi.vercel.app" />
+    <meta property="og:site_name" content="Brandon Kimathi | Portfolio" />
+    <meta
+      property="og:title"
+      content="Brandon Kimathi | Senior Full-Stack Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Showcasing innovative web solutions and technical expertise in modern web technologies."
+    />
+    <meta
+      property="og:image"
+      content="https://brandonkimathi.vercel.app/profilePicMe.jpeg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Brandon Kimathi's Portfolio Showcase"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@yourtwitterhandle" />
+    <meta name="twitter:creator" content="@yourtwitterhandle" />
+    <meta
+      name="twitter:title"
+      content="Brandon Kimathi | Full-Stack Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfolio showcasing professional web development projects and technical capabilities"
+    />
+    <meta
+      name="twitter:image"
+      content="https://brandonkimathi.vercel.app/profilePicMe.jpeg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Brandon Kimathi's developer portfolio"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://brandonkimathi.vercel.app" />
+
+    <!-- Favicon Configuration -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Brandon Kimathi",
+        "jobTitle": "Senior Full-Stack Engineer",
+        "url": "https://brandonkimathi.vercel.app",
+        "image": "https://brandonkimathi.vercel.app/profilePicMe.jpeg",
+        "description": "Professional full-stack developer specializing in React, Node.js, and cloud-native applications with 5+ years of industry experience.",
+        "sameAs": [
+          "https://github.com/yourusername",
+          "https://linkedin.com/in/yourprofile",
+          "https://twitter.com/yourhandle"
+        ]
+      }
+    </script>
+
+    <title>Brandon Kimathi | Senior Full-Stack Engineer</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  </head>
+  <body>
     <div class="redirect-container">
-        <img src="https://brandonkimathi.vercel.app/profilePicMe.jpeg" alt="Brandon Kimathi" class="profile-image">
-        <h1>Redirecting to Brandon Kimathi's Portfolio</h1>
-        <p>You're being automatically redirected to the latest version of my portfolio website.</p>
-        <p>If you're not redirected in 5 seconds, <a href="https://brandonkimathi.vercel.app">click here</a>.</p>
-        <div class="spinner"></div>
-        <p class="note">Note: This is a redirect page to ensure you're viewing the most current version of my work.</p>
+      <img src="https://brandonkimathi.vercel.app/profilePicMe.jpeg" alt="Brandon Kimathi" class="profile-image">
+      <h1>Redirecting to Brandon Kimathi's Portfolio</h1>
+      <p>You're being automatically redirected to the latest version of my portfolio website.</p>
+      <p>If you're not redirected in 5 seconds, <a href="https://brandonkimathi.vercel.app">click here</a>.</p>
+      <div class="spinner"></div>
+      <p class="note">Note: This is a redirect page to ensure you're viewing the most current version of my work.</p>
     </div>
-</body>
+
+    <!-- Analytics -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Track redirect page view
+        if (typeof gtag === 'function') {
+          gtag('event', 'redirect_page_view', {
+            'event_category': 'engagement',
+            'event_label': 'Redirect to Portfolio'
+          });
+        }
+        
+        // Ensure redirect happens even if meta refresh fails
+        setTimeout(function() {
+          window.location.href = "https://brandonkimathi.vercel.app";
+        }, 5000);
+      });
+    </script>
+  </body>
 </html>

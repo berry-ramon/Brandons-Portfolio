@@ -2,8 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <meta http-equiv="refresh" content="5; url=https://brandonkimathi.vercel.app">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <meta
+      http-equiv="refresh"
+      content="5; url=https://brandonkimathi.vercel.app"
+    />
 
     <!-- Primary Meta Tags -->
     <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -95,31 +101,44 @@
     </script>
 
     <title>Brandon Kimathi | Senior Full-Stack Engineer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="redirect-container">
-      <img src="https://brandonkimathi.vercel.app/profilePicMe.jpeg" alt="Brandon Kimathi" class="profile-image">
+      <img
+        src="https://brandonkimathi.vercel.app/profilePicMe.jpeg"
+        alt="Brandon Kimathi"
+        class="profile-image"
+      />
       <h1>Redirecting to Brandon Kimathi's Portfolio</h1>
-      <p>You're being automatically redirected to the latest version of my portfolio website.</p>
-      <p>If you're not redirected in 5 seconds, <a href="https://brandonkimathi.vercel.app">click here</a>.</p>
+      <p>
+        You're being automatically redirected to the latest version of my
+        portfolio website.
+      </p>
+      <p>
+        If you're not redirected in 5 seconds,
+        <a href="https://brandonkimathi.vercel.app">click here</a>.
+      </p>
       <div class="spinner"></div>
-      <p class="note">Note: This is a redirect page to ensure you're viewing the most current version of my work.</p>
+      <p class="note">
+        Note: This is a redirect page to ensure you're viewing the most current
+        version of my work.
+      </p>
     </div>
 
     <!-- Analytics -->
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // Track redirect page view
-        if (typeof gtag === 'function') {
-          gtag('event', 'redirect_page_view', {
-            'event_category': 'engagement',
-            'event_label': 'Redirect to Portfolio'
+        if (typeof gtag === "function") {
+          gtag("event", "redirect_page_view", {
+            event_category: "engagement",
+            event_label: "Redirect to Portfolio",
           });
         }
-        
+
         // Ensure redirect happens even if meta refresh fails
-        setTimeout(function() {
+        setTimeout(function () {
           window.location.href = "https://brandonkimathi.vercel.app";
         }, 5000);
       });

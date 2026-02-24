@@ -4,31 +4,26 @@
   "cleanUrls": true,
   "headers": [
     {
-      "source": "/(.*)\\.(ico|png|jpg|jpeg|svg|gif|webp|webmanifest|xml|txt|css|js|ts|tsx|json|woff|woff2|ttf|eot)",
+      "source": "/(.*)\\.(ico|png|jpg|jpeg|svg|gif|webmanifest|xml|txt)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
         }
       ]
-    },
-    {
-      "source": "/sw.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        },
-        {
-          "key": "Service-Worker-Allowed",
-          "value": "/"
-        }
-      ]
     }
   ],
   "rewrites": [
     {
-      "source": "/((?!.*\\.(?:ico|png|jpg|jpeg|svg|gif|webp|webmanifest|xml|txt|css|js|ts|tsx|json|woff|woff2|ttf|eot)$).*)",
+      "source": "/images/(.*)",
+      "destination": "/images/$1"
+    },
+    {
+      "source": "/(android-chrome-.*|apple-touch-icon.*|favicon.*|logo.*|site.webmanifest|robots.txt|sitemap.xml)",
+      "destination": "/$1"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]

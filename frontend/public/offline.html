@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline | Brandon Kimathi</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        background: #0a0a0a;
+        color: #e5e5e5;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.6;
+      }
+
+      .offline-container {
+        max-width: 500px;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .offline-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+
+      h1 {
+        color: #d97706;
+        font-size: 2rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        opacity: 0.7;
+        margin-bottom: 2rem;
+      }
+
+      .offline-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 2rem;
+      }
+
+      .offline-link {
+        color: #d97706;
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        background: rgba(217, 119, 6, 0.1);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+      }
+
+      .offline-link:hover {
+        background: rgba(217, 119, 6, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .cached-indicator {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(217, 119, 6, 0.2);
+        font-size: 0.85rem;
+        opacity: 0.4;
+      }
+
+      .cached-routes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .route-tag {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        color: #d97706;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offline-container">
+      <div class="offline-icon">📡</div>
+      <h1>You're offline</h1>
+      <p>
+        Some pages are still available. Choose one below or reconnect to access
+        all content.
+      </p>
+
+      <div class="offline-links">
+        <a href="/" class="offline-link">← Home</a>
+        <a href="/work" class="offline-link">Work</a>
+        <a href="/how-i-think" class="offline-link">How I Think</a>
+        <a href="/about" class="offline-link">About</a>
+        <a href="/kodees" class="offline-link">KODÈS</a>
+        <a href="/contact" class="offline-link">Contact</a>
+      </div>
+
+      <div class="cached-indicator">
+        <p>Available offline</p>
+        <div class="cached-routes">
+          <span class="route-tag">Home</span>
+          <span class="route-tag">Work</span>
+          <span class="route-tag">How I Think</span>
+          <span class="route-tag">About</span>
+          <span class="route-tag">KODÈS</span>
+          <span class="route-tag">Contact</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

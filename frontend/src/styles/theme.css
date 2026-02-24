@@ -1,0 +1,155 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Strict Color System */
+  --burnt-orange: #D97706;
+  --burnt-orange-hover: #B45309;
+  --dark-cocoa: #1C1917;
+  --muted-sand: #D6D3D1;
+  --muted-sand-dark: #A8A29E;
+  --muted-sand-light: #E8E6E4;
+  
+  /* Light Mode Neumorphic */
+  --background: #D6D3D1;
+  --background-elevated: #DCD9D7;
+  --foreground: #1C1917;
+  --accent: #D97706;
+  --accent-hover: #B45309;
+  --border-subtle: rgba(28, 25, 23, 0.08);
+  
+  /* Neumorphic Shadows - Light Mode */
+  --neu-shadow-light: -6px -6px 12px rgba(232, 230, 228, 0.9);
+  --neu-shadow-dark: 6px 6px 12px rgba(168, 162, 158, 0.4);
+  --neu-shadow-inset-light: inset 2px 2px 5px rgba(168, 162, 158, 0.3);
+  --neu-shadow-inset-dark: inset -2px -2px 5px rgba(232, 230, 228, 0.7);
+  --neu-shadow-pressed: inset 3px 3px 8px rgba(168, 162, 158, 0.4), inset -3px -3px 8px rgba(232, 230, 228, 0.5);
+  
+  /* Typography */
+  --font-size: 15px;
+  --text-h1: 32px;
+  --text-h1-mobile: 26px;
+  --text-h2: 24px;
+  --text-body: 15px;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  
+  /* Spacing */
+  --radius: 12px;
+}
+
+.dark {
+  /* Dark Mode Neumorphic */
+  --background: #1C1917;
+  --background-elevated: #252220;
+  --foreground: #D6D3D1;
+  --accent: #D97706;
+  --accent-hover: #B45309;
+  --border-subtle: rgba(214, 211, 209, 0.08);
+  
+  /* Neumorphic Shadows - Dark Mode */
+  --neu-shadow-light: -4px -4px 10px rgba(37, 34, 32, 0.8);
+  --neu-shadow-dark: 4px 4px 10px rgba(0, 0, 0, 0.6);
+  --neu-shadow-inset-light: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+  --neu-shadow-inset-dark: inset -2px -2px 5px rgba(37, 34, 32, 0.6);
+  --neu-shadow-pressed: inset 3px 3px 8px rgba(0, 0, 0, 0.6), inset -3px -3px 8px rgba(37, 34, 32, 0.4);
+}
+
+/* Mobile shadow adjustments - reduced intensity */
+@media (max-width: 768px) {
+  :root {
+    --neu-shadow-light: -4px -4px 8px rgba(232, 230, 228, 0.8);
+    --neu-shadow-dark: 4px 4px 8px rgba(168, 162, 158, 0.3);
+  }
+  
+  .dark {
+    --neu-shadow-light: -3px -3px 7px rgba(37, 34, 32, 0.7);
+    --neu-shadow-dark: 3px 3px 7px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-burnt-orange: var(--burnt-orange);
+  --color-burnt-orange-hover: var(--burnt-orange-hover);
+  --color-dark-cocoa: var(--dark-cocoa);
+  --color-muted-sand: var(--muted-sand);
+  --color-muted-sand-dark: var(--muted-sand-dark);
+  --color-border-subtle: var(--border-subtle);
+}
+
+@layer base {
+  * {
+    @apply outline-accent/50;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+    font-size: var(--font-size);
+    line-height: 1.6;
+    background: var(--background);
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: 
+      radial-gradient(circle at 1px 1px, var(--foreground) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-h1);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.3;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: var(--text-h1-mobile);
+    }
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  p {
+    font-size: var(--text-body);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.6;
+  }
+
+  button {
+    font-size: var(--text-body);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input, textarea {
+    font-size: var(--text-body);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}

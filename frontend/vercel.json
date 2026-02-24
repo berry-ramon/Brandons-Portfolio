@@ -4,27 +4,41 @@
   "cleanUrls": true,
   "headers": [
     {
-      "source": "/(.*)\\.(ico|png|jpg|jpeg|svg|gif|webmanifest|xml|txt)",
+      "source": "/(.*)\\.(ico|png|jpg|jpeg|svg|gif|webp|webmanifest|xml|txt|css|js|json)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
     }
   ],
   "rewrites": [
     {
-      "source": "/images/(.*)",
-      "destination": "/images/$1"
-    },
-    {
-      "source": "/(android-chrome-.*|apple-touch-icon.*|favicon.*|logo.*|site.webmanifest|robots.txt|sitemap.xml)",
+      "source": "/(android-chrome-.*|apple-touch-icon.*|favicon.*|logo.*|site\\.webmanifest|robots\\.txt|sitemap\\.xml|sw\\.js|offline\\.html|preview_.*\\.png|og-image\\.png)",
       "destination": "/$1"
     },
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "VITE_GA_MEASUREMENT_ID": "G-XXXXXXXXXX"
+    }
+  }
 }

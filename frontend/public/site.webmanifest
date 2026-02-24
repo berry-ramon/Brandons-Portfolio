@@ -1,7 +1,11 @@
 {
   "name": "Brandon Kimathi",
-  "short_name": "BrandonK",
-  "description": "Senior Full-Stack Engineer Portfolio - Showcasing professional projects and technical expertise",
+  "short_name": "B.Kimathi",
+  "description": "Software Architecture Lead specializing in system design, backend infrastructure, and scalable platforms. Lead at KODÈS.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#d97706",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -12,76 +16,37 @@
     {
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "/pwa-512x512.png",
-      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ],
-  "theme_color": "#0a0e17",
-  "background_color": "#0a0e17",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "/?source=pwa",
-  "orientation": "portrait-primary",
+  "categories": [
+    "technology",
+    "software",
+    "development",
+    "architecture",
+    "system-design",
+    "infrastructure"
+  ],
+  "keywords": "Brandon Kimathi, KODÈS, Kodees, Tech_Nomad5, Tech_Nomed5, berry-ramon, software architecture, system design, backend infrastructure, Kenya, Africa",
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "any",
+  "prefer_related_applications": false,
   "screenshots": [
     {
-      "src": "/screenshots/desktop-preview.png",
-      "sizes": "1280x800",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Desktop view of portfolio projects"
+      "src": "/preview_big.png",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "label": "Brandon Kimathi - Desktop Preview",
+      "platform": "wide"
     },
     {
-      "src": "/screenshots/mobile-preview.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Mobile view of portfolio"
-    }
-  ],
-  "categories": ["technology", "portfolio", "developer"],
-  "shortcuts": [
-    {
-      "name": "View Projects",
-      "short_name": "Projects",
-      "description": "Browse my featured work",
-      "url": "/projects",
-      "icons": [{ "src": "/icons/project-icon.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "Contact Me",
-      "short_name": "Contact",
-      "description": "Get in touch for opportunities",
-      "url": "/contact",
-      "icons": [{ "src": "/icons/contact-icon.png", "sizes": "96x96" }]
-    }
-  ],
-  "related_applications": [
-    {
-      "platform": "web",
-      "url": "https://brandonkimathi.tech"
-    }
-  ],
-  "prefer_related_applications": false,
-  "features": [
-    "Cross-platform",
-    "Fast Loading",
-    "Offline Capabilities",
-    "Modern UI"
-  ],
-  "protocol_handlers": [
-    {
-      "protocol": "mailto",
-      "url": "/contact?email=%s"
+      "src": "/preview_small.png",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "label": "Brandon Kimathi - Mobile Preview",
+      "platform": "narrow"
     }
   ]
 }

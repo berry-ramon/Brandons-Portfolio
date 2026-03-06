@@ -27,6 +27,8 @@ export interface Project {
     description: string;
   }>;
   timeline: {
+    startDate?: string;
+    endDate?: string;
     duration: string;
     team: string;
     role: string;

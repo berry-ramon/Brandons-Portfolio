@@ -1,15 +1,19 @@
 import { motion } from "motion/react";
-import SEO from "../components/SEO";
 import { HeroIdentity } from "../components/About/HeroIdentity";
 import { Philosophy } from "../components/About/Philosophy";
 import { ExperienceDepth } from "../components/About/ExperienceDepth";
 import { OperatingPrinciples } from "../components/About/OperatingPrinciples";
+import { pageSEO } from "../seo/pageSEO";
+import SEO from "../seo/SEO";
 
 export default function About() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://brandonkimathi.com/#person",
     name: "Brandon Kimathi",
+    givenName: "Brandon",
+    familyName: "Kimathi",
     jobTitle: "Software Architecture Lead",
     description:
       "Software architect specializing in system design, backend infrastructure, and scalable platforms.",
@@ -40,11 +44,11 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About | Brandon Kimathi — Software Architecture & System Design"
-        description="Brandon Kimathi is a Software Architecture Lead focused on building structured digital systems that scale. Based in Kenya, working across Africa. Specializing in system architecture, backend infrastructure, and scalable platforms."
-        canonical="https://brandonkimathi.com/about"
-        ogTitle="About Brandon Kimathi — Software Architecture Lead"
-        ogDescription="Software architect building structured digital systems that scale. Lead at KODÈS."
+        title={pageSEO.about.title}
+        description={pageSEO.about.description}
+        keywords={pageSEO.about.keywords}
+        ogImage={pageSEO.about.ogImage}
+        ogType={pageSEO.about.ogType}
         structuredData={structuredData}
       />
 

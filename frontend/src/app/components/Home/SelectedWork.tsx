@@ -1,8 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
-import { ArrowRight } from "lucide-react";
 import { projects, type Project } from "../../data/projects";
-import { fadeUp, staggerContainer } from "../../utils/motionVariants";
+import { fadeUp, staggerContainer, scaleIn } from "../../utils/motionVariants";
 import NeuCard from "../NeuCard";
 
 const ProjectCard = ({
@@ -15,10 +14,19 @@ const ProjectCard = ({
   featured?: boolean;
 }) => {
   return (
-    <motion.div variants={fadeUp} className={featured ? "md:col-span-2" : ""}>
+    <motion.div
+      variants={fadeUp}
+      custom={index}
+      className={featured ? "md:col-span-2" : ""}
+    >
       <Link to={`/work/${project.id}`}>
         <NeuCard hover delay={index * 0.1}>
           <div className="relative">
+            {/* Gradient background indicator */}
+            <div
+              className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${project.color || "from-accent/20 to-accent/10"} rounded-2xl`}
+            />
+
             {/* Accent border animation */}
             <motion.div
               className="absolute -top-6 -left-6 h-0.5 bg-accent"
@@ -28,9 +36,13 @@ const ProjectCard = ({
             />
 
             {featured && (
-              <span className="text-xs uppercase tracking-wider text-accent/60 mb-3 block font-mono">
+              <motion.span
+                variants={scaleIn}
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-accent/60 mb-3 font-mono"
+              >
+                <i className="bx bx-star text-accent"></i>
                 Featured Project
-              </span>
+              </motion.span>
             )}
 
             <h3
@@ -44,16 +56,33 @@ const ProjectCard = ({
             </p>
 
             <p className="text-sm opacity-70 mb-4 leading-relaxed">
-              {project.description}
+              {project.overview?.substring(0, 120) ||
+                project.description?.substring(0, 120) ||
+                "No description available"}
+              ...
             </p>
 
-            {/* Impact line */}
-            <p className="text-xs font-mono text-accent/60 mb-4 border-l-2 border-accent/30 pl-3">
-              Impact: {project.impact}
-            </p>
+            {/* Key metrics preview */}
+            {project.outcomes && project.outcomes.length > 0 && (
+              <motion.div
+                variants={staggerContainer}
+                className="flex items-center gap-4 mb-4"
+              >
+                {project.outcomes.slice(0, 2).map((outcome, i) => (
+                  <motion.div key={i} variants={fadeUp} className="flex-1">
+                    <div className="text-xs font-mono text-accent">
+                      {outcome.value}
+                    </div>
+                    <div className="text-[10px] opacity-40">
+                      {outcome.metric}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
 
             <div className="flex flex-wrap gap-2 mb-4">
-              {project.tags.map((tag) => (
+              {project.tags?.slice(0, 3).map((tag) => (
                 <motion.span
                   key={tag}
                   className="text-xs px-3 py-1 bg-accent/10 text-accent/80 rounded-full 
@@ -64,13 +93,18 @@ const ProjectCard = ({
                   {tag}
                 </motion.span>
               ))}
+              {project.tags && project.tags.length > 3 && (
+                <span className="text-xs px-3 py-1 text-foreground/40">
+                  +{project.tags.length - 3}
+                </span>
+              )}
             </div>
 
             <motion.div
               className="flex items-center gap-2 text-accent text-sm"
               whileHover={{ gap: "0.75rem" }}
             >
-              View Project <ArrowRight className="w-4 h-4" />
+              View Case Study <i className="bx bx-right-arrow-alt text-lg"></i>
             </motion.div>
           </div>
         </NeuCard>
@@ -85,12 +119,12 @@ export const SelectedWork = () => {
 
   return (
     <section id="work" className="py-16 md:py-20">
-      <div className="max-w-7xl mx-auto px-6" id="work">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="mb-10"
         >
           <span className="text-xs uppercase tracking-[0.3em] text-accent/50 font-mono">
@@ -104,7 +138,7 @@ export const SelectedWork = () => {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1, margin: "-50px" }}
         >
           {featuredProject && (
             <ProjectCard project={featuredProject} index={0} featured />

@@ -1,4 +1,72 @@
+# robots.txt for brandonkimathi.vercel.app
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /api/
+Disallow: /*?*
 
+# Sitemap location
 Sitemap: https://brandonkimathi.vercel.app/sitemap.xml
+
+# Crawl rate for faster indexing
+Crawl-delay: 1
+
+# Google-specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+Clean-param: utm_source&utm_medium&utm_campaign
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+# Other bots
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Twitterbot
+Allow: /
+User-agent: FacebookExternalHit
+Allow: /
+User-agent: LinkedInBot
+Allow: /
+User-agent: Slackbot
+Allow: /
+User-agent: Discordbot
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+User-agent: SemrushBot
+Disallow: /
+User-agent: MJ12bot
+Disallow: /

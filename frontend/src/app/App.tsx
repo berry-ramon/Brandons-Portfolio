@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router-dom"; // or HashRouter, MemoryRouter
 import { RouterProvider } from "react-router";
 import { HelmetProvider } from "react-helmet-async";
 import { router } from "./routes";
@@ -33,9 +34,13 @@ export default function App() {
 
   return (
     <HelmetProvider>
-      <div className={`app ${!isOnline ? "offline-mode" : ""}`}>
-        <RouterProvider router={router} />
-      </div>
+      <BrowserRouter>
+        {" "}
+        {/* Add BrowserRouter here */}
+        <div className={`app ${!isOnline ? "offline-mode" : ""}`}>
+          <RouterProvider router={router} />
+        </div>
+      </BrowserRouter>
     </HelmetProvider>
   );
 }

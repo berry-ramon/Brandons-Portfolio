@@ -1,6 +1,23 @@
 import { Helmet } from "react-helmet-async";
-import { useLocation } from "react-router";
-import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { ReactNode, useEffect } from "react";
+import {
+  personStructuredData,
+  organizationStructuredData,
+  websiteStructuredData,
+} from "./structuredData";
+
+// Declare gtag for TypeScript
+declare global {
+  interface Window {
+    gtag: (
+      command: string,
+      target: string,
+      params?: Record<string, any>,
+    ) => void;
+    dataLayer: any[];
+  }
+}
 
 interface SEOProps {
   title: string;
@@ -9,7 +26,7 @@ interface SEOProps {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
-  ogType?: "website" | "article" | "profile";
+  ogType?: "website" | "article" | "profile" | undefined;
   twitterTitle?: string;
   twitterDescription?: string;
   twitterCreator?: string;
@@ -23,7 +40,8 @@ interface SEOProps {
   articleSection?: string;
   imageAlt?: string;
   locale?: string;
-  gaMeasurementId?: string;
+  gaMeasurementId?: string; // Made optional
+  children?: ReactNode; // Properly typed
 }
 
 export default function SEO({
@@ -37,7 +55,7 @@ export default function SEO({
   twitterTitle,
   twitterDescription,
   twitterCreator = "@Tech_Nomad5",
-  structuredData,
+  structuredData = [],
   noindex = false,
   nofollow = false,
   keywords = [],
@@ -47,7 +65,8 @@ export default function SEO({
   articleSection,
   imageAlt = "Brandon Kimathi - Software Architecture & System Design",
   locale = "en_US",
-  gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID,
+  gaMeasurementId, // Remove default import.meta.env value
+  children,
 }: SEOProps) {
   const location = useLocation();
   const siteUrl = "https://brandonkimathi.vercel.app";
@@ -57,11 +76,16 @@ export default function SEO({
   const defaultTwitterDescription = twitterDescription || description;
 
   // Handle multiple structured data objects
-  const structuredDataArray = structuredData
-    ? Array.isArray(structuredData)
-      ? structuredData
-      : [structuredData]
-    : [];
+  const structuredDataArray = [
+    personStructuredData,
+    organizationStructuredData,
+    websiteStructuredData,
+    ...(structuredData
+      ? Array.isArray(structuredData)
+        ? structuredData
+        : [structuredData]
+      : []),
+  ];
 
   // Build robots directive
   const robotsDirective = [
@@ -69,11 +93,12 @@ export default function SEO({
     nofollow ? "nofollow" : "follow",
     "max-image-preview:large",
     "max-snippet:-1",
+    "max-video-preview:-1",
   ].join(", ");
 
-  // Track page view for Google Analytics
+  // Track page view for Google Analytics (only if gaMeasurementId is provided)
   useEffect(() => {
-    if (typeof window.gtag !== "undefined" && gaMeasurementId) {
+    if (gaMeasurementId && typeof window.gtag !== "undefined") {
       window.gtag("config", gaMeasurementId, {
         page_path: location.pathname,
         page_title: title,
@@ -82,16 +107,38 @@ export default function SEO({
     }
   }, [location.pathname, title, currentUrl, gaMeasurementId]);
 
+  // Track performance metrics (only if gaMeasurementId is provided)
+  useEffect(() => {
+    if (gaMeasurementId && typeof window.gtag !== "undefined") {
+      // Track Core Web Vitals
+      if ("performance" in window && "getEntriesByType" in performance) {
+        const paintMetrics = performance.getEntriesByType("paint");
+        paintMetrics.forEach((metric) => {
+          if (metric.name === "first-contentful-paint") {
+            window.gtag("event", "performance", {
+              event_category: "Core Web Vitals",
+              event_label: "FCP",
+              value: Math.round(metric.startTime),
+            });
+          }
+        });
+      }
+    }
+  }, [gaMeasurementId]);
+
   return (
     <Helmet>
       {/* Basic Meta */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords.join(", ")} />
+      {keywords.length > 0 && (
+        <meta name="keywords" content={keywords.join(", ")} />
+      )}
       <meta name="author" content={author} />
       <link rel="canonical" href={currentUrl} />
       <meta name="robots" content={robotsDirective} />
       <meta name="googlebot" content={robotsDirective} />
+      <meta name="bingbot" content={robotsDirective} />
 
       {/* Language & Locale */}
       <meta property="og:locale" content={locale} />
@@ -107,6 +154,7 @@ export default function SEO({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={imageAlt} />
+      <meta property="og:image:type" content="image/png" />
 
       {/* Article Specific Meta */}
       {ogType === "article" && publishedTime && (
@@ -118,6 +166,9 @@ export default function SEO({
       {ogType === "article" && articleSection && (
         <meta property="article:section" content={articleSection} />
       )}
+      {ogType === "article" && (
+        <meta property="article:author" content={author} />
+      )}
 
       {/* Profile Specific Meta */}
       {ogType === "profile" && (
@@ -125,6 +176,7 @@ export default function SEO({
           <meta property="profile:first_name" content="Brandon" />
           <meta property="profile:last_name" content="Kimathi" />
           <meta property="profile:username" content="Tech_Nomad5" />
+          <meta property="profile:gender" content="male" />
         </>
       )}
 
@@ -140,15 +192,17 @@ export default function SEO({
       {/* Mobile & PWA */}
       <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+        content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
       />
       <meta name="theme-color" content="#d97706" />
+      <meta name="msapplication-TileColor" content="#0a0a0a" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta
         name="apple-mobile-web-app-status-bar-style"
         content="black-translucent"
       />
       <meta name="format-detection" content="telephone=no" />
+      <meta name="mobile-web-app-capable" content="yes" />
 
       {/* Verification & Ownership */}
       <link rel="me" href="https://www.instagram.com/Tech_Nomad5" />
@@ -157,9 +211,22 @@ export default function SEO({
         rel="me"
         href="https://www.linkedin.com/in/brandon-kimathi-9542a8301"
       />
+      <link rel="me" href="https://twitter.com/Tech_Nomad5" />
 
-      {/* Google Analytics - Global Site Tag */}
-      {gaMeasurementId && gaMeasurementId !== "G-2KJLYNPG67" && (
+      {/* DNS Prefetch & Preconnect */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="anonymous"
+      />
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
+      <link rel="preconnect" href="https://www.google-analytics.com" />
+      <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+      {/* Google Analytics - Global Site Tag (only if gaMeasurementId is provided) */}
+      {gaMeasurementId && (
         <>
           <script
             async
@@ -175,6 +242,21 @@ export default function SEO({
                 cookie_flags: 'SameSite=None;Secure',
                 cookie_domain: 'brandonkimathi.vercel.app',
                 anonymize_ip: true,
+                allow_google_signals: true,
+                allow_ad_personalization_signals: false,
+                link_attribution: true
+              });
+              
+              // Track outbound links
+              document.addEventListener('click', function(e) {
+                const target = e.target.closest('a');
+                if (target && target.href && target.hostname !== window.location.hostname) {
+                  gtag('event', 'click', {
+                    event_category: 'outbound',
+                    event_label: target.href,
+                    transport_type: 'beacon'
+                  });
+                }
               });
             `}
           </script>
@@ -182,12 +264,11 @@ export default function SEO({
       )}
 
       {/* JSON-LD Structured Data */}
-      {structuredDataArray.length > 0 &&
-        structuredDataArray.map((data, index) => (
-          <script key={`structured-data-${index}`} type="application/ld+json">
-            {JSON.stringify(data)}
-          </script>
-        ))}
+      {structuredDataArray.map((data, index) => (
+        <script key={`structured-data-${index}`} type="application/ld+json">
+          {JSON.stringify(data)}
+        </script>
+      ))}
 
       {/* BreadcrumbList Schema - Auto-generated for nested routes */}
       {location.pathname !== "/" && (
@@ -212,7 +293,7 @@ export default function SEO({
                     .split("-")
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(" "),
-                  item: `${siteUrl}/${location.pathname
+                  item: `${siteUrl}${location.pathname
                     .split("/")
                     .slice(0, index + 2)
                     .join("/")}`,
@@ -221,6 +302,9 @@ export default function SEO({
           })}
         </script>
       )}
+
+      {/* Allow additional Helmet children */}
+      {children}
     </Helmet>
   );
 }

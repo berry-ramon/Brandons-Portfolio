@@ -2,9 +2,9 @@ import { useParams, Link } from "react-router";
 import { motion } from "motion/react";
 import { ArrowLeft, Calendar, Users, User } from "lucide-react";
 import NeuCard from "../components/NeuCard";
-import SEO from "../components/SEO";
 import { projects } from "../data/work";
 import { useState } from "react";
+import SEO from "../seo/SEO";
 
 export default function Work() {
   const { projectId } = useParams<{ projectId: string }>();
@@ -70,6 +70,10 @@ export default function Work() {
         ogTitle={`${project.name} — Case Study by Brandon Kimathi`}
         ogDescription={project.overview}
         structuredData={structuredData}
+        ogType="article"
+        publishedTime={project.timeline?.startDate}
+        modifiedTime={project.timeline?.endDate}
+        articleSection="Software Architecture"
       />
 
       <div className="w-full bg-gradient-to-b from-background via-background to-surface/50">

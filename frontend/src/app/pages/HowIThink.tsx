@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import SEO from "../components/SEO";
+import SEO from "../seo/SEO";
 import { principles } from "../data/principles";
 import { PrincipleBlock } from "../components/PrincipleBlock";
 import { TimelineIndicator } from "../components/TimelineIndicator";
@@ -47,6 +47,8 @@ export default function HowIThink() {
         },
       })),
     },
+    datePublished: "2025",
+    dateModified: new Date().toISOString().split("T")[0],
   };
 
   return (
@@ -58,6 +60,10 @@ export default function HowIThink() {
         ogTitle="How I Think About Building — System Design Philosophy"
         ogDescription="Principles for systematic product development and architectural decision-making."
         structuredData={structuredData}
+        ogType="article"
+        publishedTime="2025-01-01"
+        modifiedTime={new Date().toISOString().split("T")[0]}
+        articleSection="Philosophy"
       />
 
       <div className="w-full bg-surface">

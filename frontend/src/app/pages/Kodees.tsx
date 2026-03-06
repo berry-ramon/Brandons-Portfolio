@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import SEO from "../components/SEO";
+import SEO from "../seo/SEO"; // Fixed import path
 import { Overview } from "../components/Kodees/Overview";
 import { AboutKodes } from "../components/Kodees/AboutKodes";
 import { Systems } from "../components/Kodees/Systems";
@@ -14,27 +14,29 @@ export default function Kodees() {
     "@graph": [
       {
         "@type": "Person",
+        "@id": "https://brandonkimathi.com/#person",
         name: "Brandon Kimathi",
         jobTitle: "Software Architecture Lead",
         worksFor: {
           "@type": "Organization",
+          "@id": "https://kodees.co.ke/#organization",
           name: "KODÈS",
         },
-        sameAs: ["https://www.instagram.com/Tech_Nomad5"],
+        sameAs: [
+          "https://www.instagram.com/Tech_Nomad5",
+          "https://github.com/berry-ramon",
+          "https://www.linkedin.com/in/brandon-kimathi-9542a8301",
+        ],
       },
       {
         "@type": "Organization",
+        "@id": "https://kodees.co.ke/#organization",
         name: "KODÈS",
         alternateName: ["Kodees", "KODÈS Africa"],
         url: "https://kodees.co.ke",
         logo: "https://kodees.co.ke/logo.png",
-      },
-      {
-        "@type": "Role",
-        roleName: "Software Architecture Lead",
-        memberOf: {
-          "@type": "Organization",
-          name: "KODÈS",
+        founder: {
+          "@id": "https://brandonkimathi.com/#person",
         },
       },
     ],
@@ -47,6 +49,7 @@ export default function Kodees() {
         description="Brandon Kimathi leads software architecture and system design at KODÈS, building digital infrastructure for education and technology access across Africa."
         canonical="https://brandonkimathi.com/kodees"
         structuredData={structuredData}
+        ogType="website" // Explicitly set ogType
       />
 
       <motion.div

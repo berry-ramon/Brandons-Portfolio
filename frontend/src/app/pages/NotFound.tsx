@@ -1,11 +1,12 @@
 import { motion } from "motion/react";
-import { Link, useRouteError } from "react-router";
+import { Link, useRouteError, isRouteErrorResponse } from "react-router";
 import { Home, ArrowLeft, AlertCircle } from "lucide-react";
-import SEO from "../components/SEO";
+import SEO from "../seo/SEO";
 
 export default function NotFound() {
   const error = useRouteError();
-  const is404 = !error || (error as any)?.status === 404;
+  const is404 =
+    !error || (error as any)?.status === 404 || isRouteErrorResponse(error);
 
   return (
     <>
@@ -16,6 +17,7 @@ export default function NotFound() {
         description="The page you're looking for doesn't exist or has been moved. Return to homepage to explore software architecture and system design work."
         canonical="https://brandonkimathi.com/404"
         noindex={true}
+        nofollow={true}
       />
 
       <div className="min-h-[80vh] flex items-center justify-center px-6 py-20">
@@ -86,19 +88,6 @@ export default function NotFound() {
           </motion.p>
 
           {/* Show error in development */}
-          {import.meta.env.DEV && error && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="mb-8 p-4 bg-red-500/10 rounded-xl text-left font-mono text-sm"
-            >
-              <p className="text-red-400 mb-2">Error details (dev only):</p>
-              <pre className="text-foreground/60 text-xs overflow-auto">
-                {JSON.stringify(error, null, 2)}
-              </pre>
-            </motion.div>
-          )}
 
           {/* Divider with architectural element */}
           <motion.div

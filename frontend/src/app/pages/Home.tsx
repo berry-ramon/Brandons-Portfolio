@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import SEO from "../components/SEO";
 import { HeroSection } from "../components/Home/HeroSection";
 import { HowIBuildPreview } from "../components/Home/HowIBuildPreview";
 import { Capabilities } from "../components/Home/Capabilities";
@@ -8,6 +7,8 @@ import { ProductPhilosophy } from "../components/Home/ProductPhilosophy";
 import { ClosingSection } from "../components/Home/ClosingSection";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
+import SEO from "../seo/SEO";
+import { pageSEO } from "../seo/pageSEO";
 
 export default function Home() {
   const location = useLocation();
@@ -35,6 +36,7 @@ export default function Home() {
     "@graph": [
       {
         "@type": "Person",
+        "@id": "https://brandonkimathi.com/#person",
         name: "Brandon Kimathi",
         jobTitle: "Software Architecture Lead",
         url: "https://brandonkimathi.com",
@@ -45,15 +47,14 @@ export default function Home() {
         ],
       },
       {
-        "@type": "Organization",
+        "@type": "WebSite",
+        "@id": "https://brandonkimathi.com/#website",
         name: "Brandon Kimathi",
         url: "https://brandonkimathi.com",
-        logo: "https://brandonkimathi.com/logo.png",
-        sameAs: [
-          "https://www.instagram.com/Tech_Nomad5",
-          "https://github.com/berry-ramon",
-          "https://www.linkedin.com/in/brandon-kimathi-9542a8301",
-        ],
+        description: pageSEO.home.description,
+        publisher: {
+          "@id": "https://brandonkimathi.com/#person",
+        },
       },
     ],
   };
@@ -61,9 +62,11 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Brandon Kimathi | Software Architecture & System Design"
-        description="Brandon Kimathi is a Software Architecture Lead specializing in system design, backend infrastructure, and scalable platforms. Building structured digital systems that last."
-        canonical="https://brandonkimathi.com"
+        title={pageSEO.home.title}
+        description={pageSEO.home.description}
+        keywords={pageSEO.home.keywords}
+        ogImage={pageSEO.home.ogImage}
+        ogType={pageSEO.home.ogType}
         structuredData={structuredData}
       />
 

@@ -2,13 +2,13 @@
 export const personStructuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": "https://brandonkimathi.vercel.app/#person",
+  "@id": "https://brandonkimathi.top/#person",
   name: "Brandon Kimathi",
   alternateName: ["B.Kimathi", "Tech_Nomad5", "Tech_Nomed5", "berry-ramon"],
   jobTitle: "Software Architecture Lead",
   description:
     "Software architect specializing in system design, backend infrastructure, and scalable platforms. Lead at KODÈS.",
-  url: "https://brandonkimathi.vercel.app",
+  url: "https://brandonkimathi.top",
   sameAs: [
     "https://www.instagram.com/Tech_Nomad5",
     "https://github.com/berry-ramon",
@@ -51,10 +51,10 @@ export const personStructuredData = {
 export const organizationStructuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://brandonkimathi.vercel.app/#organization",
+  "@id": "https://brandonkimathi.top/#organization",
   name: "Brandon Kimathi",
-  url: "https://brandonkimathi.vercel.app",
-  logo: "https://brandonkimathi.vercel.app/logo.png",
+  url: "https://brandonkimathi.top",
+  logo: "https://brandonkimathi.top/logo.png",
   sameAs: [
     "https://www.instagram.com/Tech_Nomad5",
     "https://github.com/berry-ramon",
@@ -62,27 +62,26 @@ export const organizationStructuredData = {
     "https://twitter.com/Tech_Nomad5",
   ],
   founder: {
-    "@id": "https://brandonkimathi.vercel.app/#person",
+    "@id": "https://brandonkimathi.top/#person",
   },
 };
 
 export const websiteStructuredData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://brandonkimathi.vercel.app/#website",
+  "@id": "https://brandonkimathi.top/#website",
   name: "Brandon Kimathi",
-  url: "https://brandonkimathi.vercel.app",
+  url: "https://brandonkimathi.top",
   description: "Software Architecture & System Design Portfolio",
   inLanguage: "en-US",
   publisher: {
-    "@id": "https://brandonkimathi.vercel.app/#person",
+    "@id": "https://brandonkimathi.top/#person",
   },
   potentialAction: {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate:
-        "https://brandonkimathi.vercel.app/search?q={search_term_string}",
+      urlTemplate: "https://brandonkimathi.top/search?q={search_term_string}",
     },
     "query-input": "required name=search_term_string",
   },
@@ -98,5 +97,5 @@ export const imageObjectStructuredData = (
   description: caption,
   name: caption,
   license: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  acquireLicensePage: "https://brandonkimathi.vercel.app/contact",
+  acquireLicensePage: "https://brandonkimathi.top/contact",
 });

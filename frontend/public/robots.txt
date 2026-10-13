@@ -1,4 +1,4 @@
-# robots.txt for brandonkimathi.vercel.app
+# robots.txt for brandonkimathi.top
 User-agent: *
 Allow: /
 Disallow: /admin/
@@ -8,7 +8,7 @@ Disallow: /api/
 Disallow: /*?*
 
 # Sitemap location
-Sitemap: https://brandonkimathi.vercel.app/sitemap.xml
+Sitemap: https://brandonkimathi.top/sitemap.xml
 
 # Crawl rate for faster indexing
 Crawl-delay: 1

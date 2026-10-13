@@ -1,6 +1,6 @@
 // src/seo/sitemapGenerator.ts
 export const generateSitemap = () => {
-  const baseUrl = "https://brandonkimathi.vercel.app";
+  const baseUrl = "https://brandonkimathi.top";
   const today = new Date().toISOString().split("T")[0];
 
   const pages = [

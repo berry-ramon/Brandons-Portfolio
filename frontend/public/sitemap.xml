@@ -7,12 +7,12 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://brandonkimathi.vercel.app/</loc>
+    <loc>https://brandonkimathi.top/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://brandonkimathi.vercel.app/preview_big.png</image:loc>
+      <image:loc>https://brandonkimathi.top/preview_big.png</image:loc>
       <image:title>Brandon Kimathi - Software Architecture</image:title>
       <image:caption>Software Architecture & System Design Portfolio</image:caption>
     </image:image>
@@ -20,7 +20,7 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://brandonkimathi.vercel.app/about</loc>
+    <loc>https://brandonkimathi.top/about</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -28,7 +28,7 @@
   
   <!-- How I Think Page -->
   <url>
-    <loc>https://brandonkimathi.vercel.app/how-i-think</loc>
+    <loc>https://brandonkimathi.top/how-i-think</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -36,7 +36,7 @@
   
   <!-- Contact Page -->
   <url>
-    <loc>https://brandonkimathi.vercel.app/contact</loc>
+    <loc>https://brandonkimathi.top/contact</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -44,7 +44,7 @@
   
   <!-- KODÈS Page -->
   <url>
-    <loc>https://brandonkimathi.vercel.app/kodees</loc>
+    <loc>https://brandonkimathi.top/kodees</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

@@ -20,7 +20,7 @@ export const pageSEO = {
       "Kenya",
       "Africa",
     ],
-    ogImage: "https://brandonkimathi.vercel.app/preview_big.png",
+    ogImage: "https://brandonkimathi.top/preview_big.png",
     ogType: "profile" as const, // Use 'as const' for type safety
   },
   about: {
@@ -34,7 +34,7 @@ export const pageSEO = {
       "system designer Kenya",
       "tech entrepreneur Africa",
     ],
-    ogImage: "https://brandonkimathi.vercel.app/about-preview.png",
+    ogImage: "https://brandonkimathi.top/about-preview.png",
     ogType: "profile" as const,
   },
   work: {
@@ -50,7 +50,7 @@ export const pageSEO = {
       "admin system design",
       "analytics engine",
     ],
-    ogImage: "https://brandonkimathi.vercel.app/work-preview.png",
+    ogImage: "https://brandonkimathi.top/work-preview.png",
     ogType: "website" as const,
   },
   howIThink: {
@@ -64,7 +64,7 @@ export const pageSEO = {
       "tech insights Kenya",
       "software development approach",
     ],
-    ogImage: "https://brandonkimathi.vercel.app/think-preview.png",
+    ogImage: "https://brandonkimathi.top/think-preview.png",
     ogType: "article" as const,
   },
   contact: {
@@ -78,7 +78,7 @@ export const pageSEO = {
       "hire software architect",
       "collaborate with developer",
     ],
-    ogImage: "https://brandonkimathi.vercel.app/contact-preview.png",
+    ogImage: "https://brandonkimathi.top/contact-preview.png",
     ogType: "website" as const,
   },
   kodees: {
@@ -94,7 +94,7 @@ export const pageSEO = {
       "technology access",
       "Brandon Kimathi KODÈS",
     ],
-    ogImage: "https://brandonkimathi.vercel.app/kodees-preview.png",
+    ogImage: "https://brandonkimathi.top/kodees-preview.png",
     ogType: "website" as const,
   },
   project: (projectId: string, projectData: any) => ({

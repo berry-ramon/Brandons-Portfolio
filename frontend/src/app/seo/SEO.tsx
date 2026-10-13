@@ -50,7 +50,7 @@ export default function SEO({
   canonical,
   ogTitle,
   ogDescription,
-  ogImage = "https://brandonkimathi.vercel.app/logo.png",
+  ogImage = "https://brandonkimathi.top/logo.png",
   ogType = "website",
   twitterTitle,
   twitterDescription,
@@ -69,7 +69,7 @@ export default function SEO({
   children,
 }: SEOProps) {
   const location = useLocation();
-  const siteUrl = "https://brandonkimathi.vercel.app";
+  const siteUrl = "https://brandonkimathi.top";
   const currentUrl = canonical || `${siteUrl}${location.pathname}`;
   const defaultOgTitle = ogTitle || title;
   const defaultTwitterTitle = twitterTitle || defaultOgTitle;
@@ -240,7 +240,7 @@ export default function SEO({
               gtag('config', '${gaMeasurementId}', {
                 send_page_view: false,
                 cookie_flags: 'SameSite=None;Secure',
-                cookie_domain: 'brandonkimathi.vercel.app',
+                cookie_domain: 'brandonkimathi.top',
                 anonymize_ip: true,
                 allow_google_signals: true,
                 allow_ad_personalization_signals: false,

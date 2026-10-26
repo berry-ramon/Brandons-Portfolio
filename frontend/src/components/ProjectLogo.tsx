@@ -1,25 +1,33 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 /* =========================================================
-   PROJECT LOGO
+   PROJECT LOGO — caches remote image bytes
    ---------------------------------------------------------
-   Resolution order:
-     1. KNOWN_LOGOS[origin]       → hardcoded DB
-     2. localStorage cache        → previous session's winner
-     3. Standard fallback chain   → 5 candidates
 
-   Failure handling:
-     - 404 → move to next candidate, clear stale cache
-     - Timeout (5s) → mark as "recently failed" in sessionStorage
-       for 10 minutes, but DO NOT clear KNOWN_LOGOS choice
-     - Recently-failed URLs are skipped on this page load
+   Resolution:
 
-   Console tags:
-     [known]    — from KNOWN_LOGOS
-     [cached]   — from localStorage
-     [fresh]    — from fallback chain
-     [timeout]  — gave up waiting
-     ✗          — all candidates failed
+     KNOWN ORIGINS (in KNOWN_LOGOS):
+       → try ONLY the mapped remote URL
+       → no fallbacks, no guessing
+
+     UNKNOWN ORIGINS:
+       → cached winner from last session, then the chain:
+         /logo.png → /assets/logo.png → /favicon.ico
+         → /favicon.svg → /assets/favicon.ico
+
+   Caching:
+     - Successful responses are stored as blobs in Cache
+       Storage under "project-logos-v1".
+     - Rendered via URL.createObjectURL(blob) — no network
+       on repeat visits.
+     - Works fully offline after the first successful fetch.
+
+   Auto-invalidation:
+     - Hash of KNOWN_LOGOS + SOURCES is computed at load.
+     - If it differs from the stored hash (data was edited),
+       Cache Storage wipes, winner URLs wipe, all logos
+       re-fetch fresh.
+     - If unchanged, caches persist — instant loads.
    ========================================================= */
 
 const KNOWN_LOGOS: Record<string, string> = {
@@ -37,12 +45,18 @@ const KNOWN_LOGOS: Record<string, string> = {
   "https://www.cartzuri.com": "https://www.cartzuri.com/favicon.ico",
   "https://cartzuri.com": "https://www.cartzuri.com/favicon.ico",
   "https://veldris.kodees.co.ke": "https://veldris.kodees.co.ke/logo.png",
-  "https://kodees.co.ke": "https://kodees.co.ke/logo.png",
+
+  // ── KODÈS (www confirmed) ──
+  "https://www.kodees.co.ke": "https://www.kodees.co.ke/logo.png",
+  "https://kodees.co.ke": "https://www.kodees.co.ke/logo.png",
+
   "https://bookmine.vercel.app": "https://bookmine.vercel.app/favicon.ico",
   "https://shakshigrill.com": "https://shakshigrill.com/assets/favicon.ico",
   "https://www.shakshigrill.com": "https://shakshigrill.com/assets/favicon.ico",
-  "https://viablesurveyors.com": "https://viablesurveyors.com/logo.png",
-  "https://www.viablesurveyors.com": "https://viablesurveyors.com/logo.png",
+
+  // ── Viable Surveyors (www confirmed) ──
+  "https://www.viablesurveyors.com": "https://www.viablesurveyors.com/logo.png",
+  "https://viablesurveyors.com": "https://www.viablesurveyors.com/logo.png",
 };
 
 const SOURCES = [
@@ -53,62 +67,172 @@ const SOURCES = [
   "/assets/favicon.ico",
 ] as const;
 
-const CACHE_PREFIX = "project-logo:";
-const FAILED_PREFIX = "pf:";
-const FAILED_TTL_MS = 10 * 60 * 1000; // 10 minutes
-const LOAD_TIMEOUT_MS = 5000; // give up after 5s
+const CACHE_NAME = "project-logos-v1";
+const WINNER_KEY_PREFIX = "project-logo:";
+const VERSION_KEY = "project-logos:version";
 
-/* ---------- localStorage cache (persistent) ---------- */
+/* ---------- Auto invalidation ---------- */
 
-function readCache(origin: string): string | null {
+function computeDataVersion(): string {
+  const payload = JSON.stringify({ known: KNOWN_LOGOS, sources: SOURCES });
+  let hash = 5381;
+  for (let i = 0; i < payload.length; i++) {
+    hash = ((hash << 5) + hash + payload.charCodeAt(i)) | 0;
+  }
+  return `v${(hash >>> 0).toString(36)}`;
+}
+
+const DATA_VERSION = computeDataVersion();
+let versionChecked = false;
+const blobUrlCache = new Map<string, string>();
+
+async function ensureFreshCache(): Promise<void> {
+  if (versionChecked) return;
+  versionChecked = true;
+
+  let prev: string | null = null;
   try {
-    return localStorage.getItem(`${CACHE_PREFIX}${origin}`);
+    prev = localStorage.getItem(VERSION_KEY);
+  } catch {
+    /* ignore */
+  }
+
+  if (prev === DATA_VERSION) return;
+
+  const isFirstVisit = prev === null;
+
+  try {
+    await caches.delete(CACHE_NAME);
+  } catch {
+    /* ignore */
+  }
+
+  try {
+    const toRemove: string[] = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith(WINNER_KEY_PREFIX)) toRemove.push(k);
+    }
+    toRemove.forEach((k) => localStorage.removeItem(k));
+  } catch {
+    /* ignore */
+  }
+
+  blobUrlCache.forEach((u) => URL.revokeObjectURL(u));
+  blobUrlCache.clear();
+
+  try {
+    localStorage.setItem(VERSION_KEY, DATA_VERSION);
+  } catch {
+    /* ignore */
+  }
+
+  if (import.meta.env.DEV && !isFirstVisit) {
+    console.info(
+      `%c[ProjectLogo]%c data changed → caches cleared (${prev} → ${DATA_VERSION})`,
+      "color:#a91e8a;font-weight:600",
+      "color:#f59e0b;font-weight:600",
+    );
+  }
+}
+
+/* ---------- Cache Storage helpers ---------- */
+
+async function readCachedBlob(url: string): Promise<Blob | null> {
+  try {
+    const cache = await caches.open(CACHE_NAME);
+    const resp = await cache.match(url);
+    return resp ? await resp.blob() : null;
   } catch {
     return null;
   }
 }
 
-function writeCache(origin: string, url: string) {
+async function fetchAndCacheBlob(url: string): Promise<Blob | null> {
   try {
-    localStorage.setItem(`${CACHE_PREFIX}${origin}`, url);
+    const resp = await fetch(url, {
+      method: "GET",
+      mode: "cors",
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+    });
+
+    if (!resp.ok) return null;
+
+    const ct = (resp.headers.get("content-type") || "").toLowerCase();
+    const isImage =
+      ct.startsWith("image/") ||
+      ct.includes("svg") ||
+      ct.includes("xml") ||
+      ct.includes("octet-stream");
+
+    if (!isImage) return null;
+
+    const cloned = resp.clone();
+    const blob = await resp.blob();
+
+    try {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.put(url, cloned);
+    } catch {
+      /* quota or private mode — still return blob */
+    }
+
+    return blob;
+  } catch {
+    return null;
+  }
+}
+
+async function resolveImageUrl(url: string): Promise<string | null> {
+  const existing = blobUrlCache.get(url);
+  if (existing) return existing;
+
+  let blob = await readCachedBlob(url);
+  const source: "cache" | "network" = blob ? "cache" : "network";
+
+  if (!blob) {
+    blob = await fetchAndCacheBlob(url);
+  }
+
+  if (!blob) return null;
+
+  const blobUrl = URL.createObjectURL(blob);
+  blobUrlCache.set(url, blobUrl);
+
+  if (import.meta.env.DEV) {
+    console.info(
+      `%c[ProjectLogo]%c ${source === "cache" ? "cache hit" : "fetched"} %c${url}`,
+      "color:#a91e8a;font-weight:600",
+      `color:${source === "cache" ? "#10b981" : "#f59e0b"};font-weight:600`,
+      "color:#64748b;font-family:ui-monospace,monospace;font-size:11px",
+    );
+  }
+
+  return blobUrl;
+}
+
+/* ---------- Winner URL (unknown origins only) ---------- */
+
+function readWinnerUrl(origin: string): string | null {
+  try {
+    return localStorage.getItem(`${WINNER_KEY_PREFIX}${origin}`);
+  } catch {
+    return null;
+  }
+}
+
+function writeWinnerUrl(origin: string, url: string): void {
+  try {
+    localStorage.setItem(`${WINNER_KEY_PREFIX}${origin}`, url);
   } catch {
     /* ignore */
   }
 }
 
-/* ---------- sessionStorage failures (per-tab) ---------- */
-
-function markFailed(url: string) {
-  try {
-    sessionStorage.setItem(`${FAILED_PREFIX}${url}`, String(Date.now()));
-  } catch {
-    /* ignore */
-  }
-}
-
-function isRecentlyFailed(url: string): boolean {
-  try {
-    const raw = sessionStorage.getItem(`${FAILED_PREFIX}${url}`);
-    if (!raw) return false;
-    return Date.now() - Number(raw) < FAILED_TTL_MS;
-  } catch {
-    return false;
-  }
-}
-
-function clearFailed(url: string) {
-  try {
-    sessionStorage.removeItem(`${FAILED_PREFIX}${url}`);
-  } catch {
-    /* ignore */
-  }
-}
-
-/* ---------- Log dedupe ---------- */
-
-const logged = new Set<string>();
-
-/* ---------- Component ---------- */
+/* =========================================================
+   COMPONENT
+   ========================================================= */
 
 export function ProjectLogo({
   url,
@@ -123,11 +247,9 @@ export function ProjectLogo({
   size?: number;
   className?: string;
 }) {
-  const [index, setIndex] = useState(0);
-  const [loaded, setLoaded] = useState(false);
-  const [timedOut, setTimedOut] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
-  const timeoutRef = useRef<number | undefined>(undefined);
+  const [imgSrc, setImgSrc] = useState<string | null>(null);
+  const [attempt, setAttempt] = useState(0);
+  const [allFailed, setAllFailed] = useState(false);
 
   const origin = useMemo(() => {
     try {
@@ -137,181 +259,72 @@ export function ProjectLogo({
     }
   }, [url]);
 
-  /* ---------- Build candidates (skip recently failed) ---------- */
-
-  const allCandidates = useMemo(() => {
+  const candidates = useMemo(() => {
     if (!origin) return [] as string[];
 
+    // Known origin: only the mapped URL, no fallbacks
+    const known = KNOWN_LOGOS[origin];
+    if (known) return [known];
+
+    // Unknown: cached winner + full fallback chain
     const seen = new Set<string>();
     const ordered: string[] = [];
     const push = (u: string | null | undefined) => {
-      if (!u || seen.has(u)) return;
-      seen.add(u);
-      ordered.push(u);
+      if (u && !seen.has(u)) {
+        seen.add(u);
+        ordered.push(u);
+      }
     };
 
-    push(KNOWN_LOGOS[origin]);
-    push(readCache(origin));
+    push(readWinnerUrl(origin));
     for (const s of SOURCES) push(`${origin}${s}`);
 
     return ordered;
   }, [origin]);
-
-  // Skip anything that failed in the last 10 minutes, but if EVERYTHING
-  // failed, fall back to trying the full list (better than showing monogram
-  // forever if the network recovered)
-  const candidates = useMemo(() => {
-    const fresh = allCandidates.filter((u) => !isRecentlyFailed(u));
-    return fresh.length > 0 ? fresh : allCandidates;
-  }, [allCandidates]);
 
   const fallback = (monogram || name[0] || "?")
     .toString()
     .charAt(0)
     .toUpperCase();
 
-  /* ---------- Reset on origin change ---------- */
-
   useEffect(() => {
-    setIndex(0);
-    setLoaded(false);
-    setTimedOut(false);
-  }, [origin]);
+    if (!candidates.length) {
+      setAllFailed(true);
+      return;
+    }
 
-  const src = candidates[index] ?? "error";
-  const showImage = src !== "error";
+    let cancelled = false;
+    setImgSrc(null);
+    setAllFailed(false);
 
-  /* ---------- Timeout watchdog ---------- */
+    (async () => {
+      await ensureFreshCache();
+      if (cancelled) return;
 
-  useEffect(() => {
-    if (!showImage || loaded) return;
+      for (const candidate of candidates) {
+        if (cancelled) return;
 
-    window.clearTimeout(timeoutRef.current);
-    timeoutRef.current = window.setTimeout(() => {
-      // This src has been trying to load for LOAD_TIMEOUT_MS
-      markFailed(src);
-      setTimedOut(true);
-      setLoaded(false);
+        const resolved = await resolveImageUrl(candidate);
+        if (cancelled) return;
 
-      const logKey = `${name}:${src}:timeout`;
-      if (!logged.has(logKey)) {
-        logged.add(logKey);
-        console.warn(
-          `%c[ProjectLogo]%c ${name} %c⏱%c timeout after ${LOAD_TIMEOUT_MS / 1000}s — %c${src}`,
-          "color:#a91e8a;font-weight:600",
-          "color:#1c1917;font-weight:500",
-          "color:#f59e0b;font-weight:600",
-          "color:#64748b;font-size:11px",
-          "color:#94a3b8;font-family:ui-monospace,monospace",
-        );
-      }
-
-      // Move to the next candidate
-      advance();
-    }, LOAD_TIMEOUT_MS);
-
-    return () => window.clearTimeout(timeoutRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [src, loaded, showImage]);
-
-  /* ---------- Success ---------- */
-
-  const commitSuccess = (finalSrc: string) => {
-    window.clearTimeout(timeoutRef.current);
-    setLoaded(true);
-    setTimedOut(false);
-    clearFailed(finalSrc);
-
-    if (!origin || !finalSrc) return;
-
-    const knownUrl = KNOWN_LOGOS[origin];
-    const cachedUrl = readCache(origin);
-    const wasCached = cachedUrl === finalSrc;
-    const isKnown = knownUrl === finalSrc;
-
-    if (!wasCached) writeCache(origin, finalSrc);
-
-    let tag: "known" | "cached" | "fresh";
-    if (isKnown) tag = "known";
-    else if (wasCached) tag = "cached";
-    else tag = "fresh";
-
-    const logKey = `${name}:${finalSrc}`;
-    if (logged.has(logKey)) return;
-    logged.add(logKey);
-
-    const tagColor =
-      tag === "known" ? "#0ea5e9" : tag === "cached" ? "#10b981" : "#f59e0b";
-
-    console.info(
-      `%c[ProjectLogo]%c ${name} %c✓%c %c${tag}%c ${finalSrc}`,
-      "color:#a91e8a;font-weight:600",
-      "color:#1c1917;font-weight:500",
-      "color:#10b981;font-weight:600",
-      `color:${tagColor};font-weight:600;font-family:ui-monospace,monospace`,
-      "color:#64748b;font-family:ui-monospace,monospace;font-size:11px",
-    );
-  };
-
-  /* ---------- Advance to next candidate ---------- */
-
-  const advance = () => {
-    window.clearTimeout(timeoutRef.current);
-    setLoaded(false);
-    setTimedOut(false);
-    setIndex((i) => i + 1);
-  };
-
-  /* ---------- Explicit error (404 / CORS / blocked) ---------- */
-
-  const handleError = () => {
-    const failed = candidates[index];
-
-    if (failed) {
-      markFailed(failed);
-
-      // Only clear the localStorage cache if the winner fails AND
-      // it's not the KNOWN_LOGOS entry (timeouts shouldn't wipe DB)
-      if (failed === readCache(origin) && failed !== KNOWN_LOGOS[origin]) {
-        try {
-          localStorage.removeItem(`${CACHE_PREFIX}${origin}`);
-        } catch {
-          /* ignore */
+        if (resolved) {
+          setImgSrc(resolved);
+          if (!KNOWN_LOGOS[origin]) {
+            writeWinnerUrl(origin, candidate);
+          }
+          return;
         }
       }
-    }
 
-    if (index < candidates.length - 1) {
-      advance();
-    } else {
-      window.clearTimeout(timeoutRef.current);
-      setIndex(candidates.length);
+      if (!cancelled) setAllFailed(true);
+    })();
 
-      const logKey = `${name}:__failed__`;
-      if (!logged.has(logKey)) {
-        logged.add(logKey);
-        console.warn(
-          `%c[ProjectLogo]%c ${name} %c✗%c all candidates failed for ${origin || url}`,
-          "color:#a91e8a;font-weight:600",
-          "color:#1c1917;font-weight:500",
-          "color:#ef4444;font-weight:600",
-          "color:#64748b;font-family:ui-monospace,monospace;font-size:11px",
-        );
-      }
-    }
-  };
+    return () => {
+      cancelled = true;
+    };
+  }, [candidates, origin, attempt]);
 
-  /* ---------- Catch pre-mounted load events ---------- */
-
-  useEffect(() => {
-    const img = imgRef.current;
-    if (!img || !img.complete) return;
-    if (img.naturalWidth === 0) return;
-    if (src !== "error") commitSuccess(src);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [src]);
-
-  /* ---------- Render ---------- */
+  const retry = () => setAttempt((a) => a + 1);
 
   return (
     <div
@@ -319,37 +332,31 @@ export function ProjectLogo({
       style={{ width: size, height: size }}
       aria-hidden="true"
     >
-      {(!showImage || !loaded) && (
-        <div
-          className={`absolute inset-0 grid place-items-center border bg-background font-semibold shadow-pressed ${
-            timedOut
-              ? "border-amber-300 text-amber-600"
+      {!imgSrc && (
+        <button
+          type="button"
+          onClick={allFailed ? retry : undefined}
+          disabled={!allFailed}
+          className={`absolute inset-0 grid place-items-center border bg-background font-semibold shadow-pressed transition-colors ${
+            allFailed
+              ? "cursor-pointer border-amber-300 text-amber-600 hover:bg-amber-50"
               : "border-border-subtle text-foreground"
           }`}
           style={{ fontSize: size * 0.42 }}
+          aria-label={allFailed ? `Retry loading ${name} logo` : undefined}
         >
-          {timedOut ? "!" : fallback}
-        </div>
+          {fallback}
+        </button>
       )}
 
-      {showImage && (
+      {imgSrc && (
         <img
-          ref={imgRef}
-          key={src}
-          src={src}
+          src={imgSrc}
           alt={`${name} logo`}
           width={size}
           height={size}
-          loading="eager"
           decoding="async"
-          // CRITICAL: no-referrer avoids Vercel and other servers rejecting
-          // cross-origin image requests from localhost
-          referrerPolicy="no-referrer"
-          onLoad={() => commitSuccess(src)}
-          onError={handleError}
-          className={`relative h-full w-full bg-background object-contain transition-opacity duration-200 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
+          className="relative h-full w-full bg-background object-contain"
           style={{ width: size, height: size }}
         />
       )}

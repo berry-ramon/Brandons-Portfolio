@@ -40,7 +40,7 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
     },
     {
-      "source": "/me.jpg",
+      "source": "/assets/images/brandon-kimathi.jpg",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
     },
     {
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "source": "/workbox-.*\\.js",
+      "source": "/workbox-:file(.*\\.js)",
       "headers": [
         {
           "key": "Cache-Control",

@@ -1,52 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <!-- Homepage -->
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+  <!-- ===== MAIN PAGES ===== -->
   <url>
     <loc>https://brandonkimathi.top/</loc>
-    <lastmod>2026-03-06</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://brandonkimathi.top/preview_big.png</image:loc>
-      <image:title>Brandon Kimathi - Software Architecture</image:title>
-      <image:caption>Software Architecture & System Design Portfolio</image:caption>
+      <image:loc>https://brandonkimathi.top/me.jpg</image:loc>
+      <image:title>Brandon Kimathi - Software Architect</image:title>
+      <image:caption>Brandon Kimathi at work in Nairobi, Kenya</image:caption>
     </image:image>
   </url>
-  
-  <!-- About Page -->
+
+  <url>
+    <loc>https://brandonkimathi.top/work</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <url>
     <loc>https://brandonkimathi.top/about</loc>
-    <lastmod>2026-03-06</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- How I Think Page -->
+
   <url>
     <loc>https://brandonkimathi.top/how-i-think</loc>
-    <lastmod>2026-03-06</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Contact Page -->
+
   <url>
-    <loc>https://brandonkimathi.top/contact</loc>
-    <lastmod>2026-03-06</lastmod>
+    <loc>https://brandonkimathi.top/kodees</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
-  <!-- KODÈS Page -->
+
   <url>
-    <loc>https://brandonkimathi.top/kodees</loc>
-    <lastmod>2026-03-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://brandonkimathi.top/contact</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ===== CASE STUDIES ===== -->
+  <url>
+    <loc>https://brandonkimathi.top/work/payment-platform</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://brandonkimathi.top/work/admin-system</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://brandonkimathi.top/work/analytics-engine</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://brandonkimathi.top/work/api-gateway</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ===== LEGAL (lower priority, but indexable) ===== -->
+  <url>
+    <loc>https://brandonkimathi.top/terms</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://brandonkimathi.top/privacy</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

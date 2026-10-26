@@ -1,0 +1,78 @@
+{
+  "id": "/",
+  "name": "Brandon Kimathi",
+  "short_name": "Brandon K.",
+  "description": "Software design, free tools, and live projects by Brandon Kimathi, Software Architect at KODÈS.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait-primary",
+  "background_color": "#D6D3D1",
+  "theme_color": "#D97706",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["portfolio", "productivity", "business"],
+  "icons": [
+    {
+      "src": "/assets/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshot-mobile.png",
+      "sizes": "389x874",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Brandon Kimathi - portfolio on mobile"
+    },
+    {
+      "src": "/assets/screenshot-desktop.png",
+      "sizes": "1920x961",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Brandon Kimathi - portfolio on desktop"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "About me",
+      "short_name": "About",
+      "url": "/about",
+      "icons": [{ "src": "/assets/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "My work",
+      "short_name": "Work",
+      "url": "/work",
+      "icons": [{ "src": "/assets/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Free tools",
+      "short_name": "Tools",
+      "url": "/tools",
+      "icons": [{ "src": "/assets/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

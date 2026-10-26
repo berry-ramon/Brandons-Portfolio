@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import "./styles/theme.css";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --color-background: #d6d3d1;
+  --color-background-elevated: #e8e6e4;
+  --color-foreground: #1c1917;
+  --color-accent: #d97706;
+  --color-border-subtle: color-mix(in srgb, #1c1917 16%, transparent);
+  --shadow-small:
+    0 2px 3px color-mix(in srgb, #1c1917 8%, transparent),
+    0 5px 12px color-mix(in srgb, #1c1917 5%, transparent);
+  --shadow-medium:
+    0 2px 4px color-mix(in srgb, #1c1917 8%, transparent),
+    0 6px 16px color-mix(in srgb, #1c1917 6%, transparent);
+  --shadow-inset: inset 0 1px 3px color-mix(in srgb, #1c1917 12%, transparent);
+  --shadow-neu: var(--shadow-small);
+  --shadow-pressed: var(--shadow-inset);
+}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background: #d6d3d1;
+    color: #1c1917;
+  }
+  html.dark {
+    background: #1c1917;
+    color: #e8e6e4;
+    --color-background: #1c1917;
+    --color-background-elevated: #211d1b;
+    --color-foreground: #e8e6e4;
+    --color-border-subtle: color-mix(in srgb, #e8e6e4 6%, transparent);
+    --shadow-small:
+      0 2px 3px color-mix(in srgb, #000000 35%, transparent),
+      0 5px 12px color-mix(in srgb, #000000 22%, transparent);
+    --shadow-medium:
+      0 2px 4px color-mix(in srgb, #000000 35%, transparent),
+      0 6px 16px color-mix(in srgb, #000000 24%, transparent);
+    --shadow-inset: inset 0 1px 3px color-mix(in srgb, #000000 22%, transparent);
+    --shadow-neu: var(--shadow-small);
+    --shadow-pressed: var(--shadow-inset);
+  }
+  body {
+    min-width: 320px;
+    overflow-x: hidden;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  }
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    transition:
+      transform 160ms ease,
+      opacity 160ms ease;
+  }
+  button:active,
+  a:active {
+    transform: scale(0.97);
+  }
+}

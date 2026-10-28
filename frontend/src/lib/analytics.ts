@@ -1,25 +1,33 @@
 /* =========================================================
-   ANALYTICS
+   ANALYTICS — GA4 by default
    ---------------------------------------------------------
-   One API surface. Swap providers via VITE_ANALYTICS_PROVIDER.
-   - ga4        → Google Analytics 4
-   - plausible  → Plausible
-   - umami      → Umami
-   - posthog    → PostHog
-   - console    → Dev only (logs to console)
-   - none       → No-op (privacy-first default)
+   Provider is chosen by VITE_ANALYTICS_PROVIDER, but falls
+   back to "ga4" so the site tracks out of the box.
+
+   The GA4 measurement ID is hardcoded as a fallback —
+   VITE_GA4_MEASUREMENT_ID can override it per environment
+   (dev / preview / prod) if you want separate properties.
+
+   GA4 tag endpoint: https://www.googletagmanager.com/gtag/js
+   ↑ That's the correct URL for GA4 — the "googletagmanager"
+   domain is a historical artifact. GTM itself uses a different
+   endpoint (gtm.js) which we do NOT use here.
    ========================================================= */
 
 type Provider = "ga4" | "plausible" | "umami" | "posthog" | "console" | "none";
 
 type EventProps = Record<string, string | number | boolean | null | undefined>;
 
-/* ---------- PostHog global type ----------
-   The stub array has `.init` and `._i` set immediately when the
-   provider is configured, but `.capture` is not present until
-   the real PostHog SDK loads and replaces the stub.
-   So all methods are optional - call sites use `?.()`.
-   ----------------------------------------- */
+/* ---------- Constants ---------- */
+
+const DEFAULT_GA4_ID = "G-CLTC450YQJ";
+
+const GA4_ID = import.meta.env.VITE_GA4_MEASUREMENT_ID || DEFAULT_GA4_ID;
+
+const PROVIDER: Provider =
+  (import.meta.env.VITE_ANALYTICS_PROVIDER as Provider) || "ga4";
+
+/* ---------- Global type declarations ---------- */
 
 type PostHogQueueItem = [string, Record<string, unknown>, number];
 
@@ -42,10 +50,9 @@ declare global {
   }
 }
 
-const PROVIDER: Provider =
-  (import.meta.env.VITE_ANALYTICS_PROVIDER as Provider) || "none";
-
-/* ---------- Init ---------- */
+/* =========================================================
+   INIT
+   ========================================================= */
 
 export function initAnalytics(): void {
   if (typeof window === "undefined") return;
@@ -54,22 +61,37 @@ export function initAnalytics(): void {
 
   switch (PROVIDER) {
     case "ga4": {
-      const id = import.meta.env.VITE_GA4_MEASUREMENT_ID;
-      if (!id) {
-        console.warn("[analytics] GA4 provider selected but no ID set");
+      if (!GA4_ID) {
+        console.warn(
+          "[analytics] GA4 selected but no measurement ID available",
+        );
         return;
       }
-      injectScript(`https://www.googletagmanager.com/gtag/js?id=${id}`, true);
+
+      // 1. Load the GA4 tag asynchronously
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+      document.head.appendChild(script);
+
+      // 2. Set up the dataLayer queue
       window.dataLayer = window.dataLayer || [];
       window.gtag = function gtag() {
         // eslint-disable-next-line prefer-rest-params
         window.dataLayer!.push(arguments);
       };
+
+      // 3. Configure GA4
       window.gtag("js", new Date());
-      window.gtag("config", id, {
+      window.gtag("config", GA4_ID, {
         anonymize_ip: true,
-        send_page_view: false, // we send manually on route change
+        send_page_view: false, // we fire pageviews manually on route change
+        cookie_flags: "SameSite=None;Secure",
       });
+
+      if (import.meta.env.DEV) {
+        console.info(`[analytics] GA4 initialized with ${GA4_ID}`);
+      }
       break;
     }
 
@@ -112,11 +134,6 @@ export function initAnalytics(): void {
         console.warn("[analytics] PostHog selected but no key set");
         return;
       }
-
-      /* PostHog's official stub pattern.
-         `window.posthog` becomes a queue array immediately.
-         When the real SDK loads (async), it drains the queue
-         and replaces `window.posthog` with the full instance. */
       (function (t: Window & typeof globalThis, e: Document) {
         const existing = t.posthog as
           | (PostHogClient & { push?: (...args: unknown[]) => void })
@@ -142,13 +159,13 @@ export function initAnalytics(): void {
 
       window.posthog?.init?.(key, {
         api_host: host,
-        capture_pageview: false, // manual pageview tracking
+        capture_pageview: false,
       });
       break;
     }
 
     case "console": {
-      console.info("[analytics] Console provider active");
+      console.info("[analytics] Console provider active — events log only");
       break;
     }
 
@@ -157,22 +174,11 @@ export function initAnalytics(): void {
       /* silent no-op */
       break;
   }
-
-  if (import.meta.env.DEV && PROVIDER === "none") {
-    console.info(
-      "[analytics] No provider set - events will be logged to console only.",
-    );
-  }
 }
 
-function injectScript(src: string, async = false): void {
-  const s = document.createElement("script");
-  s.src = src;
-  s.async = async;
-  document.head.appendChild(s);
-}
-
-/* ---------- Page views ---------- */
+/* =========================================================
+   PAGE VIEWS
+   ========================================================= */
 
 export function trackPageView(path: string, title?: string): void {
   if (typeof window === "undefined") return;
@@ -180,8 +186,8 @@ export function trackPageView(path: string, title?: string): void {
   const url = window.location.origin + path;
   const docTitle = title || document.title;
 
-  if (import.meta.env.DEV || PROVIDER === "console") {
-    console.info("[analytics] pageview", { path, title: docTitle, url });
+  if (import.meta.env.DEV) {
+    console.info("[analytics] pageview", { path, title: docTitle });
   }
 
   switch (PROVIDER) {
@@ -205,15 +211,20 @@ export function trackPageView(path: string, title?: string): void {
         title: docTitle,
       });
       break;
+    case "console":
+      console.info("[analytics] pageview →", path);
+      break;
   }
 }
 
-/* ---------- Events ---------- */
+/* =========================================================
+   EVENTS
+   ========================================================= */
 
 export function trackEvent(name: string, props: EventProps = {}): void {
   if (typeof window === "undefined") return;
 
-  if (import.meta.env.DEV || PROVIDER === "console") {
+  if (import.meta.env.DEV) {
     console.info("[analytics] event", name, props);
   }
 
@@ -230,10 +241,15 @@ export function trackEvent(name: string, props: EventProps = {}): void {
     case "posthog":
       window.posthog?.capture?.(name, props);
       break;
+    case "console":
+      console.info("[analytics] event →", name, props);
+      break;
   }
 }
 
-/* ---------- External link clicks ---------- */
+/* =========================================================
+   OUTBOUND LINKS
+   ========================================================= */
 
 export function trackExternalLink(url: string, label?: string): void {
   let host = "";
@@ -249,8 +265,6 @@ export function trackExternalLink(url: string, label?: string): void {
     from: window.location.pathname,
   });
 }
-
-/* ---------- Auto-track all external links ---------- */
 
 export function installExternalLinkTracking(): void {
   if (typeof document === "undefined") return;
@@ -277,10 +291,7 @@ export function installExternalLinkTracking(): void {
     }
   };
 
-  // Use capture so we see the click before route change happens
   document.addEventListener("click", handler, { capture: true });
-
-  // Also catch middle-click and ctrl/cmd-click (opens new tab)
   document.addEventListener(
     "auxclick",
     handler as unknown as (e: Event) => void,
@@ -288,7 +299,9 @@ export function installExternalLinkTracking(): void {
   );
 }
 
-/* ---------- Unhandled errors ---------- */
+/* =========================================================
+   ERROR TRACKING
+   ========================================================= */
 
 export function installErrorTracking(): void {
   if (typeof window === "undefined") return;

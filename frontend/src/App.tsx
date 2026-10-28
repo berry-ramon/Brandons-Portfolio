@@ -12,7 +12,6 @@ import {
   AtSign,
   Boxes,
   ChevronLeft,
-  Copy,
   FileText,
   Home as HomeIcon,
   Laptop,
@@ -718,7 +717,6 @@ export function SEO({
             : "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
         }
       />
-
       {/* ---------- Open Graph ---------- */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
@@ -727,15 +725,17 @@ export function SEO({
       <meta property="og:site_name" content="Brandon Kimathi" />
       <meta property="og:locale" content="en_KE" />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:secure_url" content={ogImage} /> {/* ← ADD */}
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={title} />
-
+      <meta property="fb:app_id" content="966242223397117" /> {/* ← ADD */}
       {/* ---------- Twitter Card ---------- */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:url" content={url} /> {/* ← ADD */}
       <meta name="twitter:creator" content="@brandonkimathi" />
     </Helmet>
   );

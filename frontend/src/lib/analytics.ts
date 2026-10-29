@@ -20,7 +20,7 @@ type EventProps = Record<string, string | number | boolean | null | undefined>;
 
 /* ---------- Constants ---------- */
 
-const DEFAULT_GA4_ID = "G-CLTC450YQJ";
+const DEFAULT_GA4_ID = "G-4SL18X637M";
 
 const GA4_ID = import.meta.env.VITE_GA4_MEASUREMENT_ID || DEFAULT_GA4_ID;
 
